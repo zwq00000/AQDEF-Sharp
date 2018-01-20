@@ -1,0 +1,589 @@
+
+K0001	Values 	[ 22 ]	F	
+K0002	attribute 	[ 5 ]	I5	e.g. 0=valid, 255=empty data field etc. 
+K0004	Time/Date 	[ --- ]	D	
+K0005	Events 	[ --- ]	S	Catalog see K2060 
+K0006	Batch number / Ident number 	[ 14 ]	A	  
+K0007	Cavity number / Spindle number 	[ 10 ]	I10	Catalog based (if use of I10 instead I5 adjustment of field length in database required) 
+K0008	Operator name 	[ 10 ]	I10	Catalog based (if use of I10 instead I5 adjustment of field length in database required) 
+K0009	Text 	[ 255 ]	A	  
+K0010	Machine number 	[ 10 ]	I10	Catalog based (or K1081 if no changes to field content, see K0007) 
+K0011	Process parameter 	[ --- ]	S	Catalog see K2061 
+K0012	Gage number 	[ 10 ]	I10	Catalog based (if use of I10 instead I5 adjustment of field length in database required) 
+K0013	Process parameter value 	[ 5 ]	I5	 Process parameter value content is part of K0011 
+K0014	Part Ident 	[ 40 ]	A	  
+K0015	Reason for test 	[ 5 ]	I5	 Defined field contents; N, ME6 
+K0016	Production number 	[ 30 ]	A	N, ME6 
+K0017	Work piece fixture number 	[ 30 ]	A	N, ME6 
+K0020	Subgroup size  	[ 5 ]	I5	Only for attribute checks 
+K0021	No. of errors 	[ 5 ]	I5	Only for attribute checks 
+K0053	Order number 	[ 20 ]	A	 or K1053 if no changes to field content 
+K0097	Values GUID	
+K0100	Total number of characteristics in file  	[ 5 ]	I5	 C,12.6.97 
+K0999	No. of characteristics per part = 0 	[ 5 ]	I5	C,12.6.97 
+K1001	Part number 	[ 30 ]	A	  
+K1002	Part description 	[ 80 ]	A	  
+K1003	Part abbreviation 	[ 20 ]	A	  
+K1004	Part Amendment status 	[ 20 ]	A	N,12.6.97 
+K1005	Product 	[ 40 ]	A	see K1008 
+K1007	Part number - short description 	[ 20 ]	A	N,3.7.97 
+K1008	Part type 	[ 20 ]	A	N,26.10.98 
+K1009	Part code 	[ 20 ]	A	N,26.10.98 
+K1010	Control item 	[ 3 ]	I3	 Defined field contents (see chapter 7.2) 
+K1011	Variant 	[ 20 ]	A	N,26.10.98 
+K1012	ID number annex 	[ 20 ]	A	N,26.10.98
+K1013	ID number index 	[ 20 ]	A	N,26.10.98 
+K1014	Part ident 	[ 20 ]	A	N,26.10.98	
+K1015	Type of test 	[ 3 ]	I3	 N, ME4 
+K1016	Assembly part 	[ 30 ]	A	N,26.8.02; Module ISR 
+K1017	Test plan locked 	[ 3 ]	I	 3	
+K1020	Manufacturer Catalog 	[ 5 ]	I5	  
+K1021	Manufacturer Number Text 	[ 20 ]	A	
+K1022	Manufacturer Description 	[ 80 ]	A	  
+K1023	Manufacturer Number 	[ 5 ]	I5	
+K1030	Material Catalog 	[ 5 ]	I5	  
+K1031	Material Number Text 	[ 20 ]	A	  
+K1032	Material Description 	[ 40 ]	A	  
+K1033	Material Number 	[ 5 ]	I5	N,12.6.97  
+K1040	Drawing Catalog 	[ 5 ]	I5	
+K1041	Drawing Number Text 	[ 30 ]	A	C,12.6.97 
+K1042	Drawing Amendment 	[ 20 ]	A	C,12.6.97  
+K1043	Drawing Index 	[ 40 ]	A	  
+K1044	Drawing Number 	[ 5 ]	I5	  
+K1045	Drawing validity date  	[ 20 ]	A	N,30.10.01  
+K1046	Dr  awing Description 	[ 60 ]	A	N,30.10.01 
+K1047	Basic drawing number 	[ 20 ]	A	N,30.10.01 
+K1051	Contractor Number Text 	[ 20 ]	A	  
+K1052	Contractor Description 	[ 40 ]	A	  
+K1053	Contract 	[ 40 ]	A	or K0053 
+K1054	Contractor Number 	[ 5 ]	I5	C,12.6.97 
+K1061	Customer Number Text 	[ 20 ]	A	  
+K1062	Customer Description 	[ 40 ]	A	  
+K1063	Customer Number 	[ 5 ]	I5	  
+K1071	Supplier Number Text 	[ 20 ]	A	  
+K1072	Supplier Description 	[ 40 ]	A	  
+K1073	Supplier Number 	[ 5 ]	I5	  
+K1081	Machine Number Text 	[ 24 ]	A	  or K0010 / K2301 (N,12.6.97) 
+K1082	Machine Description 	[ 40 ]	A	 or K0010 / K2302 (N,12.6.97) 
+K1083	Machine Number 	[ 5 ]	I5	N,12.6.97 
+K1085	Machine Location 	[ 40 ]	A	or K0010 (N,12.6.97) 
+K1086	Work Cycle / Operation 	[ 40 ]	A	or K2311 (N,12.6.97) 
+K1087	Work Cycle Description 	[ 40 ]	A	or K2312 (N, ME6) 
+K1100	Area / Plant sector 	[ 40 ]	A	N,12.6.97 
+K1101	Department 	[ 40 ]	A	N,12.6.97 
+K1102	Workshop 	[ 40 ]	A	N,26.11.97 
+K1103	Cost centre 	[ 40 ]	A	N,26.10.98 
+K1104	Shift 	[ 20 ]	A	N,26.10.98 
+K1110	Order number 	[ 20 ]	A	N,26.10.98 
+K1111	Goods received number 	[ 20 ]	A	N,26.10.98 
+K1201	Test Facility Number Text 	[ 24 ]	A	or K2401 
+K1202	Test Facility Description 	[ 40 ]	A	or K2402 
+K1203	Reason for Test 	[ 80 ]	A	  
+K1204	Test Begin 	[ 20 ]	D	C,12.6.97 
+K1205	Test End 	[ 20 ]	D	C,12.6.97 
+K1206	Test Location 	[ 40 ]	A	or K1201 (N,12.6.97) 
+K1208	Test Facility Number 	[ 5 ]	I5	N,12.6.97 
+K1209	Inspection type (inspection identifier) 	[ 20 ]	A	see K0015 (N, 26.10.98) 
+K1210	Measurement type 	[ 5 ]	I5	N,26.01.00 
+K1211	Standard master number (Text) 	[ 20 ]	A	N,26.10.98 
+K1212	Standard master description	[ 40 ]	A	N,26.10.98 
+K1215	Standard master number 	[ 5 ]	I5	N,26.10.98	
+K1221	Inspector number (Text) 	[ 20 ]	A	N,26.10.98 
+K1222	Inspector name 	[ 40 ]	A	N,26.10.98 
+K1223	Inspector number 	[ 5 ]	I5	N,2 6.10.98	
+K1230	Gage room 	[ 40 ]	A	N,26.10.98 
+K1231	Measurement program number 	[ 20 ]	A	N,26.10.98	
+K1232	Measurement program version 	[ 20 ]	A	N,26.10.98 
+K1301	Client 	[ 5 ]	I5	N,30.10.01	
+K1302	Test batch 	[ 40 ]	A	N,30.10.01 
+K1303	Plant 	[ 40 ]	A	see K1100 (N, 26.1.00)	
+K1311	Production order 	[ 40 ]	A	N,30.10.01 
+K1341	Test Plan Number Text 	[ 20 ]	A	N,30.10.01  
+K1342	Test Plan Name 	[ 40 ]	A	N,30.10.01	
+K1343	Test Plan Creation Date 	[ 20 ]	A	N,30.10.01 
+K1344	Test Plan Creator 	[ 40 ]	A	N,30.10.01  
+K1350	Output report file 	[ 50 ]	A	N,2.9.02; Module ISR  
+K1800	user field description 1 	[ 50 ]	A	N,26.10.9  
+K1801	us er field type 1 	[ 1 ]	A	No selection field! (N, 26.10.98)  
+K1802	user field content 1 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1810	user field description 2 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1811	user field type 2 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1812	user field content 2 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1820	user field descr ption 3 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1821	user field type 3 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1822	user field content 3 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1830	user field description 4 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1831	user field type 4 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1832	user field content 4 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1840	user field description 5 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1841	user field type 5 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1842	user field content 5 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1850	user field description 6 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1851	user field type 6 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1852	user field content 6 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1860	user field description 7 	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1861	user field type 7 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1862	user field content 7 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1870	user field description 8	[ 50 ]	A	No selection field! (N, 26.10.98) 
+K1871	user field type 8 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1872	user field content 8 	[ 255 ]	A	No selection field! (N, 26  .10.98)	
+K1880	user field description 9 	[ 50 ]	A	No selection field! (N, 26.10.98)   
+K1881	user field type 9 	[ 1 ]	A	No selection field! (N, 26.10.98)   
+K1882	user field content 9 	[ 255 ]	A	No selection field! (N, 26.10.98) 
+K1890	user field description 10 	[ 50 ]	A	No selection field! (N, 26.10.98)  
+K1891	user field type 10 	[ 1 ]	A	No selection field! (N, 26.10.98) 
+K1892	user field content 10 	[ 255 ]	A	 No selection field! (N, 26.10.98) 
+K1900	Remark 	[ 255 ]	A	C,12.6.97 
+K1997	Part GUID	N, ME 5  
+K1998	Internal qs-STAT configuration on the parts level (reserved)  	[ 255 ]	A	N,27.4.99 
+K2001	Characteristic Number 	[ 20 ]	A	  
+K2002	Characteristic Description 	[ 80 ]	A	  
+K2003	Characteristic Abbreviation 	[ 20 ]	A	  
+K2004	Characteristic Type 	[ 5 ]	I5	Defined field contents (e.g. variable, attribute, ELS etc.); C, 29.11.00 
+K2005	Characteristic Class 	[ 5 ]	I5	Classes: 0,1,2,3,4 
+K2006	Control Item 	[ 5 ]	I5	Defined field contents 
+K2007	Control Type 	[ 5 ]	I5	Defined field contents  
+K2008	Group type 	[ 5 ]	I5	Defined field contents (C,9.12.02). Also see K5000 (multivariate characteristics) 
+K2009	Measured quantity 	[ 5 ]	I5	Defined field contents (N,30.10.01). Identifier for the type of the characteristic (e.g. Length, Form, Position etc.) 
+K2011	Saved distribution 	[ 5 ]	I5	Defined field contents 
+K2013	Natural Class width 	[ 22 ]	F	natural class width for variable-classified characteristics 
+K2015	Tool wear type (Trend) 	[ 3 ]	I3	Defined field contents; N, ME5 
+K2016	100% Measurement 	[ 3 ]	I3	Defined field contents; N, ME5 
+K2021	Logical Operation Formula 	[ 255 ]	A	formula for calculation of values of a characteristic from values of other characteristics. Ex.: m1+m2 (addition of two characteristics.) 
+K2022	Decimal Places 	[ 5 ]	I5	number of decimal places in value recording 
+K2023	Transformation Type 	[ 3 ]	I3	  
+K2024	Transformation Parameter a 	[ 22 ]	F	
+K2025	Transformation Parameter b 	[ 22 ]	F	
+K2026	Transformation Parameter c 	[ 22 ]	F	
+K2027	Transformation Parameter d 	[ 22 ]	F	
+K2028	Natural distribution 	[ 3 ]	I3	N,08.11.01 
+K2030	Group Number / ELS-Number 	[ 5 ]	I5	Only for simple groupings, otherwise see K5000 
+K2031	Group Element Number / ELS Number for error type of a ELS 	[ 5 ]	I5	Only for simple groupings, otherwise see K5000 
+K2035	Calibration Date 	[ --- ]	D	
+K2041	Recording Type 	[ 3 ]	I3	flag: chosen recording type: manual or serial interface 
+K2042	Recording Device Number 	[ 5 ]	I5	  
+K2043	Recording Device Name 	[ 40 ]	A	  
+K2044	Recording Device Index 	[ 5 ]	I5	  
+K2045	Recording Channel 	[ 3 ]	I3	  
+K2046	Recording Subchannel 	[ 3 ]	I3	  
+K2047	Software Requirement Index 	[ 3 ]	I3	N,12.6.97  
+K2048	Takeover Channel 	[ 3 ]	I3	N,26.10.98 
+K2049	Channel Initialization-Index 	[ 3 ]	I3	  
+K2051	Interface 	[ 3 ]	I	3	
+K2052	Baud Rate 	[ 5 ]	I5	
+K2053	IRQ Number 	[ 3 ]	I3	  
+K2054	Parity 	[ 3 ]	I3	
+K2055	Data bits 	[ 3 ]	I3	  
+K2056	Stop bits 	[ 3 ]	I3	  
+K2060	Events Catalog (action code) 	[ 5 ]	I5	Required for use of K0005 (C, 12.6.97) 
+K2061	Process Parameter Catalog 	[ 5 ]	I5	Required for use of K0011  
+K2071	Accumulating Constant 	[ 22 ]	F	for linear transformation when entering values according to a formula value = K2072 * input + K2071 
+K2072	Multiplication factor 	[ 22 ]	F	
+K2073	Dimension of the calibration master 	[ 22 ]	F	
+K2074	Actual offset for calibration measurements 	[ 22 ]	F	
+  
+K2075	Amplification factor for calibration measurements 	[ 22 ]	F	
+K2076	Calibration Date 	[ --- ]	D	
+K2080	Characteristic status (activated, deactivated) 	[ 5 ] W Defined field contents 
+K2091	Characteristic index 	[ 20 ]	A	N,26.10.98 
+K2092	Characteristic text 	[ 50 ]	A	N,26.10.98 
+K2093	Processing status 	[ 80 ]	A	N,26.10.98 
+K2095	Element Code 	[ 40 ]	A	N,26.10.98 
+K2096	Element Index 	[ 20 ]	A	N,26.10.98 
+K2097	Element Text 	[ 50 ]	A	N,26.10.98 
+K2098	Element address 	[ 20 ]	A	N,26.10.98 
+K2100	Target Value 	[ 22 ]	F	objective measure; for attribute characteristics use Ptarget as absolute value (e.g. 0.001) 
+K2101	Nominal Value 	[ 22 ]	F	drawing measure, nominal value will be referred to when calculating the specification limits from the entered allowance 
+K2102	Pmax 	[ 22 ]	F	C,12.6.97/for Cpk values with attribute characteristics 
+K2103	Tolerance class 	[ 2 ]	A	N,30.10.01 
+K2104	Tolerance value 	[ 3 ]	I3	N,30.10.01 
+K2105	Parts OK at Censoring 	[ 5 ]	I5	N,7.1.98; Module RB 
+K2106	Extended measurement uncertainty 	[ 22 ]	F	N,08.11.01 
+K2110	Lower Limit Value 	[ 22 ]	F	
+K2111	Upper Limit Value 	[ 22 ]	F	
+K2112	Lower Allowance 	[ 22 ]	F	N,12.6.97 
+K2113	Upper Allowance 	[ 22 ]	F	N,12.6.97 
+K2114	Lower Scrap Limit 	[ 22 ]	F	N,12.6.97
+K2115	Upper Scrap Limit 	[ 22 ]	F	N,12.6.97 
+K2120	Lower Limit type 	[ 3 ]	I3	 Defined field contents  Natural boundary or limit 
+K2121	Upper Limit type 	[ 3 ]	I3	Defined field contents  Natural boundary or limit	
+K2130	Lower Plausibility Limit  	[ 22 ]	F	
+K2131	Upper Plausibility Limit  	[ 22 ]	F	
+K2135	Lower Class Limit 	[ 22 ]	F	
+K2136	Upper Class Limit 	[ 22 ]	F	
+K2137	Number of Classes 	[ 3 ]	I3	  
+K2138	Classification source 	[ 3 ]	I3	N,08.11.01 
+K2139	Classification Model source 	[ 3 ]	I3	N,08.11.01 
+K2141	Unit 	[ 5 ]	I5	 number of selected unit (e.g. from  atalogs) 
+K2142	Unit Description 	[ 20 ]	A	Text  
+K2143	Unit relative axis 	[ 20 ]	A	N,5.2.98 
+K2144	Addition constat relative axis 	[ 22 ]	F	N,5.2.98  
+K2145	Multiplication factor relative axis 	[ 22 ]	F	N,5.2.98 
+K2146	Decimal places relative axis  	[ 3 ]	I3	N,30.10.01 
+K2151	Tolerance (as Text) 	[ 20 ]	A	  
+K2152	Calculated Tolerance 	[ 22 ]	F	N,12.6.97 
+K2160	Batch size 	[ 5 ]	I5	  
+K2161	Re-work cost  	[ 22 ]	F	cost for parts to be reworked 
+K2162	Rejects cost 	[ 22 ]	F	
+K2163	Error cost 	[ 22 ]	F	
+K2170	Censoring point in Time 	[ 22 ]	F	N,7.1.98; Module RB 
+K2171	Extrapolation 	[ 22 ]	F	N,7.1.98; Modul  RB 
+K2172	Permitted failure rate 	[ 22 ]	F	N,27.11.01; Module RB 
+K2173	Failure free time 	[ 22 ]	F	N,08.11.01; Module RB 
+K2174	Parts in the field 	[ 3 ]	I3	 N, ME5 
+K2175	Conditions for frequency sums  	[ 3 ]	I3	 N, ME5 
+K2176	Life distance after Eckel 	[ 3 ]	I3	 N, ME5 
+K2177	Life time X1 	[ 22 ]	F	N, ME5 
+K2178	Life time X2 	[ 22 ]	F	N, ME5 
+K2180	Weibull Parameter b 	[ 22 ]	F	N, ME5 
+K2181	Weibull Parameter T 	[ 22 ]	F	N, ME5 
+K2182	Sum probability (B(x1)) 	[ 22 ]	F	N, ME5 
+K2183	Sum probability (B(x2)) 	[ 22 ]	F	N, ME5 
+K2185	Number of parts in the field (for Eckel method) 	[ 10 ]	I10	 N, ME5 
+K2186	Usage time for parts in the field (for Eckel method) 	[ 22 ]	F	N, ME5 
+K2201	Process Variation 	[ 22 ]	F	Module GC 
+K2202	Evaluation Type 	[ 3 ]	I3	Defined field contents (e.g. Type 1, Type 2 etc. - see chapter 4.1) 
+K2205	Number of parts 	[ 5 ]	I5	Module GC 
+K2211	Master Number Text: 	[ 40 ]	A	C,3.7.97 
+K2212	Master Description 	[ 40 ]	A	  
+K2213	Master Actual Value  	[ 22 ]	F	Module GC Type 1 
+K2214	Master Temperature 	[ 22 ]	F	
+K2215	Master Number 	[ 5 ]	I5	  
+K2216	Master –Serial number 	[ 20 ]	A	N, 26.10.98 
+K2217	Master Manufacturer 	[ 80 ]	A	  
+K2220	Number of Operators 	[ 5 ]	I5	Module GC 
+K2221	Number of Trials 	[ 5 ]	I5	for Type 2-Study (Measurements per operator and part e.g. 2), for  Type 3-Study Number of measurements 
+K2222	No. of Reference Measurements 	[ 5 ]	I5	N,8.7.98; Module GC 
+K2225	Determined Cg value 	[ 22 ]	F	N,12.6.97 
+K2226	Determined Cgk value 	[ 22 ]	F	N,12.6.97 
+K2227	Deviation GC Type 3 – GC Type 1 	[ 22 ]	F	N,12.6.97; module GC CNOMO 
+K2228	Sg Type 1 - Stability 	[ 22 ]	F	N, 29.11.00; module GC Stability 
+K2229	Calibration uncertainty of the master 	[ 22 ]	F	C, 24.07.01/N, 29.11.00; module GC 
+K2230	Distribution parameter a for measurement uncertainty 	[ 22 ]	F	N,08.11.01; Module GC 
+K2231	Distribution parameter b for measurement uncertainty   	[ 22 ]	F	N,08.11.01; Module GC 
+K2232	Distribution parameter c for measurement uncertainty		[ 22 ]	F	N,08.11.01; Module GC 
+K2233	Distribution parameter d for measurement uncertainty 	[ 22 ]	F	N,08.11.01; Module GC  
+K2234	Independent Influence factor  	[ 5 ]	I5	N,08.11.01; Module GC 
+K2235	Temperature constant of the par  to be tested 	[ 22 ]	F	N,08.11.01; Module GC  
+K2236	Temperature constant of the gage 	[ 22 ]	F	N,08.11.01; Module GC 
+K2243	Dawing file name 	[ 80 ]	A	
+K2244	Dr awing Reference point X 	[ 5 ]	I5	N,26.11.97 
+K2245	Drawing Reference point Y 	[ 5 ]	I5	N,26.11.97 
+K2246	Drawing Reference point Z 	[ 5 ]	I5	N,30.10.01 
+K2251	Master actual value (lower tolerance) 	[ 22 ]	F	N,26.10.98 
+K2252	Master actual value (upper tolerance) 	[ 22 ]	F	N,26.10.98 
+K2261	Reference Part number 	[ 40 ]	A	C, 24.11.03 
+K2262	Reference Part description  	[ 40 ]	A	 N, 26.10.98 
+K2263	Reference Part actual value 	[ 22 ]	F	N, 26.10.98 
+K2264	Reference Part temperature 	[ 22 ]	F	N, 26.10.98 
+K2265	Reference Part number (num) 	[ 3 ]	I3	 N, 26.10.98 
+K2266	Reference Part serial number 	[ 40 ]	A	N, 26.10.98 
+K2281	Calibration Part Number middle 	[ 40 ]	A	 N, 26.10.98 
+K2282	Calibration Part Description middle 	[ 40 ]	A	 N, 26.10.98 
+K2283	Calibration Part actual value middle 	[ 22 ]	F	N, 26.10.98 
+K2284	Calibration Part temperature middle 	[ 22 ]	F	N, 26.10.98 
+K2285	Calibration Part number (num) middle 	[ 3 ]	I3	 N, 26.10.98 
+K2286	Calibration Part serial number middle 	[ 40 ]	A	 N, 26.10.98 
+K2301	Machine Number Text 	[ 20 ]	A	or K1081 / K0010 
+K2302	Machine Description 	[ 40 ]	A	or K1082 / K0010 
+K2303	Department / Cost center 	[ 40 ]	A	or K1103 
+K2304	Machine Location 	[ 40 ]	A	  
+K2305	Machine Number 	[ 5 ]	I5	  
+K2306	Area / Plant sector  	[ 40 ]	A	N,3.7.97 
+K2307	PTM Number 	[ 40 ]	A	N,3.7.97 
+K2311	Production Type Text (Operation) 	[ 20 ]	A	or K1086 
+K2312	Production Type Description 	[ 40 ]	A	or K1086 
+K2313	Production Type Number 	[ 5 ]	I5	  
+K2320	Contract Number  	[ 20 ]	A	  
+K2321	Contractor Number Text 	[ 20 ]	A	  
+K2322	Contractor Name 	[ 40 ]	A	  
+K2323	Contractor Number 	[ 5 ]	I5	  
+K2331	Work piece Number Text 	[ 20 ]	A	C,12.6.97 
+K2332	Work piece Description 	[ 40 ]	A	C,12.6.97 
+K2333	Work piece Number 	[ 5 ]	I5	C,12.6.97 
+K2341	Test plan number Text 	[ 20 ]	A	N,3.7.97	
+K2342	Test plan name 	[ 40 ]	A	N,3.7.97 
+K2343	Test plan creation date  	[ 20 ]	D	N,3.7.97 
+K2344	Test plan creator 	[ 40 ]	A	N,3.7  .97	
+K2401	Gage Number Text 	[ 40 ]	A	or K1201 / K0012 
+K2402	Gage Description 	[ 40 ]	A	or K1202 / K0012	
+K2404	Gage resolution  	[ 22 ]	F	
+K2405	Gage Number 	[ 5 ]	I5	  
+K2406	Gage manufacturer 	[ 40 ]	A	N,12.6.97 
+K2407	SPC device number 	[ 20 ]	A	N,3.7.97   
+K2408	SPC device description 	[ 20 ]	A	N,3.7.97 
+K2409	SPC device type 	[ 20 ]	A	N,3.7.97  
+K2410	Test location  	[ 40 ]	A	
+K2411	Test Begin 	[ 40 ]	D	
+K2412	Test End 	[ 40 ]	D	
+K2415	Gage serial number 	[ 20 ]	A	N, 26.10.98 
+K2416	Display device 	[ 40 ]	A	N, 26.10.98 K2421 Op  erator Number Text 	[ 20 ]	A	  
+K2422	Operator Name 	[ 40 ]	A	  
+K2423	Operator Number 	[ 5 ]	I5	  
+K2430	Sampling type 	[ 5 ]	I5	N,2.9.02; Module ISR, defined field contents 
+K2432	Individual value output 	[ 5 ]	I5	N,2.9.02; Module ISR, defined field contents  
+K2434	Proof of Process capability  	[ 5 ]	I5	N,2.9.02; Module ISR, defined field contents 
+K2436	Test Frequency 	[ 10 ]	A	N,26.8.02; Module ISR 
+K2438	Quantity Test d 	[ 10 ]	A	N,26.8.02; Module ISR 
+K2440	Assembly Component 	[ 40 ]	A	N,26.8.02; Module ISR 
+K2442	Assembly Component mass 	[ 12 ]	A	N,26.8.02; Module ISR 
+K2444	Assembly Component material 	[ 40 ]	A	N,26.8.02; Module ISR 
+K2446	Supplier’s product description 	[ 40 ]	A	N,26.8.02; Module ISR 
+K2448	Assembly Component manufacturer 	[ 40 ]	A	N,26.8.02; Module ISR 
+K2501	Dimension attribute 	[ 3 ]	I3	N,30.10.01; defined field contents  
+K2502	Tolerance display format 	[ 3 ]	I3	N,30.10.01; defined field contents 
+K2503	Dimension type 	[ 3 ]	I3	N,30.10.01; defined field contents 
+K2504	Drawing change status 	[ 3 ]	I3	N,30.10.01; defined field contents 
+K2505	View description 	[ 20 ]	A	N,30.10.01 
+K2506	Sheet number 	[ 3 ]	I3	N,30.10.01 
+K2507	Drawing field character 	[ 2 ]	A	N,30.10.01 
+K2508	Drawing field number 	[ 3 ]	I3	N,30.10.01 
+K2509	Sheet description 	[ 40 ]	A	N,24.09.02 
+K2511	Reference 1 	[ 20 ]	A	N,30.10.01 
+K2512	Reference 2 	[ 20 ]	A	N,30.10.01 
+K2513	Reference 3 	[ 20 ]	A	N,30.10.01 
+K2514	Reference 4 	[ 20 ]	A	N,30.10.01 
+K2515	Reference 5 	[ 20 ]	A	N,30.10.01 
+K2516	Reference 6 	[ 20 ]	A	N,30.10.01 
+K2517	Reference 7 	[ 20 ]	A	N,3.10.01 
+K2518	Reference 8 	[ 20 ]	A	N,30.10.01 
+K2519	Reference 9 	[ 20 ]	A	N,30.10.01	
+K2520	Reference System 	[ 20 ]	A	N,19.02.02 
+K2521	Reference x direction 	[ 22 ]	F	N,19.02.02; Ä,27.06.03 
+K2522	Reference y direction 	[ 22 ]	F	N,19.02.02; Ä,27.06.03   
+K2523	Reference z direction 	[ 22 ]	F	N,19.02.02; Ä,27.06.03 
+K2524	CAD internal reference 	[ 20 ]	A	N,19.02.02	
+K2630	Calibration Uncertainty 	[ 22 ]	F	
+K2800	user field description 1 	[ 50 ]	A	N,26.10.98	
+K2801	user field type 1 	[ 1 ]	A	N,26.10.98 
+K2802	user field contents 1 	[ 255 ]	A	N,26.10.98 
+K2810	user field description 2 	[ 50 ]	A	N,26.10.98 
+K2811	user field type 2 	[ 1 ]	A	N,26.10.98  
+K2812	user field contents 2 	[ 255 ]	A	N,26.10.98 
+K2820	user field description 3 	[ 50 ]	A	N,26.10.98  
+K2821	user field type 3 	[ 1 ]	A	N,26.10.98 
+K2822	user field contents 3 	[ 255 ]	A	N,26.1.98  
+K2830	user field description 4 	[ 50 ]	A	N,26.10.98 
+K2831	user field type 4 	[ 1 ]	A	N,26.10.98 
+K2832	user field contents 4 	[ 255 ]	A	N,26.10.98 
+K2840	user field description 5 	[ 50 ]	A	N,26.10.98 
+K2841	user field type 5 	[ 1 ]	A	N,26.10.98 
+K2842	user field contents 5 	[ 255 ]	A	N,26.10.98 
+K2850	user field description 6 	[ 50 ]	A	N,26.10.98 
+K2851	user field type 6 	[ 1 ]	A	N,26.10.98 
+K2852	user field contents 6 	[ 255 ]	A	N,26.10.98 
+K2860	user field description 7 	[ 50 ]	A	N,26.10.98 
+K2861	user field type 7 	[ 1 ]	A	N,26.10.98 
+K2862	user field contents 7 	[ 255 ]	A	N,26.10.98 
+K2870	user field description 8 	[ 50 ]	A	N,26.10.98 
+K2871	user field type 8 	[ 1 ]	A	N,26.10.98 
+K2872	user field contents 8 	[ 255 ]	A	N,26.10.98 
+K2880	user field description 9 	[ 50 ]	A	N,26.10.98 
+K2881	user field type 9 	[ 1 ]	A	N,26.10.98 
+K2882	user field contents 9 	[ 255 ]	A	N,26.10.98 
+K2890	user field description 10 	[ 50 ]	A	N,26.10.98 
+K2891	user field type 10 	[ 1 ]	A	N,26.10.98 
+K2892	user field contents 10 	[ 255 ]	A	N,26.10.98 
+K2900	Remark 	[255]	A	Ä,12.6.97 
+K2901	Test Conditions 	[ 80 ]	A	within Measurement System Analysis saving of test conditions in text form 
+K2902	Characteristic class specific additional texts	N, 21.07.04 
+K2997	Characteristic GUID  GUID  N, ME5 
+K2998	internal qs-STAT configuration 	[255]	A	  
+K2999	internal qs-STAT configuration 	[ 10 ]	I10	  
+K3001	Test Report Number Supplier 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3002	Test Report Description Supplier 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3003	ID number supplier 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3004	Test Report Version Supplier 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3005	Test Report Issue (Supplier) 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3006	Supplier Reference 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3010	Supplier Number 	[ 5 ]	I5	N,2.9.02; Module ISR 
+K3011	Supplier Number 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3020	Initial Sampling 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3021	Subsequent sampling 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3022	Other samples 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3023	Other samples Text 	[ 40 ]	A	N,2.9.02; Module ISR 
+K3025	Repeat Presentation Number 	[ 20 ]	A	N,2.9.02; Module ISR   
+K3030	Installations (test types) 	[ 30 ]	A	N,2.9.02; Module ISR; defined field contents 
+K3031	Other installations (test types)  	[ 40 ]	A	N,2.9.02; Module ISR   
+K3035	Reason for sampling 	[ 50 ]	A	N,2.9.02; Module ISR; defined field contents	
+K3036	other - please specify 	[ 40 ]	A	N,2.9.02; Module ISR 
+K3037	Requested submission level 	[ 5 ]	I5	  N,2.9.02; Module ISR; defined field contents 
+K3040	Process capability 	[ 5 ]	I5	  N,2.9.02; Module ISR; defined field contents 
+K3050	Identification number supplier 	[ 30 ]	A	N,2.9.02; Module ISR  
+K3052	Designation supplier 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3055	Drawing number supplier 	[ 20 ]	A	N,2.9.02; Module ISR  
+K3056	Status supplier 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3057	Date supplier [ -- ]	D	 N,2.9.02; Module ISR 
+K3058	Modification number supplier 	[ 20 ]	A	N,2.9.02; Module ISR  
+K3070	Order number supplier 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3071	Call number supplier 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3077	Order date supplier [ -- ]	D	 N,2.9.02; Module ISR 
+K3078	Call date supplier [ -- ]	D	 N,2.9.02; Module ISR 
+K3080	Delivery order number supplier 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3087	Delivery order date supplier [ -- ]	D	 N,2.9.02; Module ISR 
+K3100	Article number 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3101	Quantity supplied 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3102	Delivery unit 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3103	Number of samples 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3105	batch number 	[ 20 ]	A	N,2.9.02; Module  SR 
+K3106	Cavity number 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3107	Tool number 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3108	Restricted Substances 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3109	Plastic Parts 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3110	Sample weight (supplier) 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3112	carried out 	[ 30 ]	A	N,2.9.02; Module ISR; defined field contents 
+K3113	Application 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3115	Control item 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3117	Checking Aid No. 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3118	Change Level (Checking Aid No.) 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3119	Date (Checking Aid No.) [ -- ]	D	 N,2.9.02; Module ISR 
+K3150	Creator (supplier) 	[ 5 ]	I5	N,2.9.02; Module ISR 
+K3160	Signature Creator 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3167	Date Creator Signature [ -- ]	D	 N,2.9.02; Module ISR 
+K3180	Production rate / 8 hours 	[1023]	M	N,2.9.02; Module ISR 
+K3187	Mold / Cav. / Prod. 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3188	Creator (supplier) 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3190	Remark supplier 	[1023]	M	N,2.9.02; Module ISR 
+K3200	Production order number 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3210	Test order number 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3281	Remark functional test (supplier) 	[1023]	M	N,2.9.02; Module ISR 
+K3282	Remark dimensional test (supplier) 	[1023]	M	N,2.9.02; Module ISR 
+K3283	Remark material test (supplier) 	[1023]	M	N,2.9.02; Module ISR 
+K3284	Remark Reliability study 	[1023]	M	N,10.10.02; Module ISR 
+K3285	Remark Process capability study 	[1023]	M	N,10.10.02; Module ISR 
+K3293	Remark appearance 	[1023]	M	N,10.10.02;Module ISR 
+K3296	Remark Components 	[1023]	M	N,10.10.02; Module ISR 
+K3298	Remark attribute test 	[1023]	M	N,10.10.02; Module ISR  
+K3301	Test report number customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3302	Test report description customer 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3303	Identification number customer 	[ 20 ]	A	N,2.9.02  ; Module ISR	
+K3304	Test report version customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3306	Reference customer 	[ 20 ]	A	N,2.9.02; Module ISR  
+K3310	Customer number 	[ 5 ]	I5	N,2.9.02; Module ISR	
+K3350	Classification number customer 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3352	Designation customer 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3355	Drawing number customer 	[ 20 ]	A	N,2.9.02; Module ISR	
+K3356	Status customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3357	Date acceptance [ -- ]	D	 N,2.9.02; Module ISR  
+K3358	Amendment number customer 	[ 20 ]	A	N,2.9.02; Module ISR   
+K3372	Incoming goods number 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3379	Incoming goods date [ -- ]	D	 N,2.9.02; Module ISR  
+K3380	Delivery note number customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3387	Delivery note date customer [ -- ]	D	 N,2.9.02; odule ISR  
+K3390	Discharge location 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3404	Acceptance procedure 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3410	Sample weight customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3420	Overall decision 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3421	Decision functional test 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3422	Decision dimensional test 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3423	Decision material test 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents  
+K3424	Decision Reliability 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3425	Decision Process Capability 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3433	Decision visual test 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3436	Decision Components 	[ 5 ]	I5	N,10.10.02; Module ISR; defined field contents 
+K3438	Decision attribute test 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3439	other decision 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3440	The Results for  	[ 20 ]	A	N,2.9.02; Module ISR; defined field contents 
+K3442	meet all drawing and specif. requmts. 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3445	Deviation Permit Number 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3447	Date (Additional Engineering Changes) [ -- ]	D	 N,2.9.02; Module ISR 
+K3450	Test Report Creator (Customer) 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3451	Name Customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3460	Signature Customer 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3467	Signature date customer [ -- ]	D	 N,2.9.02; Module ISR 
+K3470	Buyer 	[ 5 ]	I5	N,2.9.02; Module ISR 
+K3481	Conditions 	[1023]	M	N,2.9.02; Module ISR 
+K3490	Remark Customer 	[1023]	M	N,2.9.02; Module ISR 
+K3560	Name of inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3561	Functional inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3562	Dimensional inspection 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3563	Material inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3564	(spare for:) Reliability, inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3565	(spare for:) Visual test, inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3566	(spare for:) Attribute test, inspection 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3569	(spare for:) Misc. test, inspection facility 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3581	Remark Functional Test (custoer) 	[1023]	M	N,2.9.02; Module ISR 
+K3582	Remark Dimensional Test (customer) 	[1023]	M	N,2.9.02; Module ISR   
+K3583	Remark Material Test (customer) 	[1023]	M	N,29.8.02; Module ISR 
+K3600	Test Report Type 	[ 5 ]	I5	N,2.9.02; Module ISR 
+K3601	Test Report Name/Description 	[ 30 ]	A	N,2.9.02; Module ISR 
+K3602	Input Mask File 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3610	Modified by 	[ 50 ]	A	N,2.9.02; Module ISR	
+K3617	Modification Date [ -- ]	D	 N,2.9.02; Module ISR 
+K3650	Processing Status of the Initial Sample		[ 3 ]	I3	N, ME5; Module ISR 
+K3701	Distribution List 1 	[ 5 ]	I5	 N,2.9.02; Module ISR; defined field contents 
+K3702	Dstribution List 2 	[ 5 ]	I5	 N,2.9.02 ; Module ISR; defined field contents 
+K3703	Distribution List 3 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3704	Distribution List 4 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3705	Distribution List 5 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3706	Distribution List 6 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3707	Distribution List 7 	[ 5 ]	I5	N,2.9.02; Module ISR; d fined field contents 
+K3708	Distribution List 8 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3709	Distribution List 9 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3710	Distribution List 10 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3711	Distribution List 11 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3712	Distribution List 12 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3713	Distribution List 13 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3714	Distribution List 14 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3750	Hazardous Material acc. to ChemG/GefStoffV? 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3752	Build-up of hazardous material with proper handling? 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3754	Dangerous Goods per Traffic Law 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3756	Water Endangering Goods per Water Act 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3757	Water Endangering Class 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3758	Quantity of Water Endangering Goods 	[ 20 ]	A	N,2.9.02; Module ISR 
+K3760	Component with Biocides 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3761	Biocides Level 	[ 50 ]	A	N,2.9.02; Module ISR 
+K3763	Does disposal result in waste with EWC code? 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K3764	EWC code 	[ 20 ]	A	N,2.9.02; Module ISR 
+K5001	Group number (text) 	[ 30 ]	A	N,29.11.01; For grouping of character-ristics as replacement of K2030 / K2031 
+K5002	Group description 	[ 80 ]	A	For grouping of characterristics as replacement of K2030 / K2031 
+K5003	Group short description 	[ 20 ]	A	N,29.11.01; For grouping of character-ristics as replacement of K2030 / K2031	
+K5007	Group number-short description 	[ 20 ]	A	N,29.11.01 
+K5045	Sketch file name 	[ 80 ]	A	N,29.11.01  K5090 Remark 	[ 255 ]	A	N,29.11.01 
+K5098	internal qs-STAT configuration 	[ 254 ]	A	  
+K5101	Part as part of a group 	[ 5 ]	I5	 N,29.11.01; For grouping of characteristics as replacement of K2030 / K2031 
+K5102	Characteristic as part of a group 	[ 5 ]	I5	 N,29.11.01; For grouping of characteris ics as replacement of K2030 / K2031 
+K5103	Group as part of a group 	[ 5 ]	I5	 N,29.11.01; For grouping of characteristics as replacement of K2030 / K2031 
+K5111	Part element 	[ 5 ]	I5	N,29.11.01; For grouping of characteristics as replacement of K2030 / K2031  
+K5112	Characteristic element 	[ 5 ]	I5	N,29.11.01; For grouping of characteristics as replacement of K2030 / K2031 
+K5113	Group element 	[ 5 ]	I5	N,29.11.01; For grouping of characteristics as replacement of K2030 / K2031 
+K8006	Lower alarm limit (location) 	[ 22 ]	F	N,12.6.97 
+K8007	Upper alarm limit (location) 	[ 22 ]	F	N,12.6.97 
+K8010	Chart Type and additional attributes (location) 	[ --- ]	S	C,12.6.97; defined field contents 
+K8011	Central Position (location) 	[ 22 ]	F	C,12.6.97  
+K8012	Lower Control Limit LCL (location) 	[ 22 ]	F	C,12.6.97 
+K8013	Upper Control Limit UCL (location) 	[ 22 ]	F	C,12.6.97 
+K8014	Lower Warning Limit LWL (location) 	[ 22 ]	F	C,12.6.97 
+K8015	Upper Warning Limit UWL (location) 	[ 22 ]	F	C,12.6.97 
+K8106	Lower Alarm limit (variation) 	[ 22 ]	F	N,12.6.97 
+K8107	Upper Alarm limit (variation) 	[ 22 ]	F	N,12.6.97 
+K8110	Chart Type and additional attributes (variation) 	[ --- ]	S	C,12.6.97; defined field contents 
+K8111	Central Position (variation) 	[ 22 ]	F	C,12.6.97 
+K8112	Lower Control limit LCL  (variation) 	[ 22 ]	F	C,12.6.97 
+K8113	Upper Control Limit UCL  (variation) 	[ 22 ]	F	C,12.6.97 
+K8114	Lower Warning Limit LWL (variation) 	[ 22 ]	F	C,12.6.97 
+K8115	Upper Warning Limit UWL (variation) 	[ 22 ]	F	C,12.6.97 
+K8500	Subgroup size (total) 	[ 5 ]	I5	- 
+K8501	Subgroup type 	[ 3 ]	I3	Defined field contents (fixed, moving) 
+K8502	Subgroup frequency 	[ 40 ]	A	C,12.6.97/text indication of frequency 
+K8503	stable subgroup size 	[ 3 ]	I3	Defined field contents (only for attribute tests) 
+K8504	Subgroup frequency 	[ 5 ]	I5	N,3.7.97 
+K8505	Number of parts (attribute) 	[ 5 ]	I5	Only for attribute tests - target; actual scope K0020 
+K8506	Attribute subgroup size 	[ 5 ]	I5	- 
+K8510	Cp value 	[ 22 ]	F	- 
+K8511	Cpk value 	[ 22 ]	F	C,12.6.97 
+K8520	required Cpk value 	[ 22 ]	F	N,12.6.97 
+K8521	required Cp value 	[ 22 ]	F	N,12.6.97 
+K8522	fixed Cpk value 	[ 22 ]	F	N,3.7.97 
+K8523	fixed Cp value 	[ 22 ]	F	N,3.7.97 
+K8524	required CAM value 	[ 22 ]	F	
+K8525	Required non-critical Capability Index 	[ 22 ]	F	
+K8530	Process Stability 	[ 5 ]	I5	N,2.9.02; Module ISR; defined field contents 
+K8531	Recorded Process Capability (Cp) 	[ 22 ]	F	N,26.8.02; Module ISR 
+K8532	Recorded Process Capability (Cpk) 	[ 22 ]	F	N,26.8.02; Module ISR 
+K8540	Evaluation 	[ 5 ]	I5	N,26.8.02; Module ISR 
+K8600	Correction Strategy 	[ 3 ]	I3	Valid for post-process measurement systems 
+K8610	Lower Correction Limit 	[ 22 ]	F	Valid for post-process measurement systems 
+K8611	Upper Correction Limit 	[ 22 ]	F	Valid for post-process measurement systems 
+K8612	Buffer size 	[ 3 ]	I3	Valid for post-process measurement systems 
+K8613	Correction target value 	[ 22 ]	F	Valid for post-process measurement systems 
