@@ -1,12 +1,12 @@
 ﻿using System;
 
 namespace AQDEF.Sharp.Converts {
-    public class BigDecimalKKeyValueConverter : IKKeyValueConverter<decimal?> {
+    internal class BigDecimalKKeyValueConverter : IKKeyValueConverter {
 
 
-        public Decimal? convert(String value) {
+        public object Convert(String value) {
             if (string.IsNullOrEmpty(value)) {
-                return null;
+                return Decimal.Zero;
             }
 
             decimal val;
@@ -14,13 +14,11 @@ namespace AQDEF.Sharp.Converts {
             return val;
         }
 
-
-        public String toString(decimal? value) {
-            if (value.HasValue) {
-                return value.ToString();
+        public string ToString(object value) {
+            if (value == null) {
+                return string.Empty;
             }
-            return null;
+            return value.ToString();
         }
-
     }
 }

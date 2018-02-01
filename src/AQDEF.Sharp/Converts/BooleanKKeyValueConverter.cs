@@ -1,30 +1,29 @@
 ﻿using System;
 
 namespace AQDEF.Sharp.Converts {
-    public class BooleanKKeyValueConverter : IKKeyValueConverter<bool?> {
-        private static IntegerKKeyValueConverter integerConverter = new IntegerKKeyValueConverter();
+    public class BooleanKKeyValueConverter : IKKeyValueConverter {
+        
+        public object Convert(string value) {
 
-
-        public bool? convert(String value) {
-            var integerValue = integerConverter.convert(value);
-
-            if (integerValue == null) {
-                return null;
+            if (string.IsNullOrEmpty(value)) {
+                return  null;
             }
-            if (integerValue == 1) {
-                return true;
-            }
-            if (integerValue == 0) {
-                return false;
-            }
-            throw new KKeyValueConversionException(value, typeof(bool), null);
+            int result = 0;
+            int.TryParse(value, out result);
+            return result == 1;
         }
 
-        public String toString(bool? value) {
+        public string ToString(object value) {
             if (value == null) {
-                return null;
+                return string.Empty;
             }
-            return value.Value ? "1" : "0";
+            var result = value as Boolean?;
+            if (result.HasValue) {
+                return result.Value ? "1" : "0";
+            } else {
+                return "0";
+            }
+            
         }
     }
 }

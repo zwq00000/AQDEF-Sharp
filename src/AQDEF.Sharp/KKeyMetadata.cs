@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using AQDEF.Sharp.Converts;
+using AQDEF.Sharp.Properties;
 
 namespace AQDEF.Sharp {
     /// <summary>
@@ -11,58 +12,106 @@ namespace AQDEF.Sharp {
     /// </summary>
     public class KKeyMetadata {
 
-        private readonly string columnName;
-        private readonly Type dataType;
+        private readonly string _keyCode;
+        private readonly string _tableName;
+        private readonly string _columnName;
+        private readonly KKeyFieldType _dataType;
 
         ///<Summary>
         /// Length of data (for String and Number data types)
         ///</Summary>
-        private readonly int length;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private IKKeyValueConverter converter;
+        private readonly int _length;
 
         /**
          * Whether values of this column should be saved to DB.
          * There are some K-keys which should not be written to DB or has unknown column name.
          */
-        private readonly bool saveToDb;
+        private readonly bool _saveToDb;
+
+        internal KKeyMetadata(string keyCode,
+            [NotNull] KKeyFieldType dataType,
+            int length = 0) {
+            if (string.IsNullOrEmpty(keyCode)) {
+                throw new ArgumentNullException(nameof(keyCode));
+            }
+            this._keyCode = keyCode;
+            this._dataType = dataType;
+            if (length <= 0) {
+                this._length = GetDefaultLength(dataType);
+            } else {
+                this._length = length;
+            }
+        }
 
         private KKeyMetadata([NotNull]string columnName,
-            [NotNull] Type dataType,
-            int length,
-            [NotNull]IKKeyValueConverter converter,
-            bool saveToDb) {
+           [NotNull] Type dataType,
+           int length,
+           [NotNull]IKKeyValueConverter converter,
+           bool saveToDb) {
             if (string.IsNullOrEmpty(columnName)) {
                 throw new ArgumentNullException(nameof(columnName));
             }
 
-            this.columnName = columnName;
-            this.dataType = dataType;
-            this.length = length;
-            this.converter = converter;
-            this.saveToDb = saveToDb;
+            this._columnName = columnName;
+            //this._dataType = dataType;
+            this._length = length;
+            this._saveToDb = saveToDb;
         }
 
 
+        internal KKeyMetadata(string keyCode,
+            [NotNull] KKeyFieldType dataType,
+            int length,
+            string displayName
+            ) : this(keyCode, dataType, length) {
+            this.DisplayName = displayName;
+        }
+
+        /// <summary>
+        /// 根据数据类型获取默认长度
+        /// </summary>
+        /// <param name="fieldType"></param>
+        /// <returns></returns>
+        private int GetDefaultLength(KKeyFieldType fieldType) {
+            switch (fieldType) {
+                case KKeyFieldType.A:
+                    return 255;
+                case KKeyFieldType.D:
+                    return 22;
+                case KKeyFieldType.F:
+                    return 22;
+                case KKeyFieldType.I10:
+                    return 10;
+                case KKeyFieldType.I5:
+                    return 5;
+                case KKeyFieldType.I3:
+                    return 3;
+                case KKeyFieldType.S:
+                    return 0;
+                default:
+                    return 0;
+            }
+        }
+
+        /*
         public static KKeyMetadata of<T>(String columnName, bool saveToDb, int length = 0) {
             return of(columnName,typeof(T), length, saveToDb);
         }
-
-        public static KKeyMetadata of<T>(String columnName, int length = 0) {
-            return of(columnName, typeof(T), length, true);
+        
+        public static KKeyMetadata of(String columnName, Type dataType, int length = 0) {
+            return of(columnName, dataType, length, true);
         }
+        */
 
-        public static KKeyMetadata of(String columnName, Type dataType, int length, bool saveToDb) {
+
+        public static KKeyMetadata of(String columnName, Type dataType, int length = 0, bool saveToDb = true) {
 
             IKKeyValueConverter converter;
             if (typeof(string) == dataType || typeof(Guid) == dataType) {
 
                 converter = new StringKKeyValueConverter();
 
-            } else if (typeof(int?) == dataType) {
+            } else if (typeof(int) == dataType) {
 
                 converter = new IntegerKKeyValueConverter();
 
@@ -83,20 +132,22 @@ namespace AQDEF.Sharp {
             return new KKeyMetadata(columnName, dataType, length, converter, saveToDb);
         }
 
-        public static KKeyMetadata of<T>(String columnName, Type dataType, IKKeyValueConverter<T> converter, bool saveToDb) where T : IConvertible {
+        public static KKeyMetadata of<T>(String columnName, Type dataType, IKKeyValueConverter converter, bool saveToDb) where T : IConvertible {
             return new KKeyMetadata(columnName, dataType, 0, converter, saveToDb);
         }
 
-        public static KKeyMetadata of<T>(String columnName, Type dataType, int length, IKKeyValueConverter<T> converter) where T : IConvertible {
+        public static KKeyMetadata of<T>(String columnName, Type dataType, int length, IKKeyValueConverter converter) where T : IConvertible {
             return new KKeyMetadata(columnName, dataType, length, converter, true);
         }
+
+        public string KeyCode => _keyCode;
 
         /// <summary>
         /// Returns the maximum length of the content of this K-key as defined in AQDEF format documentation.
         /// </summary>
         /// <value></value>
         public int Length {
-            get { return length; }
+            get { return _length; }
         }
 
         /// <summary>
@@ -104,15 +155,15 @@ namespace AQDEF.Sharp {
         /// </summary>
         /// <value></value>
         public string ColumnName {
-            get { return columnName; }
+            get { return _columnName; }
         }
 
         /// <summary>
         /// Returns datatype of this K-key.
         /// </summary>
         /// <value></value>
-        public Type DataType {
-            get { return dataType; }
+        public KKeyFieldType DataType {
+            get { return _dataType; }
         }
 
         /// <summary>
@@ -120,34 +171,23 @@ namespace AQDEF.Sharp {
         /// </summary>
         /// <value></value>
         public IKKeyValueConverter Converter {
-            get { return converter; }
+            get { return ConvertFactory.GetConverter(this.DataType); }
         }
 
         /// <summary>
         /// Whether this K-key is stored in Q-DAS database.
         /// </summary>
         /// <returns></returns>
-        public bool isSaveToDb() {
-            return saveToDb;
-        }
+        public bool isSaveToDb => _saveToDb;
 
+        public string DisplayName { get; }
 
         public override String ToString() {
             //return ToStringBuilder.reflectionToString(this);
-            return $"{ColumnName} {DataType.Name}";
+            return $"{ColumnName} {DataType}";
         }
 
-        public override int GetHashCode() {
-            int prime = 31;
-            int result = 1;
-            result = prime * result + ((columnName == null) ? 0 : columnName.GetHashCode());
-            result = prime * result + ((dataType == null) ? 0 : dataType.GetHashCode());
-            result = prime * result + ((length == null) ? 0 : length);
-            result = prime * result + (saveToDb ? 1231 : 1237);
-            return result;
-        }
-
-        public bool Equals(Object obj) {
+        public override bool Equals(Object obj) {
             if (this == obj) {
                 return true;
             }
@@ -158,50 +198,27 @@ namespace AQDEF.Sharp {
                 return false;
             }
             KKeyMetadata other = (KKeyMetadata)obj;
-            if (columnName == null) {
-                if (other.columnName != null) {
+            if (_columnName == null) {
+                if (other._columnName != null) {
                     return false;
                 }
-            } else if (!columnName.Equals(other.columnName)) {
+            } else if (!_columnName.Equals(other._columnName)) {
                 return false;
             }
-            if (dataType == null) {
-                if (other.dataType != null) {
+            if (_dataType == null) {
+                if (other._dataType != null) {
                     return false;
                 }
-            } else if (dataType != other.dataType) {
+            } else if (_dataType != other._dataType) {
                 return false;
             }
-            if (length == null) {
-                if (other.length != null) {
-                    return false;
-                }
-            } else if (length != other.length) {
+            if (_length != other._length) {
                 return false;
             }
-            if (saveToDb != other.saveToDb) {
+            if (_saveToDb != other._saveToDb) {
                 return false;
             }
             return true;
         }
     }
-
-    public class CacheLoader<String, KKey> {
-
-    }
-
-    internal class LoadingCache<String, KKey> {
-
-        public KKey get(string key) {
-            throw new NotImplementedException();
-        }
-    }
-
-    internal static class CacheBuilder {
-        public static void newBuilder() {
-
-        }
-    }
-
-
 }

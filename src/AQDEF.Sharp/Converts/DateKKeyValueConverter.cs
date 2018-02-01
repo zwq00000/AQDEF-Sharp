@@ -2,33 +2,35 @@
 using System.Globalization;
 
 namespace AQDEF.Sharp.Converts {
-    public class DateKKeyValueConverter : IKKeyValueConverter<DateTime?> {
+    internal class DateKKeyValueConverter : IKKeyValueConverter {
 
         private const string OutputFormat = "dd.MM.yyyy/HH:mm:ss";
 
-        private static readonly string[] InputFormats = new[] {"dd.MM.yyyy/HH:mm:ss","MM/dd/yyyy/HH:mm:ss","yyyy-MM-dd/HH:mm:ss","dd.MM.yyyy/HH:mm",
+        private static readonly IFormatProvider FormatProvider = new CultureInfo("en-US");
+
+        private static readonly string[] InputFormats = new[] {"dd.MM.yyyy/HH:mm:ss","d.M.yyyy/HH:mm:ss","MM/dd/yyyy/HH:mm:ss","yyyy-MM-dd/HH:mm:ss","dd.MM.yyyy/HH:mm",
             "MM/dd/yyyy/HH:mm","yyyy-MM-dd/HH:mm","dd.MM.yyyy HH:mm:ss","MM/dd/yyyy HH:mm:ss","yyyy-MM-dd HH:mm:ss","dd.MM.yyyy HH:mm","MM/dd/yyyy HH:mm","yyyy-MM-dd HH:mm"};
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: @Override public Date convert(String value) throws KKeyValueConversionException
-        public DateTime? convert(string value) {
+        public object Convert(string value) {
             if (String.IsNullOrEmpty(value)) {
                 return null;
             }
             DateTime result;
-            DateTime.TryParseExact(value, InputFormats, new CultureInfo("en-US"), DateTimeStyles.None, out result);
-            return (DateTime?)result;
-
-            //throw new KKeyValueConversionException(value, typeof(DateTime), firstException);
-        }
-
-        /// <inheritdoc />
-        public string toString(DateTime? value) {
-            if (value == null) {
-                return null;
+            if (DateTime.TryParseExact(value, InputFormats, FormatProvider, DateTimeStyles.None, out result)) {
+                return result;
             }
-            return value.Value.ToString(OutputFormat);
+            throw new KKeyValueConversionException(value, typeof(DateTime),null);
         }
-
+        
+        /// <inheritdoc />
+        public string ToString(object value) {
+            if (value == null) {
+                return string.Empty;
+            }
+            var date = (DateTime) value;
+            return date.ToString(OutputFormat);
+        }
     }
 }

@@ -197,7 +197,9 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       }
-    }
+    },
+    ".NETFramework,Version=v4.0": {},
+    ".NETFramework,Version=v4.5": {}
   },
   "libraries": {
     "Microsoft.NETCore.App/2.0.0": {
@@ -661,7 +663,9 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0"
-    ]
+    ],
+    ".NETFramework,Version=v4.0": [],
+    ".NETFramework,Version=v4.5": []
   },
   "packageFolders": {
     "C:\\Users\\zwq00\\.nuget\\packages\\": {},
@@ -679,6 +683,7 @@
       "packagesPath": "C:\\Users\\zwq00\\.nuget\\packages\\",
       "outputPath": "D:\\GitHub\\My Repos\\AQDEF-Sharp\\src\\AQDEF.Sharp\\obj\\",
       "projectStyle": "PackageReference",
+      "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
@@ -687,6 +692,8 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
+        "net40",
+        "net45",
         "netcoreapp2.0"
       ],
       "sources": {
@@ -696,6 +703,12 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
+          "projectReferences": {}
+        },
+        "net40": {
+          "projectReferences": {}
+        },
+        "net45": {
           "projectReferences": {}
         }
       },
@@ -720,7 +733,9 @@
         ],
         "assetTargetFallback": true,
         "warn": true
-      }
+      },
+      "net40": {},
+      "net45": {}
     }
   }
 }

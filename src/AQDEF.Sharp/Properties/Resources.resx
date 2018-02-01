@@ -1,0 +1,2443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="K0001" xml:space="preserve">
+    <value>测量值</value>
+  </data>
+  <data name="K0002" xml:space="preserve">
+    <value>定性</value>
+  </data>
+  <data name="K0004" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="K0005" xml:space="preserve">
+    <value>事件</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0006" xml:space="preserve">
+    <value>批次编码</value>
+  </data>
+  <data name="K0007" xml:space="preserve">
+    <value>巢穴编号</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0008" xml:space="preserve">
+    <value>检验员姓名</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0009" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="K0010" xml:space="preserve">
+    <value>机器编号</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0011" xml:space="preserve">
+    <value>过程参数</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0012" xml:space="preserve">
+    <value>检测工具编号</value>
+    <comment>Catalog based</comment>
+  </data>
+  <data name="K0014" xml:space="preserve">
+    <value>零件 ID</value>
+  </data>
+  <data name="K0015" xml:space="preserve">
+    <value>检验的依据</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K0016" xml:space="preserve">
+    <value>产品号</value>
+  </data>
+  <data name="K0017" xml:space="preserve">
+    <value>工件支架号</value>
+  </data>
+  <data name="K0020" xml:space="preserve">
+    <value>子组容量</value>
+    <comment>attributive values only</comment>
+  </data>
+  <data name="K0021" xml:space="preserve">
+    <value>缺陷数目</value>
+    <comment>attributive values only</comment>
+  </data>
+  <data name="K0053" xml:space="preserve">
+    <value>定单</value>
+  </data>
+  <data name="K0054" xml:space="preserve">
+    <value>K0054</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0055" xml:space="preserve">
+    <value>K0055</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0056" xml:space="preserve">
+    <value>K0056</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0057" xml:space="preserve">
+    <value>K0057</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0058" xml:space="preserve">
+    <value>K0058</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0059" xml:space="preserve">
+    <value>K0059</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0060" xml:space="preserve">
+    <value>K0060</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini</comment>
+  </data>
+  <data name="K0061" xml:space="preserve">
+    <value>K0061</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini; Catalog based</comment>
+  </data>
+  <data name="K0062" xml:space="preserve">
+    <value>K0062</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini; Catalog based</comment>
+  </data>
+  <data name="K0063" xml:space="preserve">
+    <value>K0063</value>
+    <comment>activate with UseK00xx=1 in the qsstat2000.ini; Catalog based</comment>
+  </data>
+  <data name="K0080" xml:space="preserve">
+    <value>小组 ID</value>
+  </data>
+  <data name="K0081" xml:space="preserve">
+    <value>在小组中的数值位置</value>
+  </data>
+  <data name="K0097" xml:space="preserve">
+    <value>值 GUID</value>
+  </data>
+  <data name="K0100" xml:space="preserve">
+    <value>文件中的参数总数</value>
+  </data>
+  <data name="K0999" xml:space="preserve">
+    <value>每件的参数数目= 0</value>
+  </data>
+  <data name="K1001" xml:space="preserve">
+    <value>零件号</value>
+  </data>
+  <data name="K1002" xml:space="preserve">
+    <value>零件名</value>
+  </data>
+  <data name="K1003" xml:space="preserve">
+    <value>零件简称</value>
+  </data>
+  <data name="K1004" xml:space="preserve">
+    <value>零件更改状态</value>
+  </data>
+  <data name="K1005" xml:space="preserve">
+    <value>产品</value>
+  </data>
+  <data name="K1007" xml:space="preserve">
+    <value>零件编号简称</value>
+  </data>
+  <data name="K1008" xml:space="preserve">
+    <value>零件类型</value>
+  </data>
+  <data name="K1009" xml:space="preserve">
+    <value>零件代码</value>
+  </data>
+  <data name="K1010" xml:space="preserve">
+    <value>受控文件</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K1011" xml:space="preserve">
+    <value>变型</value>
+  </data>
+  <data name="K1012" xml:space="preserve">
+    <value>识别号 附件</value>
+  </data>
+  <data name="K1013" xml:space="preserve">
+    <value>识别号 索引</value>
+  </data>
+  <data name="K1014" xml:space="preserve">
+    <value>零件识别</value>
+  </data>
+  <data name="K1015" xml:space="preserve">
+    <value>检查方式</value>
+  </data>
+  <data name="K1016" xml:space="preserve">
+    <value>总成件</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K1017" xml:space="preserve">
+    <value>检验计划状态</value>
+  </data>
+  <data name="K1020" xml:space="preserve">
+    <value>制造商目录</value>
+  </data>
+  <data name="K1021" xml:space="preserve">
+    <value>制造商编号</value>
+  </data>
+  <data name="K1022" xml:space="preserve">
+    <value>制造商名称</value>
+  </data>
+  <data name="K1023" xml:space="preserve">
+    <value>制造商名称</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1030" xml:space="preserve">
+    <value>材料目录</value>
+  </data>
+  <data name="K1031" xml:space="preserve">
+    <value>材料编号</value>
+  </data>
+  <data name="K1032" xml:space="preserve">
+    <value>材料名称</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1033" xml:space="preserve">
+    <value>材料编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1040" xml:space="preserve">
+    <value>图纸目录</value>
+  </data>
+  <data name="K1041" xml:space="preserve">
+    <value>图纸编号</value>
+  </data>
+  <data name="K1042" xml:space="preserve">
+    <value>图纸更改</value>
+  </data>
+  <data name="K1043" xml:space="preserve">
+    <value>图纸索引</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1044" xml:space="preserve">
+    <value>图纸编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1045" xml:space="preserve">
+    <value>图纸有效日期</value>
+  </data>
+  <data name="K1046" xml:space="preserve">
+    <value>图纸名称</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1047" xml:space="preserve">
+    <value>基本图号</value>
+  </data>
+  <data name="K1048" xml:space="preserve">
+    <value>CAD 图纸文件名</value>
+  </data>
+  <data name="K1050" xml:space="preserve">
+    <value>委托方-目录</value>
+  </data>
+  <data name="K1051" xml:space="preserve">
+    <value>委托方-编号</value>
+  </data>
+  <data name="K1052" xml:space="preserve">
+    <value>委托方名称</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1053" xml:space="preserve">
+    <value>合同</value>
+    <comment>or K0053</comment>
+  </data>
+  <data name="K1054" xml:space="preserve">
+    <value>委托方-编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1060" xml:space="preserve">
+    <value>用户目录</value>
+  </data>
+  <data name="K1061" xml:space="preserve">
+    <value>用户编号</value>
+  </data>
+  <data name="K1062" xml:space="preserve">
+    <value>用户名称</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1063" xml:space="preserve">
+    <value>用户编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1070" xml:space="preserve">
+    <value>供应商目录</value>
+  </data>
+  <data name="K1071" xml:space="preserve">
+    <value>供应商编号</value>
+  </data>
+  <data name="K1072" xml:space="preserve">
+    <value>供应商名称</value>
+  </data>
+  <data name="K1073" xml:space="preserve">
+    <value>供应商编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1080" xml:space="preserve">
+    <value>机器目录</value>
+  </data>
+  <data name="K1081" xml:space="preserve">
+    <value>机器编号</value>
+    <comment>or K0010 / K2301</comment>
+  </data>
+  <data name="K1082" xml:space="preserve">
+    <value>机器名称</value>
+    <comment>or K0010 / K2302</comment>
+  </data>
+  <data name="K1083" xml:space="preserve">
+    <value>机器编号</value>
+  </data>
+  <data name="K1085" xml:space="preserve">
+    <value>机器位置</value>
+    <comment>or K0010</comment>
+  </data>
+  <data name="K1086" xml:space="preserve">
+    <value>道序</value>
+    <comment>or K2311</comment>
+  </data>
+  <data name="K1087" xml:space="preserve">
+    <value>产品周期描述</value>
+    <comment>or K2312</comment>
+  </data>
+  <data name="K1091" xml:space="preserve">
+    <value>行数</value>
+  </data>
+  <data name="K1092" xml:space="preserve">
+    <value>行描述</value>
+  </data>
+  <data name="K1100" xml:space="preserve">
+    <value>工厂范围</value>
+  </data>
+  <data name="K1101" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="K1102" xml:space="preserve">
+    <value>车间/范围</value>
+  </data>
+  <data name="K1103" xml:space="preserve">
+    <value>成本核算点</value>
+  </data>
+  <data name="K1104" xml:space="preserve">
+    <value>班次</value>
+  </data>
+  <data name="K1105" xml:space="preserve">
+    <value>分区编号</value>
+  </data>
+  <data name="K1106" xml:space="preserve">
+    <value>部门编号</value>
+  </data>
+  <data name="K1107" xml:space="preserve">
+    <value>车间编号</value>
+  </data>
+  <data name="K1108" xml:space="preserve">
+    <value>成本中心编号</value>
+  </data>
+  <data name="K1110" xml:space="preserve">
+    <value>订货号</value>
+  </data>
+  <data name="K1111" xml:space="preserve">
+    <value>进货编号</value>
+  </data>
+  <data name="K1112" xml:space="preserve">
+    <value>Cube</value>
+  </data>
+  <data name="K1113" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="K1114" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="K1115" xml:space="preserve">
+    <value>生产日期</value>
+  </data>
+  <data name="K1201" xml:space="preserve">
+    <value>检验设备编号</value>
+    <comment>or K2401</comment>
+  </data>
+  <data name="K1202" xml:space="preserve">
+    <value>检验设备名称</value>
+    <comment>or K2402</comment>
+  </data>
+  <data name="K1203" xml:space="preserve">
+    <value>检验原因</value>
+  </data>
+  <data name="K1204" xml:space="preserve">
+    <value>检验开始</value>
+  </data>
+  <data name="K1205" xml:space="preserve">
+    <value>检验结束</value>
+  </data>
+  <data name="K1206" xml:space="preserve">
+    <value>检验台</value>
+    <comment>or K1201</comment>
+  </data>
+  <data name="K1207" xml:space="preserve">
+    <value>检验计划编制者</value>
+  </data>
+  <data name="K1208" xml:space="preserve">
+    <value>检验设备编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1209" xml:space="preserve">
+    <value>检验方法</value>
+  </data>
+  <data name="K1210" xml:space="preserve">
+    <value>测量类型</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1211" xml:space="preserve">
+    <value>样件编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1212" xml:space="preserve">
+    <value>样件名称</value>
+  </data>
+  <data name="K1215" xml:space="preserve">
+    <value>样件编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1221" xml:space="preserve">
+    <value>检验员编号</value>
+  </data>
+  <data name="K1222" xml:space="preserve">
+    <value>检验员名称</value>
+  </data>
+  <data name="K1223" xml:space="preserve">
+    <value>检验员编号</value>
+    <comment>new lenght in V10</comment>
+  </data>
+  <data name="K1230" xml:space="preserve">
+    <value>测量室</value>
+  </data>
+  <data name="K1231" xml:space="preserve">
+    <value>测量程序编号</value>
+  </data>
+  <data name="K1232" xml:space="preserve">
+    <value>测量程序版本</value>
+  </data>
+  <data name="K1301" xml:space="preserve">
+    <value>委托人</value>
+  </data>
+  <data name="K1302" xml:space="preserve">
+    <value>检测批次</value>
+  </data>
+  <data name="K1303" xml:space="preserve">
+    <value>工厂</value>
+  </data>
+  <data name="K1304" xml:space="preserve">
+    <value>工厂编号</value>
+  </data>
+  <data name="K1311" xml:space="preserve">
+    <value>加工任务</value>
+  </data>
+  <data name="K1341" xml:space="preserve">
+    <value>检测计划号 文本</value>
+  </data>
+  <data name="K1342" xml:space="preserve">
+    <value>检测计划名称</value>
+  </data>
+  <data name="K1343" xml:space="preserve">
+    <value>检测计划编制日期</value>
+  </data>
+  <data name="K1344" xml:space="preserve">
+    <value>检测计划编制者</value>
+  </data>
+  <data name="K1350" xml:space="preserve">
+    <value>输出-报告文件</value>
+    <comment>module ISR; new lenght in V10</comment>
+  </data>
+  <data name="K1800" xml:space="preserve">
+    <value>用户 域名称 1</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1801" xml:space="preserve">
+    <value>用户域类型 1</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1802" xml:space="preserve">
+    <value>用户域内容 1</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1810" xml:space="preserve">
+    <value>用户域名称 2</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1811" xml:space="preserve">
+    <value>用户域类型 2</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1812" xml:space="preserve">
+    <value>用户域内容 2</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1820" xml:space="preserve">
+    <value>用户域名称 3</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1821" xml:space="preserve">
+    <value>用户域类型 3</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1822" xml:space="preserve">
+    <value>用户域内容 3</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1830" xml:space="preserve">
+    <value>用户域名称 4</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1831" xml:space="preserve">
+    <value>用户域类型 4</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1832" xml:space="preserve">
+    <value>用户域内容 4</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1840" xml:space="preserve">
+    <value>用户域名称 5</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1841" xml:space="preserve">
+    <value>用户域类型 5</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1842" xml:space="preserve">
+    <value>用户域内容 5</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1850" xml:space="preserve">
+    <value>用户域名称 6</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1851" xml:space="preserve">
+    <value>用户域类型 6</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1852" xml:space="preserve">
+    <value>用户域内容 6</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1860" xml:space="preserve">
+    <value>用户域名称 7</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1861" xml:space="preserve">
+    <value>用户域类型 7</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1862" xml:space="preserve">
+    <value>用户域内容 7</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1870" xml:space="preserve">
+    <value>用户域名称 8</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1871" xml:space="preserve">
+    <value>用户域类型 8</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1872" xml:space="preserve">
+    <value>用户域内容 8</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1880" xml:space="preserve">
+    <value>用户域名称 9</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1881" xml:space="preserve">
+    <value>用户域类型 9</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1882" xml:space="preserve">
+    <value>用户域内容 9</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1890" xml:space="preserve">
+    <value>用户域名称 10</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1891" xml:space="preserve">
+    <value>用户域类型 10</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1892" xml:space="preserve">
+    <value>用户域内容 10</value>
+    <comment>no selection-field!</comment>
+  </data>
+  <data name="K1900" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="K1997" xml:space="preserve">
+    <value>零件 GUID</value>
+  </data>
+  <data name="K1998" xml:space="preserve">
+    <value>内部的 qs-STAT 设置</value>
+  </data>
+  <data name="K2001" xml:space="preserve">
+    <value>被检参数编号</value>
+  </data>
+  <data name="K2002" xml:space="preserve">
+    <value>被检参数名称</value>
+  </data>
+  <data name="K2003" xml:space="preserve">
+    <value>被测参数简称</value>
+  </data>
+  <data name="K2004" xml:space="preserve">
+    <value>被测参数类型</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2005" xml:space="preserve">
+    <value>被测参数级别</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2006" xml:space="preserve">
+    <value>受控文件</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2007" xml:space="preserve">
+    <value>控制方式</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2008" xml:space="preserve">
+    <value>数值数目</value>
+    <comment>defined field content, see also K5000</comment>
+  </data>
+  <data name="K2009" xml:space="preserve">
+    <value>测量尺寸</value>
+    <comment>defined field content, indicator for token kind</comment>
+  </data>
+  <data name="K2011" xml:space="preserve">
+    <value>分布</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2013" xml:space="preserve">
+    <value>自然级宽</value>
+    <comment>natural class width for variable-classified characteristics</comment>
+  </data>
+  <data name="K2015" xml:space="preserve">
+    <value>损耗方式(趋势)</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2016" xml:space="preserve">
+    <value>100%测量</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2017" xml:space="preserve">
+    <value>警告检测类型</value>
+    <comment>new in V_10, defined field content</comment>
+  </data>
+  <data name="K2018" xml:space="preserve">
+    <value>验收限值扩展</value>
+    <comment>new in V_10,defined field content</comment>
+  </data>
+  <data name="K2019" xml:space="preserve">
+    <value>序数等级目录</value>
+  </data>
+  <data name="K2021" xml:space="preserve">
+    <value>逻辑运算公式</value>
+    <comment>formula for calculation of values of a characteristic from values of other characteristics. Ex.:m1+m2 (addition of two characteristics)</comment>
+  </data>
+  <data name="K2022" xml:space="preserve">
+    <value>小数点位数</value>
+    <comment>number of decimal places in value recording</comment>
+  </data>
+  <data name="K2023" xml:space="preserve">
+    <value>转换方式</value>
+  </data>
+  <data name="K2024" xml:space="preserve">
+    <value>转换参数 a</value>
+  </data>
+  <data name="K2025" xml:space="preserve">
+    <value>转换参数 b</value>
+  </data>
+  <data name="K2026" xml:space="preserve">
+    <value>转换参数 c</value>
+  </data>
+  <data name="K2027" xml:space="preserve">
+    <value>转换参数 d</value>
+  </data>
+  <data name="K2028" xml:space="preserve">
+    <value>自然分布</value>
+  </data>
+  <data name="K2030" xml:space="preserve">
+    <value>组编号</value>
+    <comment>only for simple aggregation, see also K5000</comment>
+  </data>
+  <data name="K2031" xml:space="preserve">
+    <value>组元素编号</value>
+    <comment>only for simple aggregation, see also K5000</comment>
+  </data>
+  <data name="K2041" xml:space="preserve">
+    <value>采录方式</value>
+    <comment>flag: chosen recording type: manual or serial interface</comment>
+  </data>
+  <data name="K2042" xml:space="preserve">
+    <value>采录设备编号</value>
+  </data>
+  <data name="K2043" xml:space="preserve">
+    <value>采录设备名称</value>
+  </data>
+  <data name="K2044" xml:space="preserve">
+    <value>采录设备索引</value>
+  </data>
+  <data name="K2045" xml:space="preserve">
+    <value>采录通道</value>
+  </data>
+  <data name="K2046" xml:space="preserve">
+    <value>采录亚通道</value>
+  </data>
+  <data name="K2047" xml:space="preserve">
+    <value>软件要求索引</value>
+  </data>
+  <data name="K2048" xml:space="preserve">
+    <value>录取通道</value>
+  </data>
+  <data name="K2049" xml:space="preserve">
+    <value>通道初始化</value>
+  </data>
+  <data name="K2051" xml:space="preserve">
+    <value>界面</value>
+  </data>
+  <data name="K2052" xml:space="preserve">
+    <value>波特率</value>
+  </data>
+  <data name="K2054" xml:space="preserve">
+    <value>奇偶性</value>
+  </data>
+  <data name="K2055" xml:space="preserve">
+    <value>Datenbits</value>
+  </data>
+  <data name="K2056" xml:space="preserve">
+    <value>Stopbits</value>
+  </data>
+  <data name="K2060" xml:space="preserve">
+    <value>事件目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0005</comment>
+  </data>
+  <data name="K2061" xml:space="preserve">
+    <value>过程参数目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0011</comment>
+  </data>
+  <data name="K2062" xml:space="preserve">
+    <value>巢穴目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0007</comment>
+  </data>
+  <data name="K2063" xml:space="preserve">
+    <value>机器目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0010</comment>
+  </data>
+  <data name="K2064" xml:space="preserve">
+    <value>量具目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0012</comment>
+  </data>
+  <data name="K2065" xml:space="preserve">
+    <value>操作员目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0008</comment>
+  </data>
+  <data name="K2066" xml:space="preserve">
+    <value>K0061目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0061</comment>
+  </data>
+  <data name="K2067" xml:space="preserve">
+    <value>K0062目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0062</comment>
+  </data>
+  <data name="K2068" xml:space="preserve">
+    <value>K0063目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), necessary for usage of K0063</comment>
+  </data>
+  <data name="K2071" xml:space="preserve">
+    <value>附加常数</value>
+    <comment>for linear transformation when entering values referring to form value = K2072 * input + K2071</comment>
+  </data>
+  <data name="K2072" xml:space="preserve">
+    <value>乘数因子</value>
+  </data>
+  <data name="K2073" xml:space="preserve">
+    <value>样件尺寸</value>
+  </data>
+  <data name="K2074" xml:space="preserve">
+    <value>样件偏距</value>
+  </data>
+  <data name="K2075" xml:space="preserve">
+    <value>样件测量的放大因数</value>
+  </data>
+  <data name="K2076" xml:space="preserve">
+    <value>样件测量的日期</value>
+  </data>
+  <data name="K2080" xml:space="preserve">
+    <value>被测参数状态(选定, 去选, …)</value>
+  </data>
+  <data name="K2091" xml:space="preserve">
+    <value>被测参数索引</value>
+  </data>
+  <data name="K2092" xml:space="preserve">
+    <value>被检参数说明</value>
+  </data>
+  <data name="K2093" xml:space="preserve">
+    <value>加工状态</value>
+  </data>
+  <data name="K2095" xml:space="preserve">
+    <value>组件代码</value>
+  </data>
+  <data name="K2096" xml:space="preserve">
+    <value>组件索引</value>
+  </data>
+  <data name="K2097" xml:space="preserve">
+    <value>组件说明</value>
+  </data>
+  <data name="K2098" xml:space="preserve">
+    <value>组件地址</value>
+  </data>
+  <data name="K2100" xml:space="preserve">
+    <value>名义-/目标值</value>
+    <comment>objecticve measure; in case of attributive characteristics use Ptarget as absolute value</comment>
+  </data>
+  <data name="K2101" xml:space="preserve">
+    <value>名义值</value>
+    <comment>drawing measure, nominal value will be referred to, when calaculating specification limits input tolerance</comment>
+  </data>
+  <data name="K2102" xml:space="preserve">
+    <value>Pmax</value>
+    <comment>for calculation of Cpk values with attribute characteristics Cpk = (Pmax - P)/3*</comment>
+  </data>
+  <data name="K2103" xml:space="preserve">
+    <value>公差级</value>
+  </data>
+  <data name="K2104" xml:space="preserve">
+    <value>公差值</value>
+  </data>
+  <data name="K2105" xml:space="preserve">
+    <value>审查时零件时合格</value>
+    <comment>module RB</comment>
+  </data>
+  <data name="K2110" xml:space="preserve">
+    <value>下限</value>
+  </data>
+  <data name="K2111" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="K2112" xml:space="preserve">
+    <value>下公差</value>
+  </data>
+  <data name="K2113" xml:space="preserve">
+    <value>上公差</value>
+  </data>
+  <data name="K2114" xml:space="preserve">
+    <value>下报废界限</value>
+  </data>
+  <data name="K2115" xml:space="preserve">
+    <value>上报废界限</value>
+  </data>
+  <data name="K2116" xml:space="preserve">
+    <value>下验收限值</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K2117" xml:space="preserve">
+    <value>上验收限值</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K2120" xml:space="preserve">
+    <value>界限</value>
+    <comment>natural limit</comment>
+  </data>
+  <data name="K2121" xml:space="preserve">
+    <value>界限</value>
+    <comment>natural limit</comment>
+  </data>
+  <data name="K2130" xml:space="preserve">
+    <value>下置信界限</value>
+  </data>
+  <data name="K2131" xml:space="preserve">
+    <value>上置信界限</value>
+  </data>
+  <data name="K2135" xml:space="preserve">
+    <value>下等级界限</value>
+  </data>
+  <data name="K2136" xml:space="preserve">
+    <value>上等级界限</value>
+  </data>
+  <data name="K2137" xml:space="preserve">
+    <value>等级数</value>
+  </data>
+  <data name="K2138" xml:space="preserve">
+    <value>分级的起点</value>
+  </data>
+  <data name="K2139" xml:space="preserve">
+    <value>分级模型的起点</value>
+  </data>
+  <data name="K2141" xml:space="preserve">
+    <value>单位</value>
+    <comment>number of selected unit (e.g. from catalogues)</comment>
+  </data>
+  <data name="K2142" xml:space="preserve">
+    <value>单位</value>
+    <comment>text</comment>
+  </data>
+  <data name="K2143" xml:space="preserve">
+    <value>相对单位</value>
+  </data>
+  <data name="K2144" xml:space="preserve">
+    <value>附加常数 相对的</value>
+  </data>
+  <data name="K2145" xml:space="preserve">
+    <value>相对乘数因子</value>
+  </data>
+  <data name="K2146" xml:space="preserve">
+    <value>小数点位数 相对的</value>
+  </data>
+  <data name="K2151" xml:space="preserve">
+    <value>公差</value>
+  </data>
+  <data name="K2152" xml:space="preserve">
+    <value>计算的公差</value>
+  </data>
+  <data name="K2160" xml:space="preserve">
+    <value>分批大小</value>
+  </data>
+  <data name="K2161" xml:space="preserve">
+    <value>返工成本</value>
+    <comment>cost for parts to be re-worked</comment>
+  </data>
+  <data name="K2162" xml:space="preserve">
+    <value>报废成本</value>
+  </data>
+  <data name="K2163" xml:space="preserve">
+    <value>缺陷成本</value>
+  </data>
+  <data name="K2170" xml:space="preserve">
+    <value>审查时间点</value>
+    <comment>module RB</comment>
+  </data>
+  <data name="K2171" xml:space="preserve">
+    <value>推断</value>
+    <comment>module RB</comment>
+  </data>
+  <data name="K2172" xml:space="preserve">
+    <value>允许的失效率</value>
+    <comment>module RB</comment>
+  </data>
+  <data name="K2173" xml:space="preserve">
+    <value>无失效时间</value>
+    <comment>module RB</comment>
+  </data>
+  <data name="K2174" xml:space="preserve">
+    <value>域中的零件</value>
+  </data>
+  <data name="K2175" xml:space="preserve">
+    <value>累积频率的条件</value>
+  </data>
+  <data name="K2176" xml:space="preserve">
+    <value>按Eckel的传播分布</value>
+  </data>
+  <data name="K2177" xml:space="preserve">
+    <value>运行时间 X1</value>
+  </data>
+  <data name="K2178" xml:space="preserve">
+    <value>运行时间 X2</value>
+  </data>
+  <data name="K2180" xml:space="preserve">
+    <value>威伯尔 参数 b</value>
+  </data>
+  <data name="K2181" xml:space="preserve">
+    <value>威伯尔 参数 T</value>
+  </data>
+  <data name="K2182" xml:space="preserve">
+    <value>累积概率 (B(x1))</value>
+  </data>
+  <data name="K2183" xml:space="preserve">
+    <value>累积概率(B(x2))</value>
+  </data>
+  <data name="K2185" xml:space="preserve">
+    <value>域中零件数目(对Eckel方法)</value>
+  </data>
+  <data name="K2186" xml:space="preserve">
+    <value>域中零件使用时间(对Eckel方法)</value>
+  </data>
+  <data name="K2201" xml:space="preserve">
+    <value>过程离散</value>
+    <comment>module GC</comment>
+  </data>
+  <data name="K2202" xml:space="preserve">
+    <value>评定方法</value>
+    <comment>defined field content (e.g. type 1, type 2 etc. - see also chapter 4.1)</comment>
+  </data>
+  <data name="K2205" xml:space="preserve">
+    <value>零件数目</value>
+    <comment>module GC</comment>
+  </data>
+  <data name="K2206" xml:space="preserve">
+    <value>夹具的编号</value>
+    <comment>module GC / VDA5 new</comment>
+  </data>
+  <data name="K2207" xml:space="preserve">
+    <value>测量序列的编号</value>
+    <comment>module GC / VDA5 new</comment>
+  </data>
+  <data name="K2210" xml:space="preserve">
+    <value>样件目录</value>
+    <comment>Catalog selection, (see also chapter 8.3), module GC</comment>
+  </data>
+  <data name="K2211" xml:space="preserve">
+    <value>样件编号</value>
+  </data>
+  <data name="K2212" xml:space="preserve">
+    <value>标准件名称</value>
+  </data>
+  <data name="K2213" xml:space="preserve">
+    <value>样件实际值</value>
+    <comment>module GC type 1</comment>
+  </data>
+  <data name="K2214" xml:space="preserve">
+    <value>样件温度</value>
+  </data>
+  <data name="K2215" xml:space="preserve">
+    <value>样件编号</value>
+  </data>
+  <data name="K2216" xml:space="preserve">
+    <value>样件系列号</value>
+  </data>
+  <data name="K2217" xml:space="preserve">
+    <value>标准件制造商</value>
+  </data>
+  <data name="K2220" xml:space="preserve">
+    <value>检验员数量</value>
+    <comment>module GC</comment>
+  </data>
+  <data name="K2221" xml:space="preserve">
+    <value>测量次数</value>
+    <comment>in type-2 studies (measurements per operator and parts e.g. 2) in type-3 studies number of measurements</comment>
+  </data>
+  <data name="K2222" xml:space="preserve">
+    <value>标准件测量次数</value>
+    <comment>module GC</comment>
+  </data>
+  <data name="K2225" xml:space="preserve">
+    <value>Cg-值</value>
+  </data>
+  <data name="K2226" xml:space="preserve">
+    <value>Cgk-值</value>
+  </data>
+  <data name="K2227" xml:space="preserve">
+    <value>偏离方法1</value>
+    <comment>module GC CNOMO</comment>
+  </data>
+  <data name="K2228" xml:space="preserve">
+    <value>Sg</value>
+    <comment>module GC Stability</comment>
+  </data>
+  <data name="K2243" xml:space="preserve">
+    <value>图纸文件名</value>
+  </data>
+  <data name="K2244" xml:space="preserve">
+    <value>图纸基准点 X</value>
+  </data>
+  <data name="K2245" xml:space="preserve">
+    <value>图纸基准点 Y</value>
+  </data>
+  <data name="K2246" xml:space="preserve">
+    <value>图纸基准点 Z</value>
+  </data>
+  <data name="K2261" xml:space="preserve">
+    <value>基准件-编号</value>
+  </data>
+  <data name="K2262" xml:space="preserve">
+    <value>基准件-名称</value>
+  </data>
+  <data name="K2263" xml:space="preserve">
+    <value>基准件-实际值</value>
+  </data>
+  <data name="K2264" xml:space="preserve">
+    <value>基准件l-温度</value>
+  </data>
+  <data name="K2265" xml:space="preserve">
+    <value>基准件l-编号(数字)</value>
+  </data>
+  <data name="K2266" xml:space="preserve">
+    <value>基准件-系列号</value>
+  </data>
+  <data name="K2281" xml:space="preserve">
+    <value>标准件-中编号</value>
+  </data>
+  <data name="K2282" xml:space="preserve">
+    <value>标准件-中名称</value>
+  </data>
+  <data name="K2283" xml:space="preserve">
+    <value>标准件-中间实际值</value>
+  </data>
+  <data name="K2284" xml:space="preserve">
+    <value>标准件-中间温度</value>
+  </data>
+  <data name="K2285" xml:space="preserve">
+    <value>标准件-中间(数字)编号</value>
+  </data>
+  <data name="K2286" xml:space="preserve">
+    <value>标准件-中间系列号</value>
+  </data>
+  <data name="K2301" xml:space="preserve">
+    <value>机器编号</value>
+    <comment>or K1081 / K0010</comment>
+  </data>
+  <data name="K2302" xml:space="preserve">
+    <value>机器名称</value>
+    <comment>or K1082 / K0010</comment>
+  </data>
+  <data name="K2303" xml:space="preserve">
+    <value>部门/成本位置</value>
+    <comment>or K1103</comment>
+  </data>
+  <data name="K2304" xml:space="preserve">
+    <value>机器位置</value>
+  </data>
+  <data name="K2305" xml:space="preserve">
+    <value>机器编号</value>
+  </data>
+  <data name="K2306" xml:space="preserve">
+    <value>区域 工厂/车间</value>
+  </data>
+  <data name="K2307" xml:space="preserve">
+    <value>PTM 编号</value>
+  </data>
+  <data name="K2311" xml:space="preserve">
+    <value>产品类型</value>
+    <comment>or K1086</comment>
+  </data>
+  <data name="K2312" xml:space="preserve">
+    <value>产品类型名称</value>
+    <comment>or K1086</comment>
+  </data>
+  <data name="K2313" xml:space="preserve">
+    <value>产品类型编号</value>
+  </data>
+  <data name="K2320" xml:space="preserve">
+    <value>合同编号</value>
+  </data>
+  <data name="K2321" xml:space="preserve">
+    <value>委托方-编号</value>
+  </data>
+  <data name="K2322" xml:space="preserve">
+    <value>委托方姓名</value>
+  </data>
+  <data name="K2323" xml:space="preserve">
+    <value>委托方-编号</value>
+  </data>
+  <data name="K2331" xml:space="preserve">
+    <value>工件编号</value>
+  </data>
+  <data name="K2332" xml:space="preserve">
+    <value>工件名称</value>
+  </data>
+  <data name="K2333" xml:space="preserve">
+    <value>工件编号</value>
+  </data>
+  <data name="K2341" xml:space="preserve">
+    <value>检验计划编号</value>
+  </data>
+  <data name="K2342" xml:space="preserve">
+    <value>检验计划名称</value>
+  </data>
+  <data name="K2343" xml:space="preserve">
+    <value>检验计划编制日期</value>
+  </data>
+  <data name="K2344" xml:space="preserve">
+    <value>检验计划编制者</value>
+  </data>
+  <data name="K2401" xml:space="preserve">
+    <value>检具编号</value>
+    <comment>or K1201 / K0012</comment>
+  </data>
+  <data name="K2402" xml:space="preserve">
+    <value>检具名称</value>
+    <comment>or K1202 / K0012</comment>
+  </data>
+  <data name="K2403" xml:space="preserve">
+    <value>检具组</value>
+  </data>
+  <data name="K2404" xml:space="preserve">
+    <value>检具精度</value>
+  </data>
+  <data name="K2405" xml:space="preserve">
+    <value>检具编号</value>
+  </data>
+  <data name="K2406" xml:space="preserve">
+    <value>检具制造商</value>
+  </data>
+  <data name="K2407" xml:space="preserve">
+    <value>SPC-设备编号</value>
+  </data>
+  <data name="K2408" xml:space="preserve">
+    <value>SPC-设备制造商</value>
+    <comment>if A20 is used instead of A40, match field length in DB</comment>
+  </data>
+  <data name="K2409" xml:space="preserve">
+    <value>SPC-设备-型号</value>
+  </data>
+  <data name="K2410" xml:space="preserve">
+    <value>检验地点</value>
+  </data>
+  <data name="K2411" xml:space="preserve">
+    <value>检验开始</value>
+  </data>
+  <data name="K2412" xml:space="preserve">
+    <value>检验结束</value>
+  </data>
+  <data name="K2413" xml:space="preserve">
+    <value>测量仪器图像</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K2415" xml:space="preserve">
+    <value>检具系列号</value>
+  </data>
+  <data name="K2416" xml:space="preserve">
+    <value>显示仪</value>
+  </data>
+  <data name="K2421" xml:space="preserve">
+    <value>检验员编号</value>
+  </data>
+  <data name="K2422" xml:space="preserve">
+    <value>检验员名称</value>
+  </data>
+  <data name="K2423" xml:space="preserve">
+    <value>检验员编号</value>
+  </data>
+  <data name="K2430" xml:space="preserve">
+    <value>取样方式</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K2432" xml:space="preserve">
+    <value>单值输出</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K2434" xml:space="preserve">
+    <value>过程能力验证</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K2436" xml:space="preserve">
+    <value>试验频率</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2438" xml:space="preserve">
+    <value>试验的数量</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2440" xml:space="preserve">
+    <value>总成部件</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2442" xml:space="preserve">
+    <value>总成部件的质量</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2444" xml:space="preserve">
+    <value>总成部件的材料</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2446" xml:space="preserve">
+    <value>制造商相关的产品名称</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2448" xml:space="preserve">
+    <value>总成部件的制造商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K2501" xml:space="preserve">
+    <value>尺寸标注的属性</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2502" xml:space="preserve">
+    <value>显示格式 公差</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2503" xml:space="preserve">
+    <value>尺寸标注的类型</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2504" xml:space="preserve">
+    <value>图纸更改状态</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2505" xml:space="preserve">
+    <value>视图名称</value>
+  </data>
+  <data name="K2506" xml:space="preserve">
+    <value> 页号</value>
+  </data>
+  <data name="K2507" xml:space="preserve">
+    <value>图纸域字母</value>
+  </data>
+  <data name="K2508" xml:space="preserve">
+    <value> 图纸域号</value>
+  </data>
+  <data name="K2509" xml:space="preserve">
+    <value>页名称</value>
+  </data>
+  <data name="K2511" xml:space="preserve">
+    <value>基准 1</value>
+  </data>
+  <data name="K2512" xml:space="preserve">
+    <value>基准 2</value>
+  </data>
+  <data name="K2513" xml:space="preserve">
+    <value>基准 3</value>
+  </data>
+  <data name="K2514" xml:space="preserve">
+    <value>基准 4</value>
+  </data>
+  <data name="K2515" xml:space="preserve">
+    <value>基准 5</value>
+  </data>
+  <data name="K2516" xml:space="preserve">
+    <value>基准 6</value>
+  </data>
+  <data name="K2517" xml:space="preserve">
+    <value>基准 7</value>
+  </data>
+  <data name="K2518" xml:space="preserve">
+    <value>基准 8</value>
+  </data>
+  <data name="K2519" xml:space="preserve">
+    <value>基准 9</value>
+  </data>
+  <data name="K2520" xml:space="preserve">
+    <value>基准系统</value>
+  </data>
+  <data name="K2521" xml:space="preserve">
+    <value>基准 x-方向</value>
+  </data>
+  <data name="K2522" xml:space="preserve">
+    <value>基准 y-方向</value>
+  </data>
+  <data name="K2523" xml:space="preserve">
+    <value>基准 z-方向</value>
+  </data>
+  <data name="K2524" xml:space="preserve">
+    <value>CAD 内部基准</value>
+  </data>
+  <data name="K2525" xml:space="preserve">
+    <value>旋转矩阵</value>
+  </data>
+  <data name="K2526" xml:space="preserve">
+    <value>CAD 细节</value>
+  </data>
+  <data name="K2610" xml:space="preserve">
+    <value>温度计算的方式</value>
+  </data>
+  <data name="K2611" xml:space="preserve">
+    <value>工件的热膨胀系数</value>
+  </data>
+  <data name="K2612" xml:space="preserve">
+    <value>标准件的热膨胀系数</value>
+  </data>
+  <data name="K2613" xml:space="preserve">
+    <value>工件的热膨胀系数的不确定度</value>
+  </data>
+  <data name="K2615" xml:space="preserve">
+    <value>显示值 检具</value>
+  </data>
+  <data name="K2617" xml:space="preserve">
+    <value>工件温度</value>
+  </data>
+  <data name="K2618" xml:space="preserve">
+    <value>检具标尺的的温度</value>
+  </data>
+  <data name="K2619" xml:space="preserve">
+    <value>检验过程中的平均温度</value>
+  </data>
+  <data name="K2620" xml:space="preserve">
+    <value>极端温度</value>
+  </data>
+  <data name="K2621" xml:space="preserve">
+    <value>测量对象热膨胀系数不确定度</value>
+  </data>
+  <data name="K2622" xml:space="preserve">
+    <value>量具刻度热膨胀系数的不确定度</value>
+  </data>
+  <data name="K2623" xml:space="preserve">
+    <value>测量对象的温度不确定度</value>
+  </data>
+  <data name="K2624" xml:space="preserve">
+    <value>量具刻度的温度不确定度</value>
+  </data>
+  <data name="K2625" xml:space="preserve">
+    <value>最高温度 不同工件-量具</value>
+  </data>
+  <data name="K2626" xml:space="preserve">
+    <value>最高温度 不同工件或 20°C</value>
+  </data>
+  <data name="K2627" xml:space="preserve">
+    <value>最高温度 不同检验目标或 20°C</value>
+  </data>
+  <data name="K2628" xml:space="preserve">
+    <value>热膨胀因子测量系统</value>
+  </data>
+  <data name="K2630" xml:space="preserve">
+    <value>标准件的校准不确定度</value>
+  </data>
+  <data name="K2640" xml:space="preserve">
+    <value>扩展的测量不确定度</value>
+  </data>
+  <data name="K2641" xml:space="preserve">
+    <value>扩展的测量不确定度的扩展因素</value>
+  </data>
+  <data name="K2646" xml:space="preserve">
+    <value />
+    <comment>defined field content</comment>
+  </data>
+  <data name="K2654" xml:space="preserve">
+    <value>VDA5版本</value>
+  </data>
+  <data name="K2800" xml:space="preserve">
+    <value>用户域名称 1</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2801" xml:space="preserve">
+    <value>用户域类型 1</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2802" xml:space="preserve">
+    <value>用户域内容 1</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2810" xml:space="preserve">
+    <value>用户域名称 2</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2811" xml:space="preserve">
+    <value>用户域类型 2</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2812" xml:space="preserve">
+    <value>用户域内容 2</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2820" xml:space="preserve">
+    <value>用户域名称 3</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2821" xml:space="preserve">
+    <value>用户域类型 3</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2822" xml:space="preserve">
+    <value>用户域内容 3</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2830" xml:space="preserve">
+    <value>用户域名称 4</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2831" xml:space="preserve">
+    <value>用户域类型 4</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2832" xml:space="preserve">
+    <value>用户域内容 4</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2840" xml:space="preserve">
+    <value>用户域名称 5</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2841" xml:space="preserve">
+    <value>用户域类型 5</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2842" xml:space="preserve">
+    <value>用户域内容 5</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2850" xml:space="preserve">
+    <value>用户域名称 6</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2851" xml:space="preserve">
+    <value>用户域类型 6</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2852" xml:space="preserve">
+    <value>用户域内容 6</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2860" xml:space="preserve">
+    <value>用户域名称 7</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2861" xml:space="preserve">
+    <value>用户域类型 7</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2862" xml:space="preserve">
+    <value>用户域内容 7</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2870" xml:space="preserve">
+    <value>用户域名称 8</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2871" xml:space="preserve">
+    <value>用户域类型 8</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2872" xml:space="preserve">
+    <value>用户域内容 8</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2880" xml:space="preserve">
+    <value>用户域名称 9</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2881" xml:space="preserve">
+    <value>用户域类型 9</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2882" xml:space="preserve">
+    <value>用户域内容 9</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2890" xml:space="preserve">
+    <value>用户域名称 10</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2891" xml:space="preserve">
+    <value>用户域类型 10</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2892" xml:space="preserve">
+    <value>用户域内容 10</value>
+    <comment>no selectionfield</comment>
+  </data>
+  <data name="K2900" xml:space="preserve">
+    <value>说明</value>
+  </data>
+  <data name="K2901" xml:space="preserve">
+    <value>检验条件</value>
+    <comment>within Measurement System Analysis saving of test conditions in text form</comment>
+  </data>
+  <data name="K2997" xml:space="preserve">
+    <value>参数 GUID</value>
+  </data>
+  <data name="K2998" xml:space="preserve">
+    <value>内部的 qs-STAT 设置</value>
+  </data>
+  <data name="K2999" xml:space="preserve">
+    <value>---</value>
+  </data>
+  <data name="K3001" xml:space="preserve">
+    <value>检测报告 编号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3002" xml:space="preserve">
+    <value>检测报告 名称 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3003" xml:space="preserve">
+    <value>代号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3004" xml:space="preserve">
+    <value>检测报告 版本 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3005" xml:space="preserve">
+    <value>检测报告 文本(供货商)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3006" xml:space="preserve">
+    <value>标志 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3010" xml:space="preserve">
+    <value>供货商 编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3011" xml:space="preserve">
+    <value>供货商-编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3020" xml:space="preserve">
+    <value>首次取样</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3021" xml:space="preserve">
+    <value>再次取样</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3022" xml:space="preserve">
+    <value>其他样品</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3023" xml:space="preserve">
+    <value>其他样品</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3025" xml:space="preserve">
+    <value>重复的呈现编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3030" xml:space="preserve">
+    <value>设备（检测方式）</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3031" xml:space="preserve">
+    <value>其他设备（检测方式）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3035" xml:space="preserve">
+    <value>取样原因</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3036" xml:space="preserve">
+    <value>其它（抽检原因）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3037" xml:space="preserve">
+    <value>要求的提交水平</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3040" xml:space="preserve">
+    <value>过程能力</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3050" xml:space="preserve">
+    <value>物品代号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3052" xml:space="preserve">
+    <value>名称 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3055" xml:space="preserve">
+    <value>图纸号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3056" xml:space="preserve">
+    <value>状态 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3057" xml:space="preserve">
+    <value>日期 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3058" xml:space="preserve">
+    <value>更改号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3070" xml:space="preserve">
+    <value>订货号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3071" xml:space="preserve">
+    <value>取出号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3077" xml:space="preserve">
+    <value>订货日期 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3078" xml:space="preserve">
+    <value>取出日期 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3080" xml:space="preserve">
+    <value>运单号 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3087" xml:space="preserve">
+    <value>运单日期 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3100" xml:space="preserve">
+    <value>物品号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3101" xml:space="preserve">
+    <value>供货数量</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3102" xml:space="preserve">
+    <value>供货单位</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3103" xml:space="preserve">
+    <value>货样数量</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3105" xml:space="preserve">
+    <value>批次号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3106" xml:space="preserve">
+    <value>巢穴号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3107" xml:space="preserve">
+    <value>工具号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3108" xml:space="preserve">
+    <value>受限材料</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3109" xml:space="preserve">
+    <value>塑料件</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3110" xml:space="preserve">
+    <value>货样重量（供货商）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3112" xml:space="preserve">
+    <value>已实施</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3113" xml:space="preserve">
+    <value>应用</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3115" xml:space="preserve">
+    <value>文件义务</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3117" xml:space="preserve">
+    <value>检查辅号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3118" xml:space="preserve">
+    <value>更改级别（检查辅号）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3119" xml:space="preserve">
+    <value>日期（检查辅号）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3150" xml:space="preserve">
+    <value>编制者（供货商）</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3160" xml:space="preserve">
+    <value>编制者签字</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3167" xml:space="preserve">
+    <value>日期 编制者签字</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3180" xml:space="preserve">
+    <value>规格资料</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3187" xml:space="preserve">
+    <value>生产率/8小时</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3188" xml:space="preserve">
+    <value>Mold / Cav. / Prod.</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3190" xml:space="preserve">
+    <value>说明 供货商</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3200" xml:space="preserve">
+    <value>生产委托号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3210" xml:space="preserve">
+    <value>检验委托号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3281" xml:space="preserve">
+    <value>说明 功能检验</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3282" xml:space="preserve">
+    <value>说明 尺寸检验</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3283" xml:space="preserve">
+    <value>说明 材料检验</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3284" xml:space="preserve">
+    <value>说明 可靠性检验</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3285" xml:space="preserve">
+    <value>说明 过程能力验证</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3293" xml:space="preserve">
+    <value>说明 现象图</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3296" xml:space="preserve">
+    <value>说明 内含物质</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3298" xml:space="preserve">
+    <value>定性检测的说明</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3301" xml:space="preserve">
+    <value>检验报告 编号  验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3303" xml:space="preserve">
+    <value>识别-编号 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3304" xml:space="preserve">
+    <value>检验报告 版本 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3306" xml:space="preserve">
+    <value>标志 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3310" xml:space="preserve">
+    <value>用户编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3350" xml:space="preserve">
+    <value>物品编号  验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3352" xml:space="preserve">
+    <value>名称 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3355" xml:space="preserve">
+    <value>图纸编号  验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3356" xml:space="preserve">
+    <value>位置 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3357" xml:space="preserve">
+    <value>日期 验收</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3358" xml:space="preserve">
+    <value>更改编号  验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3372" xml:space="preserve">
+    <value>进货编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3379" xml:space="preserve">
+    <value>进货日期</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3380" xml:space="preserve">
+    <value>发货单编号  验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3387" xml:space="preserve">
+    <value>发货单日期 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3390" xml:space="preserve">
+    <value>卸料位置</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3404" xml:space="preserve">
+    <value>验收方法</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3410" xml:space="preserve">
+    <value>货样重量 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3420" xml:space="preserve">
+    <value>总的判定</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3421" xml:space="preserve">
+    <value>判定 功能检验</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3422" xml:space="preserve">
+    <value>判定 尺寸检验</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3423" xml:space="preserve">
+    <value>判定 材料检验</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3424" xml:space="preserve">
+    <value>判定 可靠性</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3425" xml:space="preserve">
+    <value>判定 过程能力</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3433" xml:space="preserve">
+    <value>判定 目视检验</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3436" xml:space="preserve">
+    <value>判定 内含物质</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3438" xml:space="preserve">
+    <value>判定 属性检验</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3439" xml:space="preserve">
+    <value>其他 判定</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3440" xml:space="preserve">
+    <value>本结果为</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3442" xml:space="preserve">
+    <value>满足所有图纸及规定的要求</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3445" xml:space="preserve">
+    <value>偏离-准许编号</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3447" xml:space="preserve">
+    <value>日期(附加的工程改动)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3450" xml:space="preserve">
+    <value>检验报告 编制者 (验收者)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3451" xml:space="preserve">
+    <value>姓名 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3460" xml:space="preserve">
+    <value>签字 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3467" xml:space="preserve">
+    <value>签字日期 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3470" xml:space="preserve">
+    <value>采购员</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3481" xml:space="preserve">
+    <value>条件</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3490" xml:space="preserve">
+    <value>说明 验收者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3560" xml:space="preserve">
+    <value>检验设施的名称</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3561" xml:space="preserve">
+    <value>功能检验设施</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3562" xml:space="preserve">
+    <value> 尺寸检验设施</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3563" xml:space="preserve">
+    <value> 材料检验设施</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3581" xml:space="preserve">
+    <value>说明 功能检验 (验收者)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3582" xml:space="preserve">
+    <value>说明 尺寸检验 (验收者)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3583" xml:space="preserve">
+    <value>说明 材料检验 (验收者)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3600" xml:space="preserve">
+    <value>检验报告 方式</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3601" xml:space="preserve">
+    <value>检验报告 名称/描述</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3602" xml:space="preserve">
+    <value>输入栏文件</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3610" xml:space="preserve">
+    <value>更改者</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3617" xml:space="preserve">
+    <value>更改日期</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3650" xml:space="preserve">
+    <value>加工状态</value>
+  </data>
+  <data name="K3701" xml:space="preserve">
+    <value>分发者 1</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3702" xml:space="preserve">
+    <value>分发者 2</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3703" xml:space="preserve">
+    <value>分发者 3</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3704" xml:space="preserve">
+    <value>分发者 4</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3705" xml:space="preserve">
+    <value>分发者 5</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3706" xml:space="preserve">
+    <value>分发者 6</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3707" xml:space="preserve">
+    <value>分发者 7</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3708" xml:space="preserve">
+    <value>分发者 8</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3709" xml:space="preserve">
+    <value>分发者 9</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3710" xml:space="preserve">
+    <value>分发者 10</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3711" xml:space="preserve">
+    <value>分发者 11</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3712" xml:space="preserve">
+    <value>分发者 12</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3713" xml:space="preserve">
+    <value>分发者 13</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3714" xml:space="preserve">
+    <value>分发者 14</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3750" xml:space="preserve">
+    <value>按化学物品法规为危险物质?</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3752" xml:space="preserve">
+    <value>正确处置时产生危险物质?</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3754" xml:space="preserve">
+    <value>按交通法规的危险物品</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3756" xml:space="preserve">
+    <value>按水法为危害水的物质</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3757" xml:space="preserve">
+    <value>危害水的级别</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3758" xml:space="preserve">
+    <value>量 危害水的物质</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3760" xml:space="preserve">
+    <value>含杀生物剂的成分</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3761" xml:space="preserve">
+    <value>杀生物剂的含量</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3763" xml:space="preserve">
+    <value>处理时产生带EWC码的废物?</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K3764" xml:space="preserve">
+    <value>EWC 码</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K3780" xml:space="preserve">
+    <value>图形名称 2</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K3781" xml:space="preserve">
+    <value>图形名称 3</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K3782" xml:space="preserve">
+    <value>图形名称 4</value>
+    <comment>new in V_10</comment>
+  </data>
+  <data name="K4000" xml:space="preserve">
+    <value>顾客目录</value>
+    <comment>K4000/0 Customer Catalog</comment>
+  </data>
+  <data name="K4010" xml:space="preserve">
+    <value>制造商目录</value>
+    <comment>K4010/0 Manufacturer Catalog</comment>
+  </data>
+  <data name="K4020" xml:space="preserve">
+    <value>供应商目录</value>
+    <comment>K4020/0 Supplier Catalog</comment>
+  </data>
+  <data name="K4030" xml:space="preserve">
+    <value>工作目录</value>
+    <comment>K4030/0 Job Catalog</comment>
+  </data>
+  <data name="K4040" xml:space="preserve">
+    <value>材料目录</value>
+    <comment>K4040/0 Material Catalog</comment>
+  </data>
+  <data name="K4050" xml:space="preserve">
+    <value>图纸目录</value>
+    <comment>K4050/0 Drawing Catalog</comment>
+  </data>
+  <data name="K4060" xml:space="preserve">
+    <value>机器目录</value>
+    <comment>K4060/0 Machine Catalog</comment>
+  </data>
+  <data name="K4070" xml:space="preserve">
+    <value>测试仪器目录</value>
+    <comment>K4070/0 Test Facility Catalog</comment>
+  </data>
+  <data name="K4080" xml:space="preserve">
+    <value>SI Units</value>
+    <comment>K4080/0 SI Units</comment>
+  </data>
+  <data name="K4090" xml:space="preserve">
+    <value>检验员目录</value>
+    <comment>K4090/0 Inspector Catalog</comment>
+  </data>
+  <data name="K4100" xml:space="preserve">
+    <value>合同商目录</value>
+    <comment>K4100/0 Contractor Catalog</comment>
+  </data>
+  <data name="K4110" xml:space="preserve">
+    <value>产品目录</value>
+    <comment>K4110/0 Product Catalog</comment>
+  </data>
+  <data name="K4220" xml:space="preserve">
+    <value>事件目录</value>
+    <comment>K4220/0 Event Catalog</comment>
+  </data>
+  <data name="K4240" xml:space="preserve">
+    <value>过程参数目录 </value>
+    <comment>K4240/0 Process Parameter Catalog</comment>
+  </data>
+  <data name="K4250" xml:space="preserve">
+    <value>集合</value>
+    <comment>K4250/0 Group</comment>
+  </data>
+  <data name="K5001" xml:space="preserve">
+    <value>组号 (文本)</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5002" xml:space="preserve">
+    <value>组名</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5003" xml:space="preserve">
+    <value>组名</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5007" xml:space="preserve">
+    <value>组号-简称</value>
+  </data>
+  <data name="K5045" xml:space="preserve">
+    <value>文件名 概略</value>
+  </data>
+  <data name="K5090" xml:space="preserve">
+    <value>注释</value>
+  </data>
+  <data name="K5098" xml:space="preserve">
+    <value>内部的 qs-STAT 设置</value>
+  </data>
+  <data name="K5101" xml:space="preserve">
+    <value>零件作为一个组的组件</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5102" xml:space="preserve">
+    <value>参数作为一组的组件</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5103" xml:space="preserve">
+    <value>组作为一组的组件</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5111" xml:space="preserve">
+    <value>零件组</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5112" xml:space="preserve">
+    <value>参数组</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K5113" xml:space="preserve">
+    <value>组元素</value>
+    <comment>for aggregation of tokens in exchange for K2030/K2031</comment>
+  </data>
+  <data name="K8006" xml:space="preserve">
+    <value>下报警界限(位置)</value>
+  </data>
+  <data name="K8007" xml:space="preserve">
+    <value>上报警界限(位置)</value>
+  </data>
+  <data name="K8010" xml:space="preserve">
+    <value>控制图类型 (位置)</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K8011" xml:space="preserve">
+    <value>中间位置 (位置)</value>
+  </data>
+  <data name="K8012" xml:space="preserve">
+    <value>下控制界限 (位置)</value>
+  </data>
+  <data name="K8013" xml:space="preserve">
+    <value>上控制界限 (位置)</value>
+  </data>
+  <data name="K8014" xml:space="preserve">
+    <value>下警告界限 (位置)</value>
+  </data>
+  <data name="K8015" xml:space="preserve">
+    <value>上警告界限 (位置)</value>
+  </data>
+  <data name="K8110" xml:space="preserve">
+    <value>控制图类型(变动)</value>
+    <comment>defined field content</comment>
+  </data>
+  <data name="K8111" xml:space="preserve">
+    <value>中间位置(变动)</value>
+  </data>
+  <data name="K8112" xml:space="preserve">
+    <value>下控制界限(变动)</value>
+  </data>
+  <data name="K8113" xml:space="preserve">
+    <value>上控制界限(变动)</value>
+  </data>
+  <data name="K8114" xml:space="preserve">
+    <value>下警告界限(变动)</value>
+  </data>
+  <data name="K8115" xml:space="preserve">
+    <value>上警告界限(变动)</value>
+  </data>
+  <data name="K8500" xml:space="preserve">
+    <value>子组容量</value>
+  </data>
+  <data name="K8501" xml:space="preserve">
+    <value>子组类型</value>
+    <comment>defined field content fixed, floating</comment>
+  </data>
+  <data name="K8502" xml:space="preserve">
+    <value>抽检频率</value>
+    <comment>text indication of frequency</comment>
+  </data>
+  <data name="K8503" xml:space="preserve">
+    <value>恒定的子组容量</value>
+    <comment>only for inspection by attributes</comment>
+  </data>
+  <data name="K8504" xml:space="preserve">
+    <value>抽检频率</value>
+  </data>
+  <data name="K8505" xml:space="preserve">
+    <value>零件数目(缺陷收集卡)</value>
+  </data>
+  <data name="K8507" xml:space="preserve">
+    <value>批次步长</value>
+  </data>
+  <data name="K8520" xml:space="preserve">
+    <value>要求的 Cp-值</value>
+    <comment>VDA 5</comment>
+  </data>
+  <data name="K8521" xml:space="preserve">
+    <value>要求的 Cpk-值</value>
+  </data>
+  <data name="K8522" xml:space="preserve">
+    <value>固定的Cp-值</value>
+  </data>
+  <data name="K8523" xml:space="preserve">
+    <value>固定的Cpk-值</value>
+  </data>
+  <data name="K8524" xml:space="preserve">
+    <value>CNOMO/AFNOR要求的CAM-值</value>
+  </data>
+  <data name="K8525" xml:space="preserve">
+    <value>要求的非关键的过程指数</value>
+  </data>
+  <data name="K8530" xml:space="preserve">
+    <value>过程稳定性</value>
+    <comment>module ISR; defined field content</comment>
+  </data>
+  <data name="K8531" xml:space="preserve">
+    <value>给定的过程能力(Cp)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K8532" xml:space="preserve">
+    <value>给定的过程能力 (Cpk)</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K8540" xml:space="preserve">
+    <value>评定</value>
+    <comment>module ISR</comment>
+  </data>
+  <data name="K8600" xml:space="preserve">
+    <value>修正的策略</value>
+    <comment>number of values which can be recorded in a buffer / moving register with start of machine</comment>
+  </data>
+  <data name="K8610" xml:space="preserve">
+    <value>下修正界限</value>
+    <comment>number of values which can be recorded in a buffer / moving register with start of machine</comment>
+  </data>
+  <data name="K8611" xml:space="preserve">
+    <value>上修正界限</value>
+    <comment>number of values which can be recorded in a buffer / moving register with start of machine</comment>
+  </data>
+  <data name="K8612" xml:space="preserve">
+    <value>缓冲器大小</value>
+    <comment>number of values which can be recorded in a buffer / moving register with start of machine</comment>
+  </data>
+  <data name="K8613" xml:space="preserve">
+    <value>修正目标值</value>
+    <comment>number of values which can be recorded in a buffer / moving register with start of machine</comment>
+  </data>
+</root>

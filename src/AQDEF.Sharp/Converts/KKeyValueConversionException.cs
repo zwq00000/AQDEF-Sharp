@@ -5,7 +5,7 @@ namespace AQDEF.Sharp.Converts {
 
 
         public KKeyValueConversionException(String value, Type dataType, Exception cause) : base(
-            "Failed to convert value: " + value + " to data type: " + dataType.Name, cause) {
+            $"Failed to convert value: {value} to data type: {dataType.Name}", cause) {
 
         }
 

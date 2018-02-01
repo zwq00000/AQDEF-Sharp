@@ -3,25 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace AQDEF.Sharp.Converts {
-    public class StringKKeyValueConverter : IKKeyValueConverter<String> {
-        public String convert(String value) {
-            return value;
-        }
-
-        /// <inheritdoc />
-        string IKKeyValueConverter.toString(object value) {
-            throw new NotImplementedException();
-        }
-
-        public String toString(String value) {
-            return value;
-        }
-
+    public class StringKKeyValueConverter : IKKeyValueConverter {
+       
         #region Implementation of IKKeyValueConverter
-
+        
         /// <inheritdoc />
-        object IKKeyValueConverter.convert(string value) {
-            return convert(value);
+        string IKKeyValueConverter.ToString(object value) {
+            return value.ToString();
+        }
+        /// <inheritdoc />
+        object IKKeyValueConverter.Convert(string value) {
+            return value;
         }
 
         #endregion
