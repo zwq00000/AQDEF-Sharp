@@ -29,20 +29,7 @@ namespace AQDEF.Sharp {
     ///     @author Vlastimil Dolejs
     /// </Summary>
     public class KKey : IComparable<KKey> {
-        [Flags]
-        public enum KKeyLevel{
-            PART,
-            CHARACTERISTIC,
-            VALUE,
-            CUSTOM_PART,
-            CUSTOM_CHARACTERISTIC,
-            CUSTOM_VALUE,
-            GROUP,
-            HIERARCHY,
-            SIMPLE_HIERARCHY,
-            CATALOG,
-            UNKNOWN
-        }
+       
 
         #region Attributes
 
@@ -66,7 +53,7 @@ namespace AQDEF.Sharp {
             Key = key;
         }
 
-        internal KKey(string key, KKeyMetadata metadata) {
+        internal KKey(string key, KKeyMetadata metadata):this(key) {
             this.Key = key;
             this._metadata = metadata;
         }
@@ -120,7 +107,7 @@ namespace AQDEF.Sharp {
             get {
                 if (_metadata == null) _metadata = FindMetadata();
 
-                if (_metadata == null || _metadata.DataType == null) {
+                if (_metadata?.DataType == null) {
                     LOG.error("Can't find data type of k-key: " + Key);
                     return KKeyFieldType.Unknown;
                 }
@@ -151,7 +138,7 @@ namespace AQDEF.Sharp {
         /// </summary>
         public KKeyLevel Level {
             get {
-                if (_level == null) _level = DetermineLevel();
+                if (_level == null) _level = DetermineLevel(Key);
 
                 return _level.Value;
             }
@@ -245,25 +232,25 @@ namespace AQDEF.Sharp {
             return KKeyRepository.getInstance().GetMetadataFor(this);
         }
 
-        private KKeyLevel DetermineLevel() {
-            if (Key == null) {
+        private static KKeyLevel DetermineLevel(string keyString) {
+            if (keyString == null) {
                 LOG.error("K-key with missing key.");
                 return KKeyLevel.UNKNOWN;
             }
 
-            if (string.Equals(Key, "K2030", StringComparison.CurrentCultureIgnoreCase) ||
-                Key.Equals("K2031", StringComparison.CurrentCultureIgnoreCase)) return KKeyLevel.SIMPLE_HIERARCHY;
-            if (Key.StartsWith("K1")) return KKeyLevel.PART;
-            if (Key.StartsWith("K2") // characteristic properties
-                || Key.StartsWith("K8")) return KKeyLevel.CHARACTERISTIC;
-            if (Key.StartsWith("K0")) return KKeyLevel.VALUE;
-            if (Key.StartsWith("K4")) return KKeyLevel.CATALOG;
-            if (Key.StartsWith("K50")) return KKeyLevel.GROUP;
-            if (Key.StartsWith("K51")) return KKeyLevel.HIERARCHY;
-            if (Key.StartsWith("KX0")) return KKeyLevel.CUSTOM_VALUE;
-            if (Key.StartsWith("KX2")) return KKeyLevel.CUSTOM_CHARACTERISTIC;
-            if (Key.StartsWith("KX1")) return KKeyLevel.CUSTOM_PART;
-            LOG.error("Unknown level of k-key " + Key);
+            if (string.Equals(keyString, "K2030", StringComparison.CurrentCultureIgnoreCase) ||
+                keyString.Equals("K2031", StringComparison.CurrentCultureIgnoreCase)) return KKeyLevel.SIMPLE_HIERARCHY;
+            if (keyString.StartsWith("K1")) return KKeyLevel.PART;
+            if (keyString.StartsWith("K2") // characteristic properties
+                || keyString.StartsWith("K8")) return KKeyLevel.CHARACTERISTIC;
+            if (keyString.StartsWith("K0")) return KKeyLevel.VALUE;
+            if (keyString.StartsWith("K4")) return KKeyLevel.CATALOG;
+            if (keyString.StartsWith("K50")) return KKeyLevel.GROUP;
+            if (keyString.StartsWith("K51")) return KKeyLevel.HIERARCHY;
+            if (keyString.StartsWith("KX0")) return KKeyLevel.CUSTOM_VALUE;
+            if (keyString.StartsWith("KX2")) return KKeyLevel.CUSTOM_CHARACTERISTIC;
+            if (keyString.StartsWith("KX1")) return KKeyLevel.CUSTOM_PART;
+            LOG.error("Unknown level of k-key " + keyString);
             return KKeyLevel.UNKNOWN;
         }
 

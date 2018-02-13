@@ -13,11 +13,13 @@ namespace AQDEF.Models {
     #endregion
 
     public class AqdefModel : BaseEnties {
-        private readonly EntiesCollection<PartEntry> _partEntries;
+        private readonly EntiesCollection<PartEnties> _partEntries;
+
+        private readonly ValueEnties _valueEntieses = new ValueEnties(1);
 
         public AqdefModel() : base(0) {
-            this.SharedEnties = new SharedEntities(KKey.KKeyLevel.CHARACTERISTIC | KKey.KKeyLevel.PART | KKey.KKeyLevel.VALUE);
-            _partEntries = new EntiesCollection<PartEntry>(KKey.KKeyLevel.PART, i => new PartEntry(i)) {
+            this.SharedEnties = new SharedEntities(KKeyLevel.CHARACTERISTIC | KKeyLevel.PART | KKeyLevel.VALUE);
+            _partEntries = new EntiesCollection<PartEnties>(KKeyLevel.PART, i => new PartEnties(i)) {
                 SharedEnties = this.SharedEnties
             };
         }
@@ -29,42 +31,68 @@ namespace AQDEF.Models {
             get { return base.GetValue<short>("K0100"); }
         }
 
-        public EntiesCollection<PartEntry> Parts => _partEntries;
+        public EntiesCollection<PartEnties> Parts => _partEntries;
 
-        public override KKey.KKeyLevel Level => KKey.KKeyLevel.VALUE;
+        public override KKeyLevel Level => KKeyLevel.VALUE;
 
         /// <summary>
         /// 共享内容
         /// </summary>
         internal class SharedEntities : BaseEnties {
 
-            public SharedEntities(KKey.KKeyLevel level) : base(0) {
+            public SharedEntities(KKeyLevel level) : base(0) {
                 this.Level = level;
             }
 
-            public override KKey.KKeyLevel Level { get; }
+            public override KKeyLevel Level { get; }
         }
 
-        public virtual PartEntry GetPartEntries(int index) {
+        public virtual PartEnties GetPartEntries(int index) {
             return this.Parts[index];
         }
-        public virtual CharacteristicEntry GetCharacteristicEntries(int partIndex, int characteristicIndex) {
+        public virtual CharacteristicEnties GetCharacteristicEntries(int partIndex, int characteristicIndex) {
             var part =  Parts[partIndex];
             return part?.Characteristics[characteristicIndex];
         }
 
-        public virtual ValueEntry GetValueEntries(int partIndex, int characteristicIndex, int valueIndex) {
+        public virtual ValueEnties GetValueEntries(int partIndex, int characteristicIndex, int valueIndex) {
             var characteristic = GetCharacteristicEntries(partIndex, characteristicIndex);
             return characteristic?.Values[valueIndex];
         }
     }
 
+    public abstract class EntiesCollectionBase<TEntities> : IEnumerable<TEntities> where TEntities : BaseEnties {
+
+        protected EntiesCollectionBase(TEntities sharedEntities) {
+            this.SharedEnties = sharedEntities;
+        }
+
+        /// <summary>
+        /// 共享条目
+        /// </summary>
+        protected internal TEntities SharedEnties { get; }
+
+        #region Implementation of IEnumerable
+
+        /// <summary>返回一个循环访问集合的枚举器。</summary>
+        /// <returns>可用于循环访问集合的 <see cref="T:System.Collections.Generic.IEnumerator`1" />。</returns>
+        public abstract IEnumerator<TEntities> GetEnumerator();
+
+        /// <summary>返回一个循环访问集合的枚举器。</summary>
+        /// <returns>可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator" /> 对象。</returns>
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
+        }
+
+        #endregion
+    }
+
     public class EntiesCollection<TEntities> : IEnumerable<TEntities> where TEntities : BaseEnties {
         private readonly IDictionary<int, TEntities> _innerEntieses = new Dictionary<int, TEntities>();
-        private readonly KKey.KKeyLevel _level;
+        private readonly KKeyLevel _level;
         private readonly Func<int, TEntities> _entitiesFactory;
 
-        public EntiesCollection(KKey.KKeyLevel level, Func<int, TEntities> entiiesCreator) {
+        public EntiesCollection(KKeyLevel level, Func<int, TEntities> entiiesCreator) {
             this._level = level;
             _entitiesFactory = entiiesCreator;
         }
@@ -133,14 +161,14 @@ namespace AQDEF.Models {
     }
 
 
-    public class PartEntry : BaseEnties {
-        private EntiesCollection<CharacteristicEntry> _characteristics;
+    public class PartEnties : BaseEnties {
+        private EntiesCollection<CharacteristicEnties> _characteristics;
 
-        public PartEntry(int index) : base(index) {
+        public PartEnties(int index) : base(index) {
 
         }
 
-        public PartEntry(IKKeyEntry entry) : base(entry) {
+        public PartEnties(IKKeyEntry entry) : base(entry) {
         }
 
         /// <summary>
@@ -174,33 +202,33 @@ namespace AQDEF.Models {
         /// <summary>
         /// entry Level
         /// </summary>
-        public override KKey.KKeyLevel Level => KKey.KKeyLevel.PART;
+        public override KKeyLevel Level => KKeyLevel.PART;
 
         #endregion
 
 
-        public EntiesCollection<CharacteristicEntry> Characteristics {
+        public EntiesCollection<CharacteristicEnties> Characteristics {
             get {
-                return _characteristics ?? (_characteristics = new EntiesCollection<CharacteristicEntry>(
-                           KKey.KKeyLevel.CHARACTERISTIC,
-                           i => new CharacteristicEntry(i)) {
+                return _characteristics ?? (_characteristics = new EntiesCollection<CharacteristicEnties>(
+                           KKeyLevel.CHARACTERISTIC,
+                           i => new CharacteristicEnties(i)) {
                     SharedEnties = this.SharedEnties
                 });
             }
         }
     }
 
-    public class CharacteristicEntry : BaseEnties {
+    public class CharacteristicEnties : BaseEnties {
 
-        private EntiesCollection<ValueEntry> _valueEnties;
+        private EntiesCollection<ValueEnties> _valueEnties;
 
-        private readonly BaseEnties _valueSharedEnties = new AqdefModel.SharedEntities(KKey.KKeyLevel.VALUE);
+        private readonly BaseEnties _valueSharedEnties = new AqdefModel.SharedEntities(KKeyLevel.VALUE);
 
 
-        public CharacteristicEntry(int index) : base(index) {
+        public CharacteristicEnties(int index) : base(index) {
         }
 
-        public CharacteristicEntry(IKKeyEntry entry) : base(entry) {
+        public CharacteristicEnties(IKKeyEntry entry) : base(entry) {
         }
 
         #region Overrides of BaseEnties
@@ -208,14 +236,14 @@ namespace AQDEF.Models {
         /// <summary>
         /// entry Level
         /// </summary>
-        public override KKey.KKeyLevel Level => KKey.KKeyLevel.CHARACTERISTIC | KKey.KKeyLevel.VALUE;
+        public override KKeyLevel Level => KKeyLevel.CHARACTERISTIC | KKeyLevel.VALUE;
 
         #endregion
 
 
         public override void Add(IKKeyEntry entry) {
             base.ThrowIfNotCheckLevel(entry.Key.Level);
-            if (entry.Key.Level == KKey.KKeyLevel.VALUE) {
+            if (entry.Key.Level == KKeyLevel.VALUE) {
                 Values.Add(entry);
             } else {
                 if (entry.Index == 0) {
@@ -226,12 +254,12 @@ namespace AQDEF.Models {
             }
         }
 
-        public EntiesCollection<ValueEntry> Values {
+        public EntiesCollection<ValueEnties> Values {
             get {
                 if (_valueEnties == null) {
-                    _valueEnties = new EntiesCollection<ValueEntry>(
-                        KKey.KKeyLevel.VALUE,
-                        i => new ValueEntry(i)) {
+                    _valueEnties = new EntiesCollection<ValueEnties>(
+                        KKeyLevel.VALUE,
+                        i => new ValueEnties(i)) {
                         SharedEnties = _valueSharedEnties
                     };
                 }
@@ -240,21 +268,6 @@ namespace AQDEF.Models {
         }
     }
 
-    public class ValueEntry : BaseEnties {
-        #region Overrides of BaseEnties
-
-        /// <summary>
-        /// entry Level
-        /// </summary>
-        public override KKey.KKeyLevel Level => KKey.KKeyLevel.VALUE;
-
-        #endregion
-
-        public ValueEntry(int index) : base(index) {
-        }
-
-        public ValueEntry(IKKeyEntry entry) : base(entry) {
-        }
-    }
+   
 }
 

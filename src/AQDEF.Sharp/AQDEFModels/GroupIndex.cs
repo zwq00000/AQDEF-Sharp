@@ -2,37 +2,28 @@ using System;
 
 namespace AQDEF.Sharp.Models {
     public class GroupIndex : IComparable<GroupIndex> {
-        private readonly PartIndex PartIndex_Renamed;
-        private readonly int? GroupIndex_Renamed;
-
         private GroupIndex(PartIndex partIndex, int? groupIndex) {
-            this.PartIndex_Renamed = partIndex;
-            this.GroupIndex_Renamed = groupIndex;
+            this.PartIndex = partIndex;
+            this.Index = groupIndex;
         }
 
-        public virtual PartIndex PartIndex {
-            get {
-                return PartIndex_Renamed;
-            }
-        }
+        public PartIndex PartIndex { get; }
 
-        public virtual int? getGroupIndex() {
-            return GroupIndex_Renamed;
-        }
+        public virtual int? Index { get; }
 
-        public static GroupIndex of(PartIndex partIndex, int? groupIndex) {
+        public static GroupIndex Of(PartIndex partIndex, int? groupIndex) {
             return new GroupIndex(partIndex, groupIndex);
         }
 
-        public static GroupIndex of(int? partIndex, int? groupIndex) {
-            return of(PartIndex.of(partIndex), groupIndex);
+        public static GroupIndex Of(int? partIndex, int? groupIndex) {
+            return Of(PartIndex.Of(partIndex), groupIndex);
         }
 
         public override int GetHashCode() {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ((PartIndex_Renamed == null) ? 0 : PartIndex_Renamed.GetHashCode());
-            result = prime * result + ((GroupIndex_Renamed == null) ? 0 : GroupIndex_Renamed.GetHashCode());
+            result = prime * result + ((PartIndex == null) ? 0 : PartIndex.GetHashCode());
+            result = prime * result + ((Index == null) ? 0 : Index.GetHashCode());
             return result;
         }
 
@@ -47,18 +38,18 @@ namespace AQDEF.Sharp.Models {
                 return false;
             }
             GroupIndex other = (GroupIndex)obj;
-            if (PartIndex_Renamed == null) {
-                if (other.PartIndex_Renamed != null) {
+            if (PartIndex == null) {
+                if (other.PartIndex != null) {
                     return false;
                 }
-            } else if (!PartIndex_Renamed.Equals(other.PartIndex_Renamed)) {
+            } else if (!PartIndex.Equals(other.PartIndex)) {
                 return false;
             }
-            if (GroupIndex_Renamed == null) {
-                if (other.GroupIndex_Renamed != null) {
+            if (Index == null) {
+                if (other.Index != null) {
                     return false;
                 }
-            } else if (!GroupIndex_Renamed.Equals(other.GroupIndex_Renamed)) {
+            } else if (!Index.Equals(other.Index)) {
                 return false;
             }
             return true;
@@ -69,35 +60,35 @@ namespace AQDEF.Sharp.Models {
                 return 0;
             }
 
-            int compareResultPart = this.PartIndex_Renamed.CompareTo(o.PartIndex_Renamed);
+            int compareResultPart = this.PartIndex.CompareTo(o.PartIndex);
 
             if (compareResultPart != 0) {
                 return compareResultPart;
             } else {
-                if (this.GroupIndex_Renamed == o.GroupIndex_Renamed) {
+                if (this.Index == o.Index) {
                     return 0;
                 }
-                if (this.GroupIndex_Renamed == null) {
+                if (this.Index == null) {
                     return -1;
                 }
-                if (o.GroupIndex_Renamed == null) {
+                if (o.Index == null) {
                     return 1;
                 }
 
-                return this.GroupIndex_Renamed.Value.CompareTo(o.GroupIndex_Renamed);
+                return this.Index.Value.CompareTo(o.Index);
             }
         }
 
         public override string ToString() {
             string result = "";
-            if (PartIndex_Renamed != null) {
-                result += PartIndex_Renamed.ToString();
+            if (PartIndex != null) {
+                result += PartIndex.ToString();
             }
 
             result += "/";
 
-            if (GroupIndex_Renamed != null) {
-                result += GroupIndex_Renamed;
+            if (Index != null) {
+                result += Index;
             }
 
             return result;

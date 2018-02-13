@@ -91,11 +91,11 @@ namespace AQDEF.Models {
         /// <summary>
         /// entry Level
         /// </summary>
-        public abstract KKey.KKeyLevel Level { get; }
+        public abstract KKeyLevel Level { get; }
 
         public ICollection<IKKeyEntry> Entries => _entries.Values;
 
-        protected void ThrowIfNotCheckLevel(KKey.KKeyLevel entryLevel) {
+        protected void ThrowIfNotCheckLevel(KKeyLevel entryLevel) {
             if ((entryLevel & Level) != entryLevel) {
                 throw new AqdefValidityException($"entry level is {entryLevel},request {Level}");
             }

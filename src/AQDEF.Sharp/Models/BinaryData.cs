@@ -4,8 +4,15 @@ namespace AQDEF.Models {
     public class BinaryData {
         private readonly string[] _values = new string[10];
 
+        /// <summary>
+        /// DataLine Item Length
+        /// </summary>
+        private int _length;
+
         public BinaryData(string[] values) {
+            _length = values.Length;
             Array.Copy(values, _values, Math.Min(10, values.Length));
+            
         }
 
         public string Value {

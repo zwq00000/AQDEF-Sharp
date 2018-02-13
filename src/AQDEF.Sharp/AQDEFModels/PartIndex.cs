@@ -6,26 +6,20 @@ namespace AQDEF.Sharp.Models {
     /// 
     /// </summary>
     public class PartIndex : IComparable<PartIndex> {
-        private readonly int? Index_Renamed;
-
         private PartIndex(int? index) {
-            this.Index_Renamed = index;
+            this.Index = index;
         }
 
-        public virtual int? Index {
-            get {
-                return Index_Renamed;
-            }
-        }
+        public virtual int? Index { get; }
 
-        public static PartIndex of(int? index) {
+        public static PartIndex Of(int? index) {
             return new PartIndex(index);
         }
 
         public override int GetHashCode() {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ((Index_Renamed == null) ? 0 : Index_Renamed.GetHashCode());
+            result = prime * result + ((Index == null) ? 0 : Index.GetHashCode());
             return result;
         }
 
@@ -40,36 +34,36 @@ namespace AQDEF.Sharp.Models {
                 return false;
             }
             PartIndex other = (PartIndex)obj;
-            if (Index_Renamed == null) {
-                if (other.Index_Renamed != null) {
+            if (Index == null) {
+                if (other.Index != null) {
                     return false;
                 }
-            } else if (!Index_Renamed.Equals(other.Index_Renamed)) {
+            } else if (!Index.Equals(other.Index)) {
                 return false;
             }
             return true;
         }
 
         public override string ToString() {
-            if (Index_Renamed == null) {
+            if (Index == null) {
                 return "";
             } else {
-                return Index_Renamed.ToString();
+                return Index.ToString();
             }
         }
 
         public virtual int CompareTo(PartIndex o) {
-            if (this == o || this.Index_Renamed == o.Index_Renamed) {
+            if (this == o || this.Index == o.Index) {
                 return 0;
             }
-            if (this.Index_Renamed == null) {
+            if (this.Index == null) {
                 return -1;
             }
-            if (o.Index_Renamed == null) {
+            if (o.Index == null) {
                 return 1;
             }
 
-            return this.Index_Renamed.Value.CompareTo(o.Index_Renamed);
+            return this.Index.Value.CompareTo(o.Index);
         }
     }
 }

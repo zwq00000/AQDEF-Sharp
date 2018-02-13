@@ -186,7 +186,7 @@ namespace AQDEF.Sharp.Parses
 
             if (kKey.IsPartLevel) {  //部件层
 
-                PartIndex partIndex = PartIndex.of(index);
+                PartIndex partIndex = PartIndex.Of(index);
                 aqdefObjectModel.putPartEntry(kKey, partIndex, value);
 
                 context.CurrentPartIndex = partIndex;
@@ -195,12 +195,12 @@ namespace AQDEF.Sharp.Parses
 
                 PartIndex partIndex;
                 if (index == 0) {
-                    partIndex = PartIndex.of(0);
+                    partIndex = PartIndex.Of(0);
                 } else {
                     partIndex = context.CurrentPartIndex;
                     if (partIndex == null || partIndex.Index == null || partIndex.Index == 0) {
                         // no part k-key found before this characteristic - add it to the first part
-                        partIndex = PartIndex.of(1);
+                        partIndex = PartIndex.Of(1);
                     }
                 }
                 CharacteristicIndex characteristicIndex = CharacteristicIndex.of(partIndex, index);
@@ -211,15 +211,15 @@ namespace AQDEF.Sharp.Parses
 
                 PartIndex partIndex;
                 if (index == 0) {
-                    partIndex = PartIndex.of(0);
+                    partIndex = PartIndex.Of(0);
                 } else {
                     partIndex = context.CurrentPartIndex;
                     if (partIndex == null || partIndex.Index == null || partIndex.Index == 0) {
                         // no part k-key found before this group - add it to the first part
-                        partIndex = PartIndex.of(1);
+                        partIndex = PartIndex.Of(1);
                     }
                 }
-                GroupIndex groupIndex = GroupIndex.of(partIndex, index);
+                GroupIndex groupIndex = GroupIndex.Of(partIndex, index);
 
                 aqdefObjectModel.putGroupEntry(kKey, groupIndex, value);
 
@@ -227,7 +227,7 @@ namespace AQDEF.Sharp.Parses
 
                 PartIndex partIndex;
                 if (index == 0) {
-                    partIndex = PartIndex.of(0);
+                    partIndex = PartIndex.Of(0);
                 } else {
                     partIndex = aqdefObjectModel.findPartIndexForCharacteristic(index);
                     if (partIndex == null) {
@@ -239,7 +239,7 @@ namespace AQDEF.Sharp.Parses
                 if (valueIndexNumber == null) {
                     valueIndex = context.ValueIndexCounter.getIndex(characteristicIndex, kKey);
                 } else {
-                    valueIndex = ValueIndex.of(characteristicIndex, valueIndexNumber);
+                    valueIndex = ValueIndex.Of(characteristicIndex, valueIndexNumber);
                 }
 
                 aqdefObjectModel.putValueEntry(kKey, valueIndex, value);
@@ -413,7 +413,7 @@ namespace AQDEF.Sharp.Parses
                 }
                 keysOfCurrentValue.Add(key);
 
-                return ValueIndex.of(characteristicIndex, currentIndex);
+                return ValueIndex.Of(characteristicIndex, currentIndex);
             }
         }
 

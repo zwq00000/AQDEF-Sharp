@@ -2,25 +2,20 @@ using System;
 
 namespace AQDEF.Sharp.Models {
     public class CharacteristicIndex : IComparable<CharacteristicIndex> {
-        private readonly PartIndex _partIndex;
         private readonly int? _characteristicIndex;
 
         private CharacteristicIndex(PartIndex partIndex, int? characteristicIndex) {
-            this._partIndex = partIndex;
+            this.PartIndex = partIndex;
             this._characteristicIndex = characteristicIndex;
         }
 
-        public virtual PartIndex PartIndex {
-            get {
-                return _partIndex;
-            }
+        public PartIndex PartIndex { get; }
+
+        public int? Index {
+            get { return _characteristicIndex; }
         }
 
-        public virtual int? getCharacteristicIndex() {
-            return _characteristicIndex;
-        }
-
-        public virtual bool platiProVsechnyZnakyDilu() {
+        public bool platiProVsechnyZnakyDilu() {
             return Convert.ToInt32(0).Equals((object) _characteristicIndex);
         }
 
@@ -29,13 +24,13 @@ namespace AQDEF.Sharp.Models {
         }
 
         public static CharacteristicIndex of(int? partIndex, int? characteristicIndex) {
-            return of(PartIndex.of(partIndex), characteristicIndex);
+            return of(PartIndex.Of(partIndex), characteristicIndex);
         }
 
         public override int GetHashCode() {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ((_partIndex == null) ? 0 : _partIndex.GetHashCode());
+            result = prime * result + ((PartIndex == null) ? 0 : PartIndex.GetHashCode());
             result = prime * result + ((_characteristicIndex == null) ? 0 : _characteristicIndex.GetHashCode());
             return result;
         }
@@ -51,11 +46,11 @@ namespace AQDEF.Sharp.Models {
                 return false;
             }
             CharacteristicIndex other = (CharacteristicIndex)obj;
-            if (_partIndex == null) {
-                if (other._partIndex != null) {
+            if (PartIndex == null) {
+                if (other.PartIndex != null) {
                     return false;
                 }
-            } else if (!_partIndex.Equals(other._partIndex)) {
+            } else if (!PartIndex.Equals(other.PartIndex)) {
                 return false;
             }
             if (_characteristicIndex == null) {
@@ -73,7 +68,7 @@ namespace AQDEF.Sharp.Models {
                 return 0;
             }
 
-            int compareResultPart = this._partIndex.CompareTo(o._partIndex);
+            int compareResultPart = this.PartIndex.CompareTo(o.PartIndex);
 
             if (compareResultPart != 0) {
                 return compareResultPart;
@@ -94,8 +89,8 @@ namespace AQDEF.Sharp.Models {
 
         public override string ToString() {
             string result = "";
-            if (_partIndex != null) {
-                result += _partIndex.ToString();
+            if (PartIndex != null) {
+                result += PartIndex.ToString();
             }
 
             result += "/";

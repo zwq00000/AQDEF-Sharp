@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -29,16 +30,57 @@ namespace AQDEF.Views {
                     }
                 }
             };
+
+            this.sourceEditor.MouseClick += (s, e) => {
+                this.label1.Text = GetParseLine();
+            };
+            this.sourceEditor.KeyUp += (s, e) => {
+                this.label1.Text = GetParseLine();
+            };
+        }
+        
+        private string GetParseLine() {
+            var lineNum = sourceEditor.GetLineFromCharIndex(sourceEditor.GetFirstCharIndexOfCurrentLine());
+            if (lineNum >= sourceEditor.Lines.Length) {
+                return lineNum.ToString();
+            }
+            var line = sourceEditor.Lines[lineNum];
+            string displayText;
+            IKKeyEntry entry;
+            if (EntryParser.ParseKKeyLine(line, out entry)) {
+                displayText = $"{entry.Key.Key} {entry.Index} {entry.Key.DisplayName} {entry.Key.Level}";
+            } else {
+                var datas = EntryParser.ParseBinaryDataLine(line);
+                displayText = string.Join("\r\n", datas.Select(d => d.ToString()));
+            }
+            return displayText;
+        }
+
+        private IEnumerable<string> Parse(string content) {
+            using (var reader = new StringReader(content)) {
+                string line;
+                while ((line = reader.ReadLine()) != null) {
+                    if (string.IsNullOrWhiteSpace(line)) {
+                        continue;
+                    }
+                        IKKeyEntry entry;
+                        if (EntryParser.ParseKKeyLine(line, out entry)) {
+                            var identy = new string('\t', (int)entry.Key.Level);
+                           yield return $"{entry.Key} {entry.Index} {identy} {entry.Text}  -- {entry.Key.DisplayName} \t{entry.Key.Level}";
+                        } else  {
+                        var values = EntryParser.ParseBinaryDataLine(line);
+                        foreach (var data in values) {
+                            yield return data.ToString();
+                        }
+                    }
+                }
+            }
         }
 
         private void Transform(string source) {
-            var enties = EntryParser.Parse(source);
+            var enties = Parse(source);
             transResult.Clear();
-            foreach (var entry in enties) {
-                var identy = new string('\t', (int)entry.Key.Level);
-                transResult.AppendText(
-                    $"{entry.Key} {entry.Index} {identy} {entry.TextValue}  -- {entry.Key.DisplayName} \t{entry.Key.Level} \r\n");
-            }
+            transResult.Text = string.Join("\r\n", enties);
         }
     }
 }

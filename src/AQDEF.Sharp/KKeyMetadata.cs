@@ -205,11 +205,7 @@ namespace AQDEF.Sharp {
             } else if (!_columnName.Equals(other._columnName)) {
                 return false;
             }
-            if (_dataType == null) {
-                if (other._dataType != null) {
-                    return false;
-                }
-            } else if (_dataType != other._dataType) {
+            if (_dataType != other._dataType) {
                 return false;
             }
             if (_length != other._length) {

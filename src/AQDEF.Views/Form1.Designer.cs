@@ -23,6 +23,7 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sourceEditor = new System.Windows.Forms.TextBox();
@@ -31,6 +32,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStrip_Transform = new System.Windows.Forms.ToolStripButton();
             this.toolStrip_OpenFile = new System.Windows.Forms.ToolStripButton();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,12 +53,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.sourceEditor);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.transResult);
-            this.splitContainer1.Size = new System.Drawing.Size(664, 432);
-            this.splitContainer1.SplitterDistance = 221;
+            this.splitContainer1.Size = new System.Drawing.Size(835, 492);
+            this.splitContainer1.SplitterDistance = 346;
             this.splitContainer1.TabIndex = 0;
             // 
             // sourceEditor
@@ -67,7 +71,7 @@
             this.sourceEditor.Multiline = true;
             this.sourceEditor.Name = "sourceEditor";
             this.sourceEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.sourceEditor.Size = new System.Drawing.Size(221, 432);
+            this.sourceEditor.Size = new System.Drawing.Size(346, 407);
             this.sourceEditor.TabIndex = 0;
             // 
             // transResult
@@ -79,7 +83,7 @@
             this.transResult.Multiline = true;
             this.transResult.Name = "transResult";
             this.transResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.transResult.Size = new System.Drawing.Size(439, 432);
+            this.transResult.Size = new System.Drawing.Size(485, 492);
             this.transResult.TabIndex = 0;
             // 
             // toolStripContainer1
@@ -89,11 +93,11 @@
             // 
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(664, 432);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(835, 492);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(664, 457);
+            this.toolStripContainer1.Size = new System.Drawing.Size(835, 517);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -128,11 +132,20 @@
             this.toolStrip_OpenFile.Size = new System.Drawing.Size(79, 22);
             this.toolStrip_OpenFile.Text = "Open &_O";
             // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Location = new System.Drawing.Point(0, 407);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(346, 85);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 457);
+            this.ClientSize = new System.Drawing.Size(835, 517);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Form1";
             this.Text = "KKeyEntiesView";
@@ -162,6 +175,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStrip_Transform;
         private System.Windows.Forms.ToolStripButton toolStrip_OpenFile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using AQDEF.Sharp;
-using Xunit;
+using NUnit.Framework;
+using Assert = Xunit.Assert;
 
 namespace AQDEF.Tests
 {
+    [TestFixture]
     public class KKeyTests
     {
-        [Fact]
+        [Test]
         public void TestOf() {
 
             var key = KKey.Of("K1001");
@@ -18,7 +20,7 @@ namespace AQDEF.Tests
         /// <summary>
         /// two different K-keys are not equals
         /// </summary>
-        [Fact]
+        [Test]
         public void TestDiffentKKeys() {
             Assert.True(KKey.Of("K1001") != KKey.Of("K1002"), "two different K-keys are not equals");
 
@@ -37,7 +39,7 @@ namespace AQDEF.Tests
 
     public class KKRepositoryTest {
 
-        [Fact]
+        [Test]
         public void TestDefaultProvider() {
             var provider = new KKeyRepository.DefaultKKeyProvider();
             var metadata = provider.CreateKKeysWithMetadata();
@@ -45,7 +47,7 @@ namespace AQDEF.Tests
             Assert.NotEmpty(metadata.Values);
         }
 
-        [Fact]
+        [Test]
         public void TestRepository() {
             var repository = KKeyRepository.getInstance();
             var keys = repository.GetAllKKeys();
@@ -59,7 +61,7 @@ namespace AQDEF.Tests
         /// <summary>
         /// k-key is correctly mapped to column name
         /// </summary>
-        [Fact]
+        [Test]
         public void TestColumnName() {
             var column = KKeyRepository.getInstance().GetMetadataFor(KKey.Of("K0001"));
             Assert.Equal(column.ColumnName, "WVWERTNR");

@@ -70,7 +70,7 @@ namespace AQDEF.Sharp.Models {
                 putSimpleHierarchyEntry(kKey, index, value);
 
             } else if (isNodeDefinition(kKey) || isBinding(kKey)) {
-                NodeIndex nodeIndex = NodeIndex.of(index);
+                NodeIndex nodeIndex = NodeIndex.Of(index);
                 putEntry(new HierarchyEntry(kKey, nodeIndex, (int?)value));
 
             } else {
@@ -114,7 +114,7 @@ namespace AQDEF.Sharp.Models {
                 throw new Exception("Combination of hierarchy (K51xx) and simple hierarchy (K2030/2031) is not supported.");
             }
 
-            NodeIndex nodeIndex = NodeIndex.of(valueInt);
+            NodeIndex nodeIndex = NodeIndex.Of(valueInt);
 
             if (isCharacteristicSimpleGroupingParent(kKey)) {
 
@@ -210,14 +210,14 @@ namespace AQDEF.Sharp.Models {
                 // bind all orphan characteristics to the root part node
             {
                 int? partIndex = part.Index.Index;
-                NodeIndex partNodeIndex = NodeIndex.of(hierarchyNodeIndexCounter++);
+                NodeIndex partNodeIndex = NodeIndex.Of(hierarchyNodeIndexCounter++);
                 normalizedHierarchy.putEntry(new HierarchyEntry(KEY_PART_NODE, partNodeIndex, partIndex));
                 var nodesIndexMap = new Dictionary<int?,int?>();
                 forEachNodeDefinition(entry =>
                 {
                     KKey kKey = entry.Key;
                     int? characteristicIndex = (int?)entry.Value;
-                    NodeIndex characteristicsNodeIndex = NodeIndex.of(hierarchyNodeIndexCounter++);
+                    NodeIndex characteristicsNodeIndex = NodeIndex.Of(hierarchyNodeIndexCounter++);
                     normalizedHierarchy.putEntry(new HierarchyEntry(kKey, characteristicsNodeIndex, characteristicIndex));
                     nodesIndexMap.Add(entry.Index.Index, characteristicsNodeIndex.Index);
                 });
@@ -233,7 +233,7 @@ namespace AQDEF.Sharp.Models {
                 {
                     KKey kKey = entry.Key;
                     NodeIndex characteristicBindingSourceNodeIndex = entry.Index;
-                    characteristicBindingSourceNodeIndex = NodeIndex.of(nodesIndexMap.GetValueOrNull(characteristicBindingSourceNodeIndex.Index));
+                    characteristicBindingSourceNodeIndex = NodeIndex.Of(nodesIndexMap.GetValueOrNull(characteristicBindingSourceNodeIndex.Index));
                     int? characteristicBindingTargetNodeIndex = (int?)entry.Value;
                     if (isNodeBinding(kKey)) {
                         characteristicBindingTargetNodeIndex = nodesIndexMap.GetValueOrNull(characteristicBindingTargetNodeIndex);
@@ -243,11 +243,11 @@ namespace AQDEF.Sharp.Models {
                 aqdefObjectModel.forEachCharacteristic(part, characteristic =>
                 {
                     CharacteristicIndex characteristicIndex = characteristic.Index;
-                    int? characteristicIndexInt = characteristicIndex.getCharacteristicIndex();
+                    int? characteristicIndexInt = characteristicIndex.Index;
                     if (getNodeIndexOfCharacteristic(characteristicIndexInt)!=null || getParentNodeIndexOfCharacteristic(characteristicIndexInt)!=null) {
                         return;
                     }
-                    normalizedHierarchy.putEntry(new HierarchyEntry(KEY_CHARACTERISTIC_BINDING, partNodeIndex, characteristicIndex.getCharacteristicIndex()));
+                    normalizedHierarchy.putEntry(new HierarchyEntry(KEY_CHARACTERISTIC_BINDING, partNodeIndex, characteristicIndex.Index));
                 });
             });
 
@@ -269,7 +269,7 @@ namespace AQDEF.Sharp.Models {
         }
 
         public virtual bool hasChildren(CharacteristicIndex characteristicIndex) {
-            int? characteristicIndexInt = characteristicIndex == null ? null : characteristicIndex.getCharacteristicIndex();
+            int? characteristicIndexInt = characteristicIndex == null ? null : characteristicIndex.Index;
             NodeIndex nodeIndexOfCharacteristic = getNodeIndexOfCharacteristic(characteristicIndexInt);
 
             if (nodeIndexOfCharacteristic!=null) {
@@ -287,7 +287,7 @@ namespace AQDEF.Sharp.Models {
         /// <returns> optional containing <seealso cref="CharacteristicIndex"/> or <seealso cref="GroupIndex"/> of parent, or empty optional if given
         ///         characteristic do not have a parent </returns>
         public virtual object getParentIndex(CharacteristicIndex characteristicIndex) {
-            int? characteristicIndexInt = characteristicIndex == null ? null : characteristicIndex.getCharacteristicIndex();
+            int? characteristicIndexInt = characteristicIndex == null ? null : characteristicIndex.Index;
             NodeIndex parentNodeIndexOfCharacteristic = getParentNodeIndexOfCharacteristic(characteristicIndexInt);
 
             if (parentNodeIndexOfCharacteristic!=null) {
@@ -317,7 +317,7 @@ namespace AQDEF.Sharp.Models {
         /// <returns> optional containing <seealso cref="CharacteristicIndex"/> or <seealso cref="GroupIndex"/>
         ///         of parent, or empty optional if given group do not have a parent </returns>
         public virtual object getParentIndex(GroupIndex groupIndex) {
-            int? groupIndexInt = groupIndex == null ? null : groupIndex.getGroupIndex();
+            int? groupIndexInt = groupIndex == null ? null : groupIndex.Index;
             NodeIndex nodeIndexOfGroup = getNodeIndexOfGroup(groupIndexInt);
 
             if (nodeIndexOfGroup!=null) {
@@ -345,7 +345,7 @@ namespace AQDEF.Sharp.Models {
                 return CharacteristicIndex.of(partIndex, index);
 
             } else if (nodeDefinition.Key.Equals(KEY_GROUP_NODE)) {
-                return GroupIndex.of(partIndex, index);
+                return GroupIndex.Of(partIndex, index);
 
             } else {
                 return null;

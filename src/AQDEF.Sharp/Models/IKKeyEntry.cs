@@ -1,6 +1,10 @@
 ﻿using AQDEF.Sharp;
 
 namespace AQDEF.Models {
+    /// <summary>
+    /// 表示 DFQ 文件中的一条记录
+    /// 通常形式为 "Kxxxx/1 values"
+    /// </summary>
     public interface IKKeyEntry {
 
         /// <summary>
