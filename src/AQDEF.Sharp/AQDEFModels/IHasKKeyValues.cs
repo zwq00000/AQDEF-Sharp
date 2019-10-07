@@ -1,4 +1,4 @@
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     /// <summary>
     /// Simple interface that enable access to object fields using K-keys.
     /// 

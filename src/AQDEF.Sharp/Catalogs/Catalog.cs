@@ -72,14 +72,12 @@ namespace AQDEF.Sharp {
         private readonly InnerEnum innerEnumValue;
         private readonly string nameValue;
 
-        private readonly string tableName;
-
         //*******************************************
         // Constructors
         //*******************************************
 
         private Catalog(string name, InnerEnum catalogType, string tableName) {
-            this.tableName = tableName;
+            this.TableName = tableName;
             nameValue = name;
             this.innerEnumValue = catalogType;
             valueList.Add(name,this);
@@ -89,11 +87,7 @@ namespace AQDEF.Sharp {
         // Getters / setters
         //*******************************************
 
-        public string TableName {
-            get {
-                return tableName;
-            }
-        }
+        public string TableName { get; private set; }
 
 
         public static ICollection<Catalog> Values {

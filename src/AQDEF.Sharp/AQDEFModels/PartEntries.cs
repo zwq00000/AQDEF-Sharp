@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
         public class PartEntries : Entries<PartEntry, PartIndex> {
             public PartEntries(PartIndex index) : base(index) {
             }

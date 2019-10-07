@@ -1,51 +1,35 @@
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     public abstract class AbstractEntry<TI> {
-        private readonly KKey _key;
-        private readonly TI _index;
-        private readonly object _value;
-
         protected AbstractEntry(KKey key, TI index, object value) {
-            this._key = key;
-            this._index = index;
-            this._value = value;
+            this.Key = key;
+            this.Index = index;
+            this.Value = value;
         }
 
-        public KKey Key {
-            get {
-                return _key;
-            }
-        }
-        public TI Index {
-            get {
-                return _index;
-            }
-        }
-        public object Value {
-            get {
-                return _value;
-            }
-        }
+        public KKey Key { get; private set; }
+        public TI Index { get; private set; }
+        public object Value { get; private set; }
         /// <summary>
         /// Whether this entry has given key.
         /// </summary>
         /// <param name="otherkey">
         /// @return </param>
         public virtual bool HasKey(KKey otherkey) {
-            return _key.Equals(otherkey);
+            return Key.Equals(otherkey);
         }
         public override string ToString() {
-            if (_value == null) {
+            if (Value == null) {
                 return "null";
             } else {
-                return _value.ToString();
+                return Value.ToString();
             }
         }
         public override int GetHashCode() {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ((_index == null) ? 0 : _index.GetHashCode());
-            result = prime * result + ((_key == null) ? 0 : _key.GetHashCode());
-            result = prime * result + ((_value == null) ? 0 : _value.GetHashCode());
+            result = prime * result + ((Index == null) ? 0 : Index.GetHashCode());
+            result = prime * result + ((Key == null) ? 0 : Key.GetHashCode());
+            result = prime * result + ((Value == null) ? 0 : Value.GetHashCode());
             return result;
         }
 
@@ -55,32 +39,30 @@ namespace AQDEF.Sharp.Models {
             if (this == obj) {
                 return true;
             }
-            if (obj == null) {
-                return false;
-            }
+
             if (!(obj is AbstractEntry<TI>)) {
                 return false;
             }
             var other = (AbstractEntry<TI>)obj;
-            if (_index == null) {
-                if (other._index != null) {
+            if (Index == null) {
+                if (other.Index != null) {
                     return false;
                 }
-            } else if (!_index.Equals(other._index)) {
+            } else if (!Index.Equals(other.Index)) {
                 return false;
             }
-            if (_key == null) {
-                if (other._key != null) {
+            if (Key == null) {
+                if (other.Key != null) {
                     return false;
                 }
-            } else if (!_key.Equals(other._key)) {
+            } else if (!Key.Equals(other.Key)) {
                 return false;
             }
-            if (_value == null) {
-                if (other._value != null) {
+            if (Value == null) {
+                if (other.Value != null) {
                     return false;
                 }
-            } else if (!_value.Equals(other._value)) {
+            } else if (!Value.Equals(other.Value)) {
                 return false;
             }
             return true;

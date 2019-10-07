@@ -1,22 +1,18 @@
 using System;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     public class CharacteristicIndex : IComparable<CharacteristicIndex> {
-        private readonly int? _characteristicIndex;
-
         private CharacteristicIndex(PartIndex partIndex, int? characteristicIndex) {
             this.PartIndex = partIndex;
-            this._characteristicIndex = characteristicIndex;
+            this.Index = characteristicIndex;
         }
 
         public PartIndex PartIndex { get; }
 
-        public int? Index {
-            get { return _characteristicIndex; }
-        }
+        public int? Index { get; private set; }
 
         public bool platiProVsechnyZnakyDilu() {
-            return Convert.ToInt32(0).Equals((object) _characteristicIndex);
+            return Convert.ToInt32(0).Equals((object) Index);
         }
 
         public static CharacteristicIndex of(PartIndex partIndex, int? characteristicIndex) {
@@ -31,7 +27,7 @@ namespace AQDEF.Sharp.Models {
             const int prime = 31;
             int result = 1;
             result = prime * result + ((PartIndex == null) ? 0 : PartIndex.GetHashCode());
-            result = prime * result + ((_characteristicIndex == null) ? 0 : _characteristicIndex.GetHashCode());
+            result = prime * result + ((Index == null) ? 0 : Index.GetHashCode());
             return result;
         }
 
@@ -53,11 +49,11 @@ namespace AQDEF.Sharp.Models {
             } else if (!PartIndex.Equals(other.PartIndex)) {
                 return false;
             }
-            if (_characteristicIndex == null) {
-                if (other._characteristicIndex != null) {
+            if (Index == null) {
+                if (other.Index != null) {
                     return false;
                 }
-            } else if (!_characteristicIndex.Equals(other._characteristicIndex)) {
+            } else if (!Index.Equals(other.Index)) {
                 return false;
             }
             return true;
@@ -73,17 +69,17 @@ namespace AQDEF.Sharp.Models {
             if (compareResultPart != 0) {
                 return compareResultPart;
             } else {
-                if (this._characteristicIndex == o._characteristicIndex) {
+                if (this.Index == o.Index) {
                     return 0;
                 }
-                if (this._characteristicIndex == null) {
+                if (this.Index == null) {
                     return -1;
                 }
-                if (o._characteristicIndex == null) {
+                if (o.Index == null) {
                     return 1;
                 }
 
-                return this._characteristicIndex.Value.CompareTo(o._characteristicIndex);
+                return this.Index.Value.CompareTo(o.Index);
             }
         }
 
@@ -95,8 +91,8 @@ namespace AQDEF.Sharp.Models {
 
             result += "/";
 
-            if (_characteristicIndex != null) {
-                result += _characteristicIndex;
+            if (Index != null) {
+                result += Index;
             }
 
             return result;

@@ -2,27 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using AQDEF.Sharp;
-using AQDEF.Sharp.Models;
 
-namespace AQDEF.Models {
+namespace AQDEF.Sharp.Models {
 
     #region  interfaces
 
     #endregion
 
     public class AqdefModel : BaseEnties {
-        private readonly EntiesCollection<PartEnties> _partEntries;
-
-        private readonly ValueEnties _valueEntieses = new ValueEnties(1);
-
         public AqdefModel() : base(0) {
             this.SharedEnties = new SharedEntities(KKeyLevel.CHARACTERISTIC | KKeyLevel.PART | KKeyLevel.VALUE);
-            _partEntries = new EntiesCollection<PartEnties>(KKeyLevel.PART, i => new PartEnties(i)) {
+            Parts = new EntiesCollection<PartEnties>(KKeyLevel.PART, i => new PartEnties(i)) {
                 SharedEnties = this.SharedEnties
             };
+            Values = new ValueEnties(0);
         }
+
+        public ValueEnties Values { get; }
 
         /// <summary>
         /// 文件中的参数总数
@@ -31,7 +27,7 @@ namespace AQDEF.Models {
             get { return base.GetValue<short>("K0100"); }
         }
 
-        public EntiesCollection<PartEnties> Parts => _partEntries;
+        public EntiesCollection<PartEnties> Parts { get; private set; }
 
         public override KKeyLevel Level => KKeyLevel.VALUE;
 

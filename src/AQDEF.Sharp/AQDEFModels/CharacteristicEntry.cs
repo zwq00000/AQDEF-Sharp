@@ -1,4 +1,4 @@
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     public class CharacteristicEntry : AbstractEntry<CharacteristicIndex> {
         public CharacteristicEntry(KKey key, CharacteristicIndex index, object value) : base((KKey) ValidateKey(key), index, value) {
         }

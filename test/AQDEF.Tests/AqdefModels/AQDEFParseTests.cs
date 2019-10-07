@@ -12,7 +12,7 @@ namespace AQDEF.Tests {
     public class AQDEFParseTests {
         private AqdefObjectModel parse(String dfq) {
             var parser = new AqdefParser();
-            return parser.parse(dfq);
+            return parser.Parse(dfq);
         }
 
         [Test]

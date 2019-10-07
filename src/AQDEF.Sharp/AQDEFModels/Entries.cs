@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using AQDEF.Sharp.Models;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     public abstract class Entries<E, I> : SortedDictionary<KKey, E>, IHasKKeyValues where E : AbstractEntry<I> {
         private readonly I _index;
 

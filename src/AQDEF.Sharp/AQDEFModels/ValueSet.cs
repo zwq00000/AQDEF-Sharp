@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using AQDEF.Sharp.Models;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     /// <summary>
     /// Contains one "set" of values for all characteristics. <br>
     /// 

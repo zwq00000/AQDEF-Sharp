@@ -1,4 +1,4 @@
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     public class GroupEntry : AbstractEntry<GroupIndex> {
         public GroupEntry(KKey key, GroupIndex index, object value) : base((KKey) ValidateKey(key), index, value) {
         }

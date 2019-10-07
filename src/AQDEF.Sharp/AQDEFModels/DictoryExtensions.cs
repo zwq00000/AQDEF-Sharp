@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Sharp.AQDEFModels {
     internal static class DictoryExtensions {
 
         public static TValue GetValueOrNull<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) {
