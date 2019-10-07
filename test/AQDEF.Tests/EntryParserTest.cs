@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using AQDEF.Sharp.Models;
+using AQDEF.Models;
 using NUnit.Framework;
 using Xunit;
 using Assert = Xunit.Assert;

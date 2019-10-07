@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using AQDEF.Sharp.Parses;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     /// <summary>
     /// Object model of AQDEF content.
     /// <para>

@@ -1,6 +1,6 @@
 using System;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class ValueIndex : IComparable<ValueIndex> {
         private ValueIndex(PartIndex partIndex, CharacteristicIndex characteristicIndex, int? valueIndex) {
             this.PartIndex = partIndex;

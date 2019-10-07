@@ -1,4 +1,4 @@
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class ValueEntry : AbstractEntry<ValueIndex> {
         public ValueEntry(KKey key, ValueIndex index, object value) : base((KKey) ValidateKey(key), index, value) {
         }

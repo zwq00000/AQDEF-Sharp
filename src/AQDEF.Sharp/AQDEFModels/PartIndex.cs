@@ -1,6 +1,6 @@
 using System;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     /// <summary>
     /// @author Vlastimil Dolejs
     /// 

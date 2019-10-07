@@ -1,4 +1,4 @@
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Models {
     /// <summary>
     /// KKey 对象模型所有者
     /// </summary>

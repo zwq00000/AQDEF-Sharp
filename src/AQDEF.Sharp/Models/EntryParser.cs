@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using AQDEF.Sharp;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Models {
 
     /// <summary>
     /// KKey AQDEF ÎÄµµ½âÎöÆ÷
@@ -172,10 +174,8 @@ namespace AQDEF.Sharp.Models {
             public void Append(IKKeyEntry entry) {
                 switch (entry.Key.Level) {
                     case KKeyLevel.VALUE:
-                        _model.Values.Add(entry);
-                        break;
                         if (_characteristicEnties == null) {
-                            _model.Values.Add(entry);
+                            _model.Add(entry);
                         } else {
                             var valueEntry = entry as ValueEntry;
                             var characteristicEnties = _model.GetCharacteristicEntries(valueEntry.PartNo,valueEntry.CharacteristicNo);

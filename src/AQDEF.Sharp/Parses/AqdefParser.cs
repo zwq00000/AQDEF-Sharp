@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using AQDEF.Sharp.AQDEFModels;
 using AQDEF.Sharp.Models;
 
 namespace AQDEF.Sharp.Parses
@@ -19,32 +18,32 @@ namespace AQDEF.Sharp.Parses
         // Attributes
         //*******************************************
 
-        private static readonly Logger Log = new Logger(typeof(AqdefParser));
+        private static readonly Logger LOG = new Logger(typeof(AqdefParser));
 
-        private const string IgnoredBinaryKey = "ignore";
+        private const string IGNORED_BINARY_KEY = "ignore";
 
-        private static readonly string[] BinaryValuePortions = new string[] { "K0001", "K0002", "K0004", "K0005", "K0006", "K0007", "K0008", "K0010", "K0011", "K0012" };
+        private static readonly string[] BINARY_VALUE_PORTIONS = new string[] { "K0001", "K0002", "K0004", "K0005", "K0006", "K0007", "K0008", "K0010", "K0011", "K0012" };
 
-        private static readonly string[] BinaryAttributeValuePortions = new string[] { "K0020", "K0021", IgnoredBinaryKey, "K0002", "K0004", "K0005", "K0006", "K0007", "K0008", "K0010", "K0011", "K0012" };
+        private static readonly string[] BINARY_ATTRIBUTE_VALUE_PORTIONS = new string[] { "K0020", "K0021", IGNORED_BINARY_KEY, "K0002", "K0004", "K0005", "K0006", "K0007", "K0008", "K0010", "K0011", "K0012" };
 
         /// <summary>
         /// These keys does not contain any information and we can safely ignore them.
         /// </summary>
-        private static readonly string[] IgnoredKeys = new string[] { "K0100", "K100", "K0101", "K101" };
+        private static readonly string[] IGNORED_KEYS = new string[] { "K0100", "K100", "K0101", "K101" };
 
         /// <summary>
         /// These keys contain Q-DAS qs-STAT properietary internal configuration so we can safely ignore them.
         /// </summary>
-        private static readonly string[] ProprietaryQdasKeys = new string[] { "K1998", "K2998", "K2999", "K5098", "K5080" };
+        private static readonly string[] PROPRIETARY_QDAS_KEYS = new string[] { "K1998", "K2998", "K2999", "K5098", "K5080" };
 
-        private readonly KKeyRepository _kKeyRepository;
+        private readonly KKeyRepository KKeyRepository;
 
         //*******************************************
         // Constructors
         //*******************************************
 
         public AqdefParser() {
-            this._kKeyRepository = KKeyRepository.getInstance();
+            this.KKeyRepository = KKeyRepository.getInstance();
         }
 
         //*******************************************
@@ -53,35 +52,35 @@ namespace AQDEF.Sharp.Parses
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: public cz.diribet.aqdef.model.AqdefObjectModel parse(String content) throws java.io.IOException
-        public virtual AqdefObjectModel Parse(string content) {
-            return Parse(new StringReader(content));
+        public virtual AqdefObjectModel parse(string content) {
+            return parse(new StringReader(content));
         }
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: public cz.diribet.aqdef.model.AqdefObjectModel parse(java.nio.file.Path file, String encoding) throws java.io.IOException
-        public virtual AqdefObjectModel Parse(string filepath,Encoding encoding) {
-            return Parse(File.OpenRead(filepath), encoding);
+        public virtual AqdefObjectModel parse(string filepath,Encoding encoding) {
+            return parse(File.OpenRead(filepath), encoding);
         }
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: public cz.diribet.aqdef.model.AqdefObjectModel parse(java.io.File file, String encoding) throws java.io.IOException
-        public virtual AqdefObjectModel Parse(FileInfo file, Encoding encoding) {
+        public virtual AqdefObjectModel parse(FileInfo file, Encoding encoding) {
             using (System.IO.Stream stream = file.OpenRead()) {
-                return Parse(stream, encoding);
+                return parse(stream, encoding);
             }
         }
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: public cz.diribet.aqdef.model.AqdefObjectModel parse(java.io.InputStream inputStream, String encoding) throws java.io.IOException
-        public virtual AqdefObjectModel Parse(Stream inputStream, Encoding encoding) {
+        public virtual AqdefObjectModel parse(Stream inputStream, Encoding encoding) {
             using (System.IO.StreamReader reader = new System.IO.StreamReader(inputStream,encoding)) {
-                return Parse(reader);
+                return parse(reader);
             }
         }
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: public cz.diribet.aqdef.model.AqdefObjectModel parse(java.io.Reader reader) throws java.io.IOException
-        public virtual AqdefObjectModel Parse(TextReader reader) {
+        public virtual AqdefObjectModel parse(TextReader reader) {
             AqdefObjectModel aqdefObjectModel = new AqdefObjectModel();
             ParserContext context = new ParserContext();
 
@@ -93,7 +92,7 @@ namespace AQDEF.Sharp.Parses
                         line = line.Trim();
 
                         if (!string.IsNullOrWhiteSpace(line)) {
-                            ParseLine(line, aqdefObjectModel, context);
+                            parseLine(line, aqdefObjectModel, context);
                         }
                     } catch (Exception e) {
                         throw new DfqParserException(context, e);
@@ -108,26 +107,26 @@ namespace AQDEF.Sharp.Parses
         }
 
 
-        private void ParseLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
-            if (IsKKeyLine(line)) {
-                ParseKKeyLine(line, aqdefObjectModel, context);
-            } else if (IsBinaryDataLine(line)) {
-                ParseBinaryDataLine(line, aqdefObjectModel, context);
+        private void parseLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
+            if (isKKeyLine(line)) {
+                parseKKeyLine(line, aqdefObjectModel, context);
+            } else if (isBinaryDataLine(line)) {
+                parseBinaryDataLine(line, aqdefObjectModel, context);
             } else {
-                Log.warn("{} Invalid line format. This line will be discarded. Line content: {}", LineLogContext(context), line);
+                LOG.warn("{} Invalid line format. This line will be discarded. Line content: {}", lineLogContext(context), line);
             }
         }
 
-        private bool IsKKeyLine(string line) {
+        private bool isKKeyLine(string line) {
             return line.StartsWith("K", StringComparison.Ordinal);
         }
 
-        private bool IsBinaryDataLine(string line) {
+        private bool isBinaryDataLine(string line) {
             return line.IndexOf(AqdefConstants.MEASURED_VALUES_DATA_SEPARATOR) >= 0;
         }
 
-        private void ParseKKeyLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
-            if (ShouldIgnoreKKeyLine(line)) {
+        private void parseKKeyLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
+            if (shouldIgnoreKKeyLine(line)) {
                 return;
             }
 
@@ -175,7 +174,7 @@ namespace AQDEF.Sharp.Parses
 
             object value;
             try {
-                value = ConvertValue(kKey, valueString, context);
+                value = convertValue(kKey, valueString, context);
             } catch (Exception e) when (e is UnknownKKeyException || e is ValueConversionException) {
                 //TODO: 2016/04/11 - vlasta: we should provide information that parsed AqdefObjectModel doesn't contain all data?
                 value = null;
@@ -238,7 +237,7 @@ namespace AQDEF.Sharp.Parses
                 CharacteristicIndex characteristicIndex = CharacteristicIndex.of(partIndex, index);
                 ValueIndex valueIndex;
                 if (valueIndexNumber == null) {
-                    valueIndex = context.ValueIndexCounter.GetIndex(characteristicIndex, kKey);
+                    valueIndex = context.ValueIndexCounter.getIndex(characteristicIndex, kKey);
                 } else {
                     valueIndex = ValueIndex.Of(characteristicIndex, valueIndexNumber);
                 }
@@ -251,23 +250,23 @@ namespace AQDEF.Sharp.Parses
 
             } else {
 
-                Log.warn("{} Unknown level of k-key {}. Key will be ignored! ", LineLogContext(context), kKey.Key);
+                LOG.warn("{} Unknown level of k-key {}. Key will be ignored! ", lineLogContext(context), kKey.Key);
 
             }
         }
 
-        private bool ShouldIgnoreKKeyLine(string line) {
+        private bool shouldIgnoreKKeyLine(string line) {
             if (line.Length < 5) {
                 return true;
             }
 
-            foreach (string ignoredKey in IgnoredKeys) {
+            foreach (string ignoredKey in IGNORED_KEYS) {
                 if (line.StartsWith(ignoredKey + " ", StringComparison.Ordinal) || line.StartsWith(ignoredKey + "/", StringComparison.Ordinal)) {
                     return true;
                 }
             }
 
-            foreach (string proprietaryKey in ProprietaryQdasKeys) {
+            foreach (string proprietaryKey in PROPRIETARY_QDAS_KEYS) {
                 if (line.StartsWith(proprietaryKey, StringComparison.Ordinal)) {
                     return true;
                 }
@@ -278,14 +277,14 @@ namespace AQDEF.Sharp.Parses
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: private Object convertValue(cz.diribet.aqdef.KKey key, String valueString, ParserContext context) throws UnknownKKeyException, ValueConversionException
-        private object ConvertValue(KKey key, string valueString, ParserContext context) {
+        private object convertValue(KKey key, string valueString, ParserContext context) {
             if (string.IsNullOrWhiteSpace(valueString)) {
                 return null;
             }
 
-            KKeyMetadata kKeyMetadata = _kKeyRepository.GetMetadataFor(key);
+            KKeyMetadata kKeyMetadata = KKeyRepository.GetMetadataFor(key);
             if (kKeyMetadata == null) {
-                Log.warn("{} Unknown k-key: {}. Value will be discarded.", LineLogContext(context), key.Key);
+                LOG.warn("{} Unknown k-key: {}. Value will be discarded.", lineLogContext(context), key.Key);
                 throw new UnknownKKeyException(key);
             }
 
@@ -298,12 +297,12 @@ namespace AQDEF.Sharp.Parses
                 return converter.Convert(valueString);
 
             } catch (Exception e) {
-                Log.warn($"{LineLogContext(context)} Failed to convert value: {valueString} of K-key: {key} using converter: {converter}. The value will be discarded.", e);
+                LOG.warn($"{lineLogContext(context)} Failed to convert value: {valueString} of K-key: {key} using converter: {converter}. The value will be discarded.", e);
                 throw new ValueConversionException(valueString, key, converter, e);
             }
         }
 
-        private void ParseBinaryDataLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
+        private void parseBinaryDataLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
             string[] characteristicPortions = line.Split(AqdefConstants.MEASURED_VALUES_CHARACTERISTIC_SEPARATOR);
 
             int characteristicIntIndex = 1;
@@ -338,16 +337,16 @@ namespace AQDEF.Sharp.Parses
 
                 string[] dataPortionKeys;
                 if (isAttributeCharacteristic.Value) {
-                    dataPortionKeys = BinaryAttributeValuePortions;
+                    dataPortionKeys = BINARY_ATTRIBUTE_VALUE_PORTIONS;
                 } else {
-                    dataPortionKeys = BinaryValuePortions;
+                    dataPortionKeys = BINARY_VALUE_PORTIONS;
                 }
 
                 for (int i = 0; i < dataPortions.Length; i++) {
                     string dataPortion = dataPortions[i];
                     string key = dataPortionKeys[i];
 
-                    if (string.ReferenceEquals(key, IgnoredBinaryKey)) {
+                    if (string.ReferenceEquals(key, IGNORED_BINARY_KEY)) {
                         continue;
                     }
 
@@ -355,14 +354,14 @@ namespace AQDEF.Sharp.Parses
 
                     object value;
                     try {
-                        value = ConvertValue(kKey, dataPortion, context);
+                        value = convertValue(kKey, dataPortion, context);
                     } catch (Exception e) when (e is UnknownKKeyException || e is ValueConversionException) {
                         //TODO: 2016/04/11 - vlasta: we should provide information that parsed AqdefObjectModel doesn't contain all data?
                         value = null;
                     }
 
                     if (value != null) {
-                        ValueIndex valueIndex = context.ValueIndexCounter.GetIndex(characteristicIndex, kKey);
+                        ValueIndex valueIndex = context.ValueIndexCounter.getIndex(characteristicIndex, kKey);
 
                         aqdefObjectModel.putValueEntry(kKey, valueIndex, value);
                     }
@@ -372,13 +371,13 @@ namespace AQDEF.Sharp.Parses
             }
         }
 
-        private string LineLogContext(ParserContext context) {
+        private string lineLogContext(ParserContext context) {
             return (new StringBuilder()).Append("Line ").Append(context.CurrentLine).Append(":").ToString();
         }
 
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in .NET:
         //ORIGINAL LINE: private java.io.InputStream createFileInputStream(java.io.File file, String encoding) throws java.io.FileNotFoundException
-        private System.IO.Stream CreateFileInputStream(FileInfo file, string encoding) {
+        private System.IO.Stream createFileInputStream(FileInfo file, string encoding) {
             System.IO.Stream inputStream = file.OpenRead();
             return inputStream;
         }
@@ -395,7 +394,7 @@ namespace AQDEF.Sharp.Parses
             internal readonly IDictionary<CharacteristicIndex, ISet<KKey>> Keys = new Dictionary<CharacteristicIndex, ISet<KKey>>();
             internal readonly IDictionary<CharacteristicIndex, int?> Indexes = new Dictionary<CharacteristicIndex, int?>();
 
-            public virtual ValueIndex GetIndex(CharacteristicIndex characteristicIndex, KKey key) {
+            public virtual ValueIndex getIndex(CharacteristicIndex characteristicIndex, KKey key) {
                 ISet<KKey> keysOfCurrentValue = Keys.GetValueOrNull(characteristicIndex);
 
                 if (keysOfCurrentValue == null) {
@@ -459,10 +458,10 @@ namespace AQDEF.Sharp.Parses
         //*******************************************
 
         private class DfqParserException : Exception {
-            public DfqParserException(ParserContext context, Exception cause) : base(Message(context, cause), cause) {
+            public DfqParserException(ParserContext context, Exception cause) : base(message(context, cause), cause) {
             }
 
-            internal static string Message(ParserContext context, Exception cause) {
+            internal static string message(ParserContext context, Exception cause) {
                 string message = "Failed to parse DFQ file. Error at line: " + context.CurrentLine;
 
                 if (cause != null && cause.Message != null) {
@@ -493,28 +492,28 @@ namespace AQDEF.Sharp.Parses
         //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
         //ORIGINAL LINE: @SuppressWarnings("unused") private static class ValueConversionException extends Exception
         private class ValueConversionException : Exception {
-            internal readonly string ValueRenamed;
-            internal readonly KKey KeyRenamed;
+            internal readonly string Value_Renamed;
+            internal readonly KKey Key_Renamed;
             //JAVA TO C# CONVERTER WARNING: Java wildcard generics have no direct equivalent in .NET:
             //ORIGINAL LINE: private final cz.diribet.aqdef.convert.IKKeyValueConverter<?> converter;
-            internal readonly IKKeyValueConverter  ConverterRenamed;
+            internal readonly IKKeyValueConverter  Converter_Renamed;
 
             public ValueConversionException(string value, KKey key, IKKeyValueConverter converter, Exception cause) : base(value,cause){
 
-                this.ValueRenamed = value;
-                this.KeyRenamed = key;
-                this.ConverterRenamed = converter;
+                this.Value_Renamed = value;
+                this.Key_Renamed = key;
+                this.Converter_Renamed = converter;
             }
 
             public virtual string Value {
                 get {
-                    return ValueRenamed;
+                    return Value_Renamed;
                 }
             }
 
             public virtual KKey Key {
                 get {
-                    return KeyRenamed;
+                    return Key_Renamed;
                 }
             }
 
@@ -522,7 +521,7 @@ namespace AQDEF.Sharp.Parses
             //ORIGINAL LINE: public cz.diribet.aqdef.convert.IKKeyValueConverter<?> getConverter()
             public virtual IKKeyValueConverter Converter {
                 get {
-                    return ConverterRenamed;
+                    return Converter_Renamed;
                 }
             }
 

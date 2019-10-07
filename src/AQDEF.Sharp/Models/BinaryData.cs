@@ -1,6 +1,6 @@
 using System;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Models {
     public class BinaryData {
         private readonly string[] _values = new string[10];
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     /// <summary>
     /// Contains information about hierarchy of <i>parts / characteristics /
     /// groups</i>. There are two types of hiearchy definition within the AQDEF

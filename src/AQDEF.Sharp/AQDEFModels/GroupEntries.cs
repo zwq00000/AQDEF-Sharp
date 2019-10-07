@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class GroupEntries : Entries<GroupEntry, GroupIndex> {
         public GroupEntries(GroupIndex index) : base(index) {
         }

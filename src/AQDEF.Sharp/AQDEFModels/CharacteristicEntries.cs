@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class CharacteristicEntries : Entries<CharacteristicEntry, CharacteristicIndex> {
         public CharacteristicEntries(CharacteristicIndex index) : base(index) {
         }

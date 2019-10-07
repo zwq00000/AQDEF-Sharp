@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using AQDEF.Sharp.Models;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class ValueEntries : Entries<ValueEntry, ValueIndex> {
         public ValueEntries(ValueIndex index) : base(index) {
         }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using AQDEF.Sharp;
 
-namespace AQDEF.Sharp.Models {
+namespace AQDEF.Models {
     public abstract class BaseEnties {
         private readonly IDictionary<string, IKKeyEntry> _entries;
 

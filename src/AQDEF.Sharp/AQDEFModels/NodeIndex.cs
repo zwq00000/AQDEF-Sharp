@@ -1,6 +1,6 @@
 using System;
 
-namespace AQDEF.Sharp.AQDEFModels {
+namespace AQDEF.Sharp.Models {
     public class NodeIndex : IComparable<NodeIndex> {
         private NodeIndex(int? index) {
             Index = index;

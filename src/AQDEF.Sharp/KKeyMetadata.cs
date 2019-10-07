@@ -11,8 +11,16 @@ namespace AQDEF.Sharp {
     /// @author Vlastimil Dolejs
     /// </summary>
     public class KKeyMetadata {
+
+        private readonly string _keyCode;
         private readonly string _tableName;
+        private readonly string _columnName;
         private readonly KKeyFieldType _dataType;
+
+        ///<Summary>
+        /// Length of data (for String and Number data types)
+        ///</Summary>
+        private readonly int _length;
 
         /**
          * Whether values of this column should be saved to DB.
@@ -26,12 +34,12 @@ namespace AQDEF.Sharp {
             if (string.IsNullOrEmpty(keyCode)) {
                 throw new ArgumentNullException(nameof(keyCode));
             }
-            this.KeyCode = keyCode;
+            this._keyCode = keyCode;
             this._dataType = dataType;
             if (length <= 0) {
-                this.Length = GetDefaultLength(dataType);
+                this._length = GetDefaultLength(dataType);
             } else {
-                this.Length = length;
+                this._length = length;
             }
         }
 
@@ -44,9 +52,9 @@ namespace AQDEF.Sharp {
                 throw new ArgumentNullException(nameof(columnName));
             }
 
-            this.ColumnName = columnName;
+            this._columnName = columnName;
             //this._dataType = dataType;
-            this.Length = length;
+            this._length = length;
             this._saveToDb = saveToDb;
         }
 
@@ -132,19 +140,23 @@ namespace AQDEF.Sharp {
             return new KKeyMetadata(columnName, dataType, length, converter, true);
         }
 
-        public string KeyCode { get; private set; }
+        public string KeyCode => _keyCode;
 
         /// <summary>
         /// Returns the maximum length of the content of this K-key as defined in AQDEF format documentation.
         /// </summary>
         /// <value></value>
-        public int Length { get; private set; }
+        public int Length {
+            get { return _length; }
+        }
 
         /// <summary>
         /// Returns name of the DB column in the Q-DAS database where this K-key is stored.
         /// </summary>
         /// <value></value>
-        public string ColumnName { get; private set; }
+        public string ColumnName {
+            get { return _columnName; }
+        }
 
         /// <summary>
         /// Returns datatype of this K-key.
@@ -186,17 +198,17 @@ namespace AQDEF.Sharp {
                 return false;
             }
             KKeyMetadata other = (KKeyMetadata)obj;
-            if (ColumnName == null) {
-                if (other.ColumnName != null) {
+            if (_columnName == null) {
+                if (other._columnName != null) {
                     return false;
                 }
-            } else if (!ColumnName.Equals(other.ColumnName)) {
+            } else if (!_columnName.Equals(other._columnName)) {
                 return false;
             }
             if (_dataType != other._dataType) {
                 return false;
             }
-            if (Length != other.Length) {
+            if (_length != other._length) {
                 return false;
             }
             if (_saveToDb != other._saveToDb) {
