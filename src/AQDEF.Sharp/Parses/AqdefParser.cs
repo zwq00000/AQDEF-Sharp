@@ -101,7 +101,7 @@ namespace AQDEF.Sharp.Parses
                     lineIndex++;
                 }
 
-            aqdefObjectModel.normalize();
+            aqdefObjectModel.Normalize();
 
             return aqdefObjectModel;
         }
@@ -122,7 +122,7 @@ namespace AQDEF.Sharp.Parses
         }
 
         private bool isBinaryDataLine(string line) {
-            return line.IndexOf(AqdefConstants.MEASURED_VALUES_DATA_SEPARATOR) >= 0;
+            return line.IndexOf(AqdefConstants.MeasuredValuesDataSeparator) >= 0;
         }
 
         private void parseKKeyLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
@@ -187,7 +187,7 @@ namespace AQDEF.Sharp.Parses
             if (kKey.IsPartLevel) {  //部件层
 
                 PartIndex partIndex = PartIndex.Of(index);
-                aqdefObjectModel.putPartEntry(kKey, partIndex, value);
+                aqdefObjectModel.PutPartEntry(kKey, partIndex, value);
 
                 context.CurrentPartIndex = partIndex;
 
@@ -203,9 +203,9 @@ namespace AQDEF.Sharp.Parses
                         partIndex = PartIndex.Of(1);
                     }
                 }
-                CharacteristicIndex characteristicIndex = CharacteristicIndex.of(partIndex, index);
+                CharacteristicIndex characteristicIndex = CharacteristicIndex.Of(partIndex, index);
 
-                aqdefObjectModel.putCharacteristicEntry(kKey, characteristicIndex, value);
+                aqdefObjectModel.PutCharacteristicEntry(kKey, characteristicIndex, value);
 
             } else if (kKey.IsGroupLevel) {     //分组层
 
@@ -221,7 +221,7 @@ namespace AQDEF.Sharp.Parses
                 }
                 GroupIndex groupIndex = GroupIndex.Of(partIndex, index);
 
-                aqdefObjectModel.putGroupEntry(kKey, groupIndex, value);
+                aqdefObjectModel.PutGroupEntry(kKey, groupIndex, value);
 
             } else if (kKey.IsValueLevel) {     //数值层
 
@@ -229,12 +229,12 @@ namespace AQDEF.Sharp.Parses
                 if (index == 0) {
                     partIndex = PartIndex.Of(0);
                 } else {
-                    partIndex = aqdefObjectModel.findPartIndexForCharacteristic(index);
+                    partIndex = aqdefObjectModel.FindPartIndexForCharacteristic(index);
                     if (partIndex == null) {
                         throw new AqdefValidityException("Characteristic with index " + index + " was not found. Can't parse value.");
                     }
                 }
-                CharacteristicIndex characteristicIndex = CharacteristicIndex.of(partIndex, index);
+                CharacteristicIndex characteristicIndex = CharacteristicIndex.Of(partIndex, index);
                 ValueIndex valueIndex;
                 if (valueIndexNumber == null) {
                     valueIndex = context.ValueIndexCounter.getIndex(characteristicIndex, kKey);
@@ -242,11 +242,11 @@ namespace AQDEF.Sharp.Parses
                     valueIndex = ValueIndex.Of(characteristicIndex, valueIndexNumber);
                 }
 
-                aqdefObjectModel.putValueEntry(kKey, valueIndex, value);
+                aqdefObjectModel.PutValueEntry(kKey, valueIndex, value);
 
             } else if (kKey.IsHierarchyLevel || kKey.IsSimpleHierarchyLevel) {
 
-                aqdefObjectModel.putHierarchyEntry(kKey, index, value);
+                aqdefObjectModel.PutHierarchyEntry(kKey, index, value);
 
             } else {
 
@@ -303,23 +303,23 @@ namespace AQDEF.Sharp.Parses
         }
 
         private void parseBinaryDataLine(string line, AqdefObjectModel aqdefObjectModel, ParserContext context) {
-            string[] characteristicPortions = line.Split(AqdefConstants.MEASURED_VALUES_CHARACTERISTIC_SEPARATOR);
+            string[] characteristicPortions = line.Split(AqdefConstants.MeasuredValuesCharacteristicSeparator);
 
             int characteristicIntIndex = 1;
             foreach (string characteristicPortion in characteristicPortions) {
-                string[] dataPortions = characteristicPortion.Split(AqdefConstants.MEASURED_VALUES_DATA_SEPARATOR);
+                string[] dataPortions = characteristicPortion.Split(AqdefConstants.MeasuredValuesDataSeparator);
 
-                PartIndex partIndex = aqdefObjectModel.findPartIndexForCharacteristic(characteristicIntIndex);
+                PartIndex partIndex = aqdefObjectModel.FindPartIndexForCharacteristic(characteristicIntIndex);
                 if (partIndex == null) {
                     throw new AqdefValidityException("Characteristic with index " + characteristicIntIndex + " was not found. Can't parse value.");
                 }
-                CharacteristicIndex characteristicIndex = CharacteristicIndex.of(partIndex, characteristicIntIndex);
+                CharacteristicIndex characteristicIndex = CharacteristicIndex.Of(partIndex, characteristicIntIndex);
 
                 // recognize binary value format for characterstic type
                 bool? isAttributeCharacteristic = null;
-                CharacteristicEntries characteristicEntries = aqdefObjectModel.getCharacteristicEntries(characteristicIndex);
+                CharacteristicEntries characteristicEntries = aqdefObjectModel.GetCharacteristicEntries(characteristicIndex);
                 if (characteristicEntries != null) {
-                    int? characteristicType = characteristicEntries.getValue<int?>(KKey.Of("K2004"));
+                    int? characteristicType = characteristicEntries.GetValue<int?>(KKey.Of("K2004"));
 
                     if (characteristicType != null) {
                         if (characteristicType == 1 || characteristicType == 5 || characteristicType == 6) { // 1 - attribute / 5, 6 - error log sheet
@@ -363,7 +363,7 @@ namespace AQDEF.Sharp.Parses
                     if (value != null) {
                         ValueIndex valueIndex = context.ValueIndexCounter.getIndex(characteristicIndex, kKey);
 
-                        aqdefObjectModel.putValueEntry(kKey, valueIndex, value);
+                        aqdefObjectModel.PutValueEntry(kKey, valueIndex, value);
                     }
                 }
 

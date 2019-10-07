@@ -28,46 +28,46 @@ namespace AQDEF.Sharp.Models {
 
 
 
-        private SortedDictionary<PartIndex, PartEntries> PartEntries = new SortedDictionary<PartIndex, PartEntries>();
-        private SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, CharacteristicEntries>> CharacteristicEntries = new SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, CharacteristicEntries>>();
-        private SortedDictionary<PartIndex, SortedDictionary<GroupIndex, GroupEntries>> GroupEntries = new SortedDictionary<PartIndex, SortedDictionary<GroupIndex, GroupEntries>>();
-        private SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>> ValueEntries = new SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>>();
-        private AqdefHierarchy Hierarchy_Renamed = new AqdefHierarchy();
+        private SortedDictionary<PartIndex, PartEntries> _partEntries = new SortedDictionary<PartIndex, PartEntries>();
+        private SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, CharacteristicEntries>> _characteristicEntries = new SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, CharacteristicEntries>>();
+        private SortedDictionary<PartIndex, SortedDictionary<GroupIndex, GroupEntries>> _groupEntries = new SortedDictionary<PartIndex, SortedDictionary<GroupIndex, GroupEntries>>();
+        private SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>> _valueEntries = new SortedDictionary<PartIndex, SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>>();
+        private AqdefHierarchy _hierarchyRenamed = new AqdefHierarchy();
 
 
 
-        public virtual void putPartEntry(KKey key, PartIndex index, object value) {
+        public virtual void PutPartEntry(KKey key, PartIndex index, object value) {
             if (value == null) {
                 return;
             }
 
             PartEntries entriesWithIndex;
-            if (!PartEntries.TryGetValue(index, out entriesWithIndex)) {
+            if (!_partEntries.TryGetValue(index, out entriesWithIndex)) {
                 entriesWithIndex = new PartEntries(index);
-                PartEntries.Add(index, entriesWithIndex);
+                _partEntries.Add(index, entriesWithIndex);
             }
-            entriesWithIndex.put(key, value);
+            entriesWithIndex.Put(key, value);
         }
         /// <summary>
         /// Removes part entries with the given index.
         /// Characteristic and value entries of given part are preserved!
         /// </summary>
         /// <param name="index"> </param>
-        private PartEntries removePartEntries(PartIndex index) {
+        private PartEntries RemovePartEntries(PartIndex index) {
             PartEntries entries;
-            if (PartEntries.TryGetValue(index, out entries)) {
-                PartEntries.Remove(index);
+            if (_partEntries.TryGetValue(index, out entries)) {
+                _partEntries.Remove(index);
             }
             return entries;
         }
-        public virtual void putCharacteristicEntry(KKey key, CharacteristicIndex characteristicIndex, object value) {
+        public virtual void PutCharacteristicEntry(KKey key, CharacteristicIndex characteristicIndex, object value) {
             if (value == null) {
                 return;
             }
             PartIndex partIndex = characteristicIndex.PartIndex;
-            var entriesWithPartIndex = CharacteristicEntries.computeIfAbsent(partIndex, i => new SortedDictionary<CharacteristicIndex, CharacteristicEntries>());
-            CharacteristicEntries entriesWithIndex = entriesWithPartIndex.computeIfAbsent(characteristicIndex, i => new CharacteristicEntries(i));
-            entriesWithIndex.put(key,value);
+            var entriesWithPartIndex = _characteristicEntries.ComputeIfAbsent(partIndex, i => new SortedDictionary<CharacteristicIndex, CharacteristicEntries>());
+            CharacteristicEntries entriesWithIndex = entriesWithPartIndex.ComputeIfAbsent(characteristicIndex, i => new CharacteristicEntries(i));
+            entriesWithIndex.Put(key,value);
         }
         /// <summary>
         /// Removes characteristic entries with the given index.
@@ -75,36 +75,36 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="index">
         /// @return </param>
-        private CharacteristicEntries removeCharacteristicEntries(CharacteristicIndex index) {
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = CharacteristicEntries.GetValueOrNull(index.PartIndex);
+        private CharacteristicEntries RemoveCharacteristicEntries(CharacteristicIndex index) {
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = _characteristicEntries.GetValueOrNull(index.PartIndex);
             if (entriesWithPartIndex != null) {
                 CharacteristicEntries removedEntries = entriesWithPartIndex.GetValueOrNull(index);
                 
                 if (entriesWithPartIndex.Count == 0) {
-                    CharacteristicEntries.Remove(index.PartIndex);
+                    _characteristicEntries.Remove(index.PartIndex);
                 }
                 return removedEntries;
             }
             return null;
         }
-        public virtual void putGroupEntry(KKey key, GroupIndex groupIndex, object value) {
+        public virtual void PutGroupEntry(KKey key, GroupIndex groupIndex, object value) {
             if (value == null) {
                 return;
             }
             PartIndex partIndex = groupIndex.PartIndex;
-            SortedDictionary<GroupIndex, GroupEntries> entriesWithPartIndex = GroupEntries.computeIfAbsent(partIndex, i => new SortedDictionary<GroupIndex, GroupEntries>());
-            GroupEntries entriesWithIndex = entriesWithPartIndex.computeIfAbsent(groupIndex, i => new GroupEntries(i));
+            SortedDictionary<GroupIndex, GroupEntries> entriesWithPartIndex = _groupEntries.ComputeIfAbsent(partIndex, i => new SortedDictionary<GroupIndex, GroupEntries>());
+            GroupEntries entriesWithIndex = entriesWithPartIndex.ComputeIfAbsent(groupIndex, i => new GroupEntries(i));
             entriesWithIndex.Add(key, (GroupEntry) value);
         }
-        public virtual void putValueEntry(KKey key, ValueIndex valueIndex, object value) {
+        public virtual void PutValueEntry(KKey key, ValueIndex valueIndex, object value) {
             if (value == null) {
                 return;
             }
             PartIndex partIndex = valueIndex.PartIndex;
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.computeIfAbsent(partIndex, i => new SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>());
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.ComputeIfAbsent(partIndex, i => new SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>>());
             CharacteristicIndex characteristicIndex = valueIndex.CharacteristicIndex;
-            SortedDictionary<ValueIndex, ValueEntries> entriesWithCharacteristicIndex = entriesWithPartIndex.computeIfAbsent(characteristicIndex, i => new SortedDictionary<ValueIndex, ValueEntries>());
-            ValueEntries entriesWithIndex = entriesWithCharacteristicIndex.computeIfAbsent(valueIndex, i => new ValueEntries(i));
+            SortedDictionary<ValueIndex, ValueEntries> entriesWithCharacteristicIndex = entriesWithPartIndex.ComputeIfAbsent(characteristicIndex, i => new SortedDictionary<ValueIndex, ValueEntries>());
+            ValueEntries entriesWithIndex = entriesWithCharacteristicIndex.ComputeIfAbsent(valueIndex, i => new ValueEntries(i));
             entriesWithIndex.Add(key, (ValueEntry) value);
         }
         /// <summary>
@@ -112,13 +112,13 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="index">
         /// @return </param>
-        private IList<ValueEntries> removeValueEntries(CharacteristicIndex index) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.GetValueOrNull(index.PartIndex);
+        private IList<ValueEntries> RemoveValueEntries(CharacteristicIndex index) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.GetValueOrNull(index.PartIndex);
             if (entriesWithPartIndex != null) {
                 SortedDictionary<ValueIndex, ValueEntries> removedValueEntries = entriesWithPartIndex.GetValueOrNull(index);
 
                 if (entriesWithPartIndex.Count == 0) {
-                    ValueEntries.Remove(index.PartIndex);
+                    _valueEntries.Remove(index.PartIndex);
                 }
                 if (removedValueEntries != null) {
                     return new List<ValueEntries>(removedValueEntries.Values);
@@ -126,8 +126,8 @@ namespace AQDEF.Sharp.Models {
             }
             return new List<ValueEntries>();
         }
-        public virtual void putHierarchyEntry(KKey kKey, int nodeIndex, object value) {
-            Hierarchy_Renamed.putEntry(kKey, nodeIndex, value);
+        public virtual void PutHierarchyEntry(KKey kKey, int nodeIndex, object value) {
+            _hierarchyRenamed.PutEntry(kKey, nodeIndex, value);
         }
         /// <summary>
         /// Returns indexes of all parts in this object model.
@@ -136,33 +136,33 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         public virtual IList<PartIndex> PartIndexes {
             get {
-                return new List<PartIndex>(PartEntries.Keys);
+                return new List<PartIndex>(_partEntries.Keys);
             }
         }
-        public virtual PartEntries getPartEntries(int index) {
-            return getPartEntries(PartIndex.Of(index));
+        public virtual PartEntries GetPartEntries(int index) {
+            return GetPartEntries(PartIndex.Of(index));
         }
-        public virtual PartEntries getPartEntries(PartIndex index) {
-            return PartEntries.GetValueOrNull(index);
+        public virtual PartEntries GetPartEntries(PartIndex index) {
+            return _partEntries.GetValueOrNull(index);
         }
         /// <summary>
         /// Returns indexes of all characteristics of a part with the given index.
         /// 
         /// @return
         /// </summary>
-        public virtual IList<CharacteristicIndex> getCharacteristicIndexes(PartIndex partIndex) {
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = CharacteristicEntries.GetValueOrNull(partIndex);
+        public virtual IList<CharacteristicIndex> GetCharacteristicIndexes(PartIndex partIndex) {
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = _characteristicEntries.GetValueOrNull(partIndex);
             if (entriesWithPartIndex == null) {
                 return new List<CharacteristicIndex>();
             } else {
                 return new List<CharacteristicIndex>(entriesWithPartIndex.Keys);
             }
         }
-        public virtual CharacteristicEntries getCharacteristicEntries(int partIndex, int characteristicIndex) {
-            return getCharacteristicEntries(CharacteristicIndex.of(PartIndex.Of(partIndex), characteristicIndex));
+        public virtual CharacteristicEntries GetCharacteristicEntries(int partIndex, int characteristicIndex) {
+            return GetCharacteristicEntries(CharacteristicIndex.Of(PartIndex.Of(partIndex), characteristicIndex));
         }
-        public virtual CharacteristicEntries getCharacteristicEntries(CharacteristicIndex characteristicIndex) {
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = CharacteristicEntries.GetValueOrNull(characteristicIndex.PartIndex);
+        public virtual CharacteristicEntries GetCharacteristicEntries(CharacteristicIndex characteristicIndex) {
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> entriesWithPartIndex = _characteristicEntries.GetValueOrNull(characteristicIndex.PartIndex);
             if (entriesWithPartIndex == null) {
                 return null;
             } else {
@@ -174,8 +174,8 @@ namespace AQDEF.Sharp.Models {
         /// 
         /// @return
         /// </summary>
-        public virtual ICollection<ValueIndex> getValueIndexes(CharacteristicIndex characteristicIndex) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.GetValueOrNull(characteristicIndex.PartIndex);
+        public virtual ICollection<ValueIndex> GetValueIndexes(CharacteristicIndex characteristicIndex) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.GetValueOrNull(characteristicIndex.PartIndex);
             if (entriesWithPartIndex == null) {
                 return new List<ValueIndex>();
             } else {
@@ -194,7 +194,7 @@ namespace AQDEF.Sharp.Models {
         public virtual IList<ValueIndex> ValueIndexes {
             get {
                 IList<ValueIndex> allValueIndexes = new List<ValueIndex>();
-                foreach (SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesOfPart in ValueEntries.Values) {
+                foreach (SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesOfPart in _valueEntries.Values) {
                     foreach (SortedDictionary<ValueIndex, ValueEntries> entriesOfCharacteristic in entriesOfPart.Values) {
                         ((List<ValueIndex>)allValueIndexes).AddRange(entriesOfCharacteristic.Keys);
                     }
@@ -202,11 +202,11 @@ namespace AQDEF.Sharp.Models {
                 return allValueIndexes;
             }
         }
-        public virtual ValueEntries getValueEntries(int partIndex, int characteristicIndex, int valueIndex) {
-            return getValueEntries(ValueIndex.Of(CharacteristicIndex.of(PartIndex.Of(partIndex), characteristicIndex), valueIndex));
+        public virtual ValueEntries GetValueEntries(int partIndex, int characteristicIndex, int valueIndex) {
+            return GetValueEntries(ValueIndex.Of(CharacteristicIndex.Of(PartIndex.Of(partIndex), characteristicIndex), valueIndex));
         }
-        public virtual ValueEntries getValueEntries(ValueIndex valueIndex) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.GetValueOrNull(valueIndex.PartIndex);
+        public virtual ValueEntries GetValueEntries(ValueIndex valueIndex) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.GetValueOrNull(valueIndex.PartIndex);
             if (entriesWithPartIndex == null) {
                 return null;
             } else {
@@ -218,8 +218,8 @@ namespace AQDEF.Sharp.Models {
                 }
             }
         }
-        public virtual ICollection<ValueEntries> getValueEntries(CharacteristicIndex characteristicIndex) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.GetValueOrNull(characteristicIndex.PartIndex);
+        public virtual ICollection<ValueEntries> GetValueEntries(CharacteristicIndex characteristicIndex) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.GetValueOrNull(characteristicIndex.PartIndex);
             if (entriesWithPartIndex == null) {
                 return new List<ValueEntries>();
             } else {
@@ -232,8 +232,8 @@ namespace AQDEF.Sharp.Models {
             }
         }
 
-        public virtual IList<ValueSet> getValueSets(PartIndex partIndex) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = ValueEntries.GetValueOrNull(partIndex);
+        public virtual IList<ValueSet> GetValueSets(PartIndex partIndex) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> entriesWithPartIndex = _valueEntries.GetValueOrNull(partIndex);
             IList<ValueSet> valueSets = new List<ValueSet>();
             foreach (var entriesOfCharacteristic in entriesWithPartIndex) {
                 CharacteristicIndex characteristicIndex = entriesOfCharacteristic.Key;
@@ -244,7 +244,7 @@ namespace AQDEF.Sharp.Models {
                         valueSets.Add(new ValueSet());
                     }
                     ValueSet valueSet = valueSets[counter];
-                    valueSet.addValueOfCharacteristic(characteristicIndex, valueEntries.Value);
+                    valueSet.AddValueOfCharacteristic(characteristicIndex, valueEntries.Value);
                     counter++;
                 }
             }
@@ -258,8 +258,8 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="characteristicIndex">
         /// @return </param>
-        public virtual PartIndex findPartIndexForCharacteristic(int characteristicIndex) {
-            foreach (SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristics in CharacteristicEntries.Values) {
+        public virtual PartIndex FindPartIndexForCharacteristic(int characteristicIndex) {
+            foreach (SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristics in _characteristicEntries.Values) {
                 foreach (CharacteristicIndex characteristic in characteristics.Keys) {
                     if (characteristic.Index == characteristicIndex) {
                         return characteristic.PartIndex;
@@ -268,9 +268,9 @@ namespace AQDEF.Sharp.Models {
             }
             return null;
         }
-        public virtual ISet<CharacteristicIndex> findCharacteristicIndexesForPart(PartIndex partIndex, Func<CharacteristicEntries,bool> predicate) {
+        public virtual ISet<CharacteristicIndex> FindCharacteristicIndexesForPart(PartIndex partIndex, Func<CharacteristicEntries,bool> predicate) {
             ISet<CharacteristicIndex> characteristicIndexes = new System.Collections.Generic.HashSet<CharacteristicIndex>();
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> partCharacteristics = CharacteristicEntries.GetValueOrNull(partIndex);
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> partCharacteristics = _characteristicEntries.GetValueOrNull(partIndex);
             if (partCharacteristics != null) {
                 foreach (CharacteristicEntries entries in partCharacteristics.Values) {
                     if (predicate(entries)) {
@@ -284,8 +284,8 @@ namespace AQDEF.Sharp.Models {
         /// Iterates through all parts
         /// </summary>
         /// <param name="consumer"> </param>
-        public virtual void forEachPart(Action<PartEntries> consumer) {
-            PartEntries.forEach((partIndex, part) => {
+        public virtual void ForEachPart(Action<PartEntries> consumer) {
+            _partEntries.ForEach((partIndex, part) => {
                 consumer(part);
             });
         }
@@ -293,11 +293,11 @@ namespace AQDEF.Sharp.Models {
         /// Iterates through all characteristics of all parts
         /// </summary>
         /// <param name="consumer"> </param>
-        public virtual void forEachCharacteristic(Action<PartEntries, CharacteristicEntries> consumer) {
-            PartEntries.forEach((partIndex, part) => {
-                var characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachCharacteristic(Action<PartEntries, CharacteristicEntries> consumer) {
+            _partEntries.ForEach((partIndex, part) => {
+                var characteristicsOfPart = _characteristicEntries.GetValueOrNull(part.Index);
                 if (characteristicsOfPart != null) {
-                    characteristicsOfPart.forEach((characteristicIndex, characteristic) => {
+                    characteristicsOfPart.ForEach((characteristicIndex, characteristic) => {
                         consumer(part, characteristic);
                     });
                 }
@@ -312,10 +312,10 @@ namespace AQDEF.Sharp.Models {
         /// </pre> </summary>
         /// <param name="part"> </param>
         /// <param name="consumer"> </param>
-        public virtual void forEachCharacteristic(PartEntries part, Action<CharacteristicEntries> consumer) {
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachCharacteristic(PartEntries part, Action<CharacteristicEntries> consumer) {
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = _characteristicEntries.GetValueOrNull(part.Index);
             if (characteristicsOfPart != null) {
-                characteristicsOfPart.forEach((characteristicIndex, characteristic) => {
+                characteristicsOfPart.ForEach((characteristicIndex, characteristic) => {
                     consumer(characteristic);
                 });
             }
@@ -324,11 +324,11 @@ namespace AQDEF.Sharp.Models {
         /// Iterates through all logical groups of all parts
         /// </summary>
         /// <param name="consumer"> </param>
-        public virtual void forEachGroup(Action<PartEntries, GroupEntries> consumer) {
-            PartEntries.forEach((partIndex, part) => {
-                var groupsOfPart = GroupEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachGroup(Action<PartEntries, GroupEntries> consumer) {
+            _partEntries.ForEach((partIndex, part) => {
+                var groupsOfPart = _groupEntries.GetValueOrNull(part.Index);
                 if (groupsOfPart != null) {
-                    groupsOfPart.forEach((groupIndex, group) => {
+                    groupsOfPart.ForEach((groupIndex, group) => {
                         consumer(part, group);
                     });
                 }
@@ -339,10 +339,10 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="part"> </param>
         /// <param name="consumer"> </param>
-        public virtual void forEachGroup(PartEntries part, Action<GroupEntries> consumer) {
-            SortedDictionary<GroupIndex, GroupEntries> groupsOfPart = GroupEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachGroup(PartEntries part, Action<GroupEntries> consumer) {
+            SortedDictionary<GroupIndex, GroupEntries> groupsOfPart = _groupEntries.GetValueOrNull(part.Index);
             if (groupsOfPart != null) {
-                groupsOfPart.forEach((groupIndex, group) => {
+                groupsOfPart.ForEach((groupIndex, group) => {
                     consumer(group);
                 });
             }
@@ -351,16 +351,16 @@ namespace AQDEF.Sharp.Models {
         /// Iterates through all values.
         /// </summary>
         /// <param name="consumer"> </param>
-        public virtual void forEachValue(Action<PartEntries, CharacteristicEntries, ValueEntries> consumer) {
-            PartEntries.forEach((partIndex, part) => {
-                var characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachValue(Action<PartEntries, CharacteristicEntries, ValueEntries> consumer) {
+            _partEntries.ForEach((partIndex, part) => {
+                var characteristicsOfPart = _characteristicEntries.GetValueOrNull(part.Index);
                 if (characteristicsOfPart != null) {
-                    characteristicsOfPart.forEach((characteristicIndex, characteristic) => {
-                        var valuesOfPart = ValueEntries.GetValueOrNull(part.Index);
+                    characteristicsOfPart.ForEach((characteristicIndex, characteristic) => {
+                        var valuesOfPart = _valueEntries.GetValueOrNull(part.Index);
                         if (valuesOfPart != null) {
                             var values = valuesOfPart.GetValueOrNull(characteristic.Index);
                             if (values != null) {
-                                values.forEach((valueIndex, value) => {
+                                values.ForEach((valueIndex, value) => {
                                     consumer(part, characteristic, value);
                                 });
                             }
@@ -381,7 +381,7 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="part"> </param>
         /// <param name="consumer"> </param>
-        public virtual void forEachValue(PartEntries part, Action<CharacteristicEntries , ValueEntries> consumer) {
+        public virtual void ForEachValue(PartEntries part, Action<CharacteristicEntries , ValueEntries> consumer) {
             throw new NotImplementedException();
             /*
             SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
@@ -413,12 +413,12 @@ namespace AQDEF.Sharp.Models {
         /// <param name="part"> </param>
         /// <param name="characteristic"> </param>
         /// <param name="consumer"> </param>
-        public virtual void forEachValue(PartEntries part, CharacteristicEntries characteristic, Action<ValueEntries> consumer) {
-            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> valuesOfPart = ValueEntries.GetValueOrNull(part.Index);
+        public virtual void ForEachValue(PartEntries part, CharacteristicEntries characteristic, Action<ValueEntries> consumer) {
+            SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> valuesOfPart = _valueEntries.GetValueOrNull(part.Index);
             if (valuesOfPart != null) {
                 SortedDictionary<ValueIndex, ValueEntries> values = valuesOfPart.GetValueOrNull(characteristic.Index);
                 if (values != null) {
-                    values.forEach((valueIndex, value) => {
+                    values.ForEach((valueIndex, value) => {
                         consumer(value);
                     });
                 }
@@ -429,7 +429,7 @@ namespace AQDEF.Sharp.Models {
         /// If a part is removed it's characteristics and values are also removed.
         /// </summary>
         /// <param name="predicate"> </param>
-        public virtual void filterParts(Func<PartEntries,bool> predicate) {
+        public virtual void FilterParts(Func<PartEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             IEnumerator<KeyValuePair<PartIndex, PartEntries>> iterator = PartEntries.SetOfKeyValuePairs().GetEnumerator();
@@ -452,7 +452,7 @@ namespace AQDEF.Sharp.Models {
         /// If a characteristic is removed it's values are also removed.
         /// </summary>
         /// <param name="predicate"> </param>
-        public virtual void filterCharacteristics(Func<PartEntries, CharacteristicEntries,bool> predicate) {
+        public virtual void FilterCharacteristics(Func<PartEntries, CharacteristicEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             PartEntries.forEach((partIndex, part) => {
@@ -478,7 +478,7 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="part"> </param>
         /// <param name="predicate"> </param>
-        public virtual void filterCharacteristics(PartEntries part, Func<CharacteristicEntries,bool> predicate) {
+        public virtual void FilterCharacteristics(PartEntries part, Func<CharacteristicEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
@@ -502,7 +502,7 @@ namespace AQDEF.Sharp.Models {
         /// Removes all groups that do not match the given predicate.
         /// </summary>
         /// <param name="predicate"> </param>
-        public virtual void filterGroups(Func<PartEntries, GroupEntries,bool> predicate) {
+        public virtual void FilterGroups(Func<PartEntries, GroupEntries,bool> predicate) {
             throw new NotImplementedException();
 
             /*
@@ -525,7 +525,7 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="part"> </param>
         /// <param name="predicate"> </param>
-        public virtual void filterGroups(PartEntries part, Func<GroupEntries,bool> predicate) {
+        public virtual void FilterGroups(PartEntries part, Func<GroupEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             SortedDictionary<GroupIndex, GroupEntries> groupsOfPart = GroupEntries.GetValueOrNull(part.Index);
@@ -544,7 +544,7 @@ namespace AQDEF.Sharp.Models {
         /// Removes all values that do not match the given predicate.
         /// </summary>
         /// <param name="predicate"> </param>
-        public virtual void filterValues(Func<PartEntries, CharacteristicEntries, ValueEntries,bool> predicate) {
+        public virtual void FilterValues(Func<PartEntries, CharacteristicEntries, ValueEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             PartEntries.forEach((partIndex, part) => {
@@ -575,11 +575,11 @@ namespace AQDEF.Sharp.Models {
         /// </summary>
         /// <param name="part"> </param>
         /// <param name="predicate"> </param>
-        public virtual void filterValues(PartEntries part, Func<CharacteristicEntries, ValueEntries,bool> predicate) {
-            SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = CharacteristicEntries.GetValueOrNull(part.Index);
+        public virtual void FilterValues(PartEntries part, Func<CharacteristicEntries, ValueEntries,bool> predicate) {
+            SortedDictionary<CharacteristicIndex, CharacteristicEntries> characteristicsOfPart = _characteristicEntries.GetValueOrNull(part.Index);
             if (characteristicsOfPart != null) {
-                characteristicsOfPart.forEach((characteristicIndex, characteristic) => {
-                    var valuesOfPart = ValueEntries.GetValueOrNull(part.Index);
+                characteristicsOfPart.ForEach((characteristicIndex, characteristic) => {
+                    var valuesOfPart = _valueEntries.GetValueOrNull(part.Index);
                     if (valuesOfPart != null) {
                         var values = valuesOfPart.GetValueOrNull(characteristic.Index);
                         if (values != null) {
@@ -598,7 +598,7 @@ namespace AQDEF.Sharp.Models {
         /// <param name="part"> </param>
         /// <param name="characteristic"> </param>
         /// <param name="predicate"> </param>
-        public virtual void filterValues(PartEntries part, CharacteristicEntries characteristic, Func<CharacteristicEntries, ValueEntries,bool> predicate) {
+        public virtual void FilterValues(PartEntries part, CharacteristicEntries characteristic, Func<CharacteristicEntries, ValueEntries,bool> predicate) {
             throw new NotImplementedException();
             /*
             SortedDictionary<CharacteristicIndex, SortedDictionary<ValueIndex, ValueEntries>> valuesOfPart = ValueEntries.GetValueOrNull(part.Index);
@@ -627,7 +627,7 @@ namespace AQDEF.Sharp.Models {
         /// <param name="key"> any K-key of part / characteristic / value
         /// @return </param>
         /// <exception cref="IllegalArgumentException"> if the K-key is not for part / characteristic / value lavel. </exception>
-        public virtual object getAnyValueOf(KKey key) {
+        public virtual object GetAnyValueOf(KKey key) {
             throw new NotImplementedException();
             /*
             if (key.IsPartLevel) {
@@ -660,49 +660,49 @@ namespace AQDEF.Sharp.Models {
         /// characteristics grouping (K2030/K2031).</li>
         /// </ul>
         /// </summary>
-        public virtual void normalize() {
-            PartEntries entriesForAllParts = removePartEntries(PartIndex.Of(0));
+        public virtual void Normalize() {
+            PartEntries entriesForAllParts = RemovePartEntries(PartIndex.Of(0));
             if (entriesForAllParts!=null && entriesForAllParts.Any()) {
                 if (PartIndexes.Count == 0) {
                     PartIndex partIndex = PartIndex.Of(1);
-                    PartEntries[partIndex] = (PartEntries) entriesForAllParts.withIndex(partIndex);
+                    _partEntries[partIndex] = (PartEntries) entriesForAllParts.WithIndex(partIndex);
                 } else {
-                    forEachPart((part) => {
-                        part.putAll(entriesForAllParts.withIndex(part.Index).Values, false);
+                    ForEachPart((part) => {
+                        part.PutAll(entriesForAllParts.WithIndex(part.Index).Values, false);
                     });
                 }
             }
 
-            CharacteristicIndex indexForAllCharacteristicsOfAllParts = CharacteristicIndex.of(PartIndex.Of(0), 0);
+            CharacteristicIndex indexForAllCharacteristicsOfAllParts = CharacteristicIndex.Of(PartIndex.Of(0), 0);
             CharacteristicEntries entriesForAllCharacteristicsOfAllParts = new CharacteristicEntries(indexForAllCharacteristicsOfAllParts);
-            CharacteristicEntries characteristicEntriesForAllCharacteristicsOfAllParts = removeCharacteristicEntries(indexForAllCharacteristicsOfAllParts);
+            CharacteristicEntries characteristicEntriesForAllCharacteristicsOfAllParts = RemoveCharacteristicEntries(indexForAllCharacteristicsOfAllParts);
             if (characteristicEntriesForAllCharacteristicsOfAllParts!=null && characteristicEntriesForAllCharacteristicsOfAllParts.Any()) {
-                entriesForAllCharacteristicsOfAllParts.putAll(characteristicEntriesForAllCharacteristicsOfAllParts.Values, false);
+                entriesForAllCharacteristicsOfAllParts.PutAll(characteristicEntriesForAllCharacteristicsOfAllParts.Values, false);
             }
-            IList<ValueEntries> entriesForAllValuesOfAllParts = removeValueEntries(indexForAllCharacteristicsOfAllParts);
+            IList<ValueEntries> entriesForAllValuesOfAllParts = RemoveValueEntries(indexForAllCharacteristicsOfAllParts);
             //JAVA TO C# CONVERTER TODO TASK: Most Java stream collectors are not converted by Java to C# Converter:
             var entriesForAllValuesByValueIndex = entriesForAllValuesOfAllParts.GroupBy(e => e.Index.Index)
                 .ToDictionary(g => g.Key, g => g.ToArray());
-            forEachPart((part) => {
-                CharacteristicIndex indexForAllCharacteristics = CharacteristicIndex.of(part.Index, 0);
-                CharacteristicEntries entriesForAllCharacteristics = removeCharacteristicEntries(indexForAllCharacteristics);
+            ForEachPart((part) => {
+                CharacteristicIndex indexForAllCharacteristics = CharacteristicIndex.Of(part.Index, 0);
+                CharacteristicEntries entriesForAllCharacteristics = RemoveCharacteristicEntries(indexForAllCharacteristics);
                 if (entriesForAllCharacteristics!=null && entriesForAllCharacteristics.Any()) {
-                    entriesForAllCharacteristicsOfAllParts.putAll(entriesForAllCharacteristics.Values, false);
+                    entriesForAllCharacteristicsOfAllParts.PutAll(entriesForAllCharacteristics.Values, false);
                 }
             });
-            forEachCharacteristic((part, characteristic) => {
-                characteristic.putAll(entriesForAllCharacteristicsOfAllParts.withIndex(characteristic.Index).Values, false);
-                forEachValue(part, characteristic, (value) => {
+            ForEachCharacteristic((part, characteristic) => {
+                characteristic.PutAll(entriesForAllCharacteristicsOfAllParts.WithIndex(characteristic.Index).Values, false);
+                ForEachValue(part, characteristic, (value) => {
                     var entriesForValueIndex = entriesForAllValuesByValueIndex.GetValueOrNull(value.Index.Index);
                     if (entriesForValueIndex != null) {
                         foreach (ValueEntries valueEntries in entriesForValueIndex) {
-                            value.putAll(valueEntries.withIndex(value.Index).Values, false);
+                            value.PutAll(valueEntries.WithIndex(value.Index).Values, false);
                         }
                     }
                 });
             });
 
-            Hierarchy_Renamed = Hierarchy_Renamed.normalize(this);
+            _hierarchyRenamed = _hierarchyRenamed.Normalize(this);
         }
 
         /// <summary>
@@ -713,7 +713,7 @@ namespace AQDEF.Sharp.Models {
         public virtual int CharacteristicCount {
             get {
                 var characteristicCount = 0;
-               forEachCharacteristic((part, characteristic) => characteristicCount++);
+               ForEachCharacteristic((part, characteristic) => characteristicCount++);
                return characteristicCount;
             }
         }
@@ -725,18 +725,18 @@ namespace AQDEF.Sharp.Models {
         public virtual int ValueCount {
             get {
                 int count = 0;
-                forEachValue((part, characteristic, value) => count++);
+                ForEachValue((part, characteristic, value) => count++);
                 return count;
             }
         }
         public override int GetHashCode() {
             const int prime = 31;
             int result = 1;
-            result = prime * result + ((CharacteristicEntries == null) ? 0 : CharacteristicEntries.GetHashCode());
-            result = prime * result + ((GroupEntries == null) ? 0 : GroupEntries.GetHashCode());
-            result = prime * result + ((Hierarchy_Renamed == null) ? 0 : Hierarchy_Renamed.GetHashCode());
-            result = prime * result + ((PartEntries == null) ? 0 : PartEntries.GetHashCode());
-            result = prime * result + ((ValueEntries == null) ? 0 : ValueEntries.GetHashCode());
+            result = prime * result + ((_characteristicEntries == null) ? 0 : _characteristicEntries.GetHashCode());
+            result = prime * result + ((_groupEntries == null) ? 0 : _groupEntries.GetHashCode());
+            result = prime * result + ((_hierarchyRenamed == null) ? 0 : _hierarchyRenamed.GetHashCode());
+            result = prime * result + ((_partEntries == null) ? 0 : _partEntries.GetHashCode());
+            result = prime * result + ((_valueEntries == null) ? 0 : _valueEntries.GetHashCode());
             return result;
         }
         public override bool Equals(object obj) {
@@ -750,39 +750,39 @@ namespace AQDEF.Sharp.Models {
                 return false;
             }
             AqdefObjectModel other = (AqdefObjectModel)obj;
-            if (CharacteristicEntries == null) {
-                if (other.CharacteristicEntries != null) {
+            if (_characteristicEntries == null) {
+                if (other._characteristicEntries != null) {
                     return false;
                 }
-            } else if (!CharacteristicEntries.Equals(other.CharacteristicEntries)) {
+            } else if (!_characteristicEntries.Equals(other._characteristicEntries)) {
                 return false;
             }
-            if (GroupEntries == null) {
-                if (other.GroupEntries != null) {
+            if (_groupEntries == null) {
+                if (other._groupEntries != null) {
                     return false;
                 }
-            } else if (!GroupEntries.Equals(other.GroupEntries)) {
+            } else if (!_groupEntries.Equals(other._groupEntries)) {
                 return false;
             }
-            if (Hierarchy_Renamed == null) {
-                if (other.Hierarchy_Renamed != null) {
+            if (_hierarchyRenamed == null) {
+                if (other._hierarchyRenamed != null) {
                     return false;
                 }
-            } else if (!Hierarchy_Renamed.Equals(other.Hierarchy_Renamed)) {
+            } else if (!_hierarchyRenamed.Equals(other._hierarchyRenamed)) {
                 return false;
             }
-            if (PartEntries == null) {
-                if (other.PartEntries != null) {
+            if (_partEntries == null) {
+                if (other._partEntries != null) {
                     return false;
                 }
-            } else if (!PartEntries.Equals(other.PartEntries)) {
+            } else if (!_partEntries.Equals(other._partEntries)) {
                 return false;
             }
-            if (ValueEntries == null) {
-                if (other.ValueEntries != null) {
+            if (_valueEntries == null) {
+                if (other._valueEntries != null) {
                     return false;
                 }
-            } else if (!ValueEntries.Equals(other.ValueEntries)) {
+            } else if (!_valueEntries.Equals(other._valueEntries)) {
                 return false;
             }
             return true;
@@ -792,10 +792,10 @@ namespace AQDEF.Sharp.Models {
 
         public virtual AqdefHierarchy Hierarchy {
             get {
-                return Hierarchy_Renamed;
+                return _hierarchyRenamed;
             }
             set {
-                this.Hierarchy_Renamed = value;
+                this._hierarchyRenamed = value;
             }
         }
 

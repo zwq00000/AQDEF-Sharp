@@ -5,13 +5,13 @@ namespace AQDEF.Sharp.Models {
     public class GroupEntries : Entries<GroupEntry, GroupIndex> {
         public GroupEntries(GroupIndex index) : base(index) {
         }
-        public override Entries<GroupEntry, GroupIndex> withIndex(GroupIndex index) {
+        public override Entries<GroupEntry, GroupIndex> WithIndex(GroupIndex index) {
             GroupEntries copy = new GroupEntries(index);
             IList<GroupEntry> entriesCopy = Enumerable.Select<GroupEntry, GroupEntry>(Values, e => new GroupEntry(e.Key, index, e.Value)).ToList();
-            copy.putAll(entriesCopy, true);
+            copy.PutAll(entriesCopy, true);
             return copy;
         }
-        protected internal override GroupEntry newEntry(KKey key, GroupIndex index, object value) {
+        protected internal override GroupEntry NewEntry(KKey key, GroupIndex index, object value) {
             return new GroupEntry(key, index, value);
         }
     }

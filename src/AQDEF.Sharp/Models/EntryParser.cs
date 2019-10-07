@@ -26,7 +26,7 @@ namespace AQDEF.Models {
         }
 
         private static bool IsBinaryDataLine(string line) {
-            return line.IndexOf(AqdefConstants.MEASURED_VALUES_DATA_SEPARATOR) >= 0;
+            return line.IndexOf(AqdefConstants.MeasuredValuesDataSeparator) >= 0;
         }
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace AQDEF.Models {
         /// <param name="line"></param>
         /// <returns></returns>
         public static IEnumerable<BinaryData> ParseBinaryDataLine(string line) {
-            string[] characteristicPortions = line.Split(AqdefConstants.MEASURED_VALUES_CHARACTERISTIC_SEPARATOR);
+            string[] characteristicPortions = line.Split(AqdefConstants.MeasuredValuesCharacteristicSeparator);
             foreach (string characteristicPortion in characteristicPortions) {
-                string[] dataPortions = characteristicPortion.Split(AqdefConstants.MEASURED_VALUES_DATA_SEPARATOR);
+                string[] dataPortions = characteristicPortion.Split(AqdefConstants.MeasuredValuesDataSeparator);
                 yield return new BinaryData(dataPortions);
             }
         }
@@ -183,14 +183,14 @@ namespace AQDEF.Models {
                             //_characteristicEnties.Add(entry);
                         }
                         break;
-                    case KKeyLevel.PART:
+                    case KKeyLevel.Part:
                         //part.Add(entry);
                         _model.Parts.Add(entry);
                         if (entry.Index != 0) {
                             _part = _model.Parts[entry.Index];
                         }
                         break;
-                    case KKeyLevel.CHARACTERISTIC:
+                    case KKeyLevel.Characteristic:
                         _part.Characteristics.Add(entry);
                         if (entry.Index != 0) {
                             _characteristicEnties = _part.Characteristics[entry.Index];

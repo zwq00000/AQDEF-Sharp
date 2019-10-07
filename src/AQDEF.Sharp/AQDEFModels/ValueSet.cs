@@ -17,7 +17,7 @@ namespace AQDEF.Sharp.Models {
         public ValueSet(SortedDictionary<CharacteristicIndex, ValueEntries> valuesOfCharacteristics) : base() {
             this.ValuesOfCharacteristics = valuesOfCharacteristics;
         }
-        public virtual void addValueOfCharacteristic(CharacteristicIndex characteristicIndex, ValueEntries valueEntries) {
+        public virtual void AddValueOfCharacteristic(CharacteristicIndex characteristicIndex, ValueEntries valueEntries) {
             ValuesOfCharacteristics[characteristicIndex] = valueEntries;
         }
         public virtual ICollection<CharacteristicIndex> CharacteristicIndexes {
@@ -25,7 +25,7 @@ namespace AQDEF.Sharp.Models {
                 return ValuesOfCharacteristics.Keys;
             }
         }
-        public virtual ValueEntries getValuesOfCharacteristic(CharacteristicIndex characteristicIndex) {
+        public virtual ValueEntries GetValuesOfCharacteristic(CharacteristicIndex characteristicIndex) {
             return DictoryExtensions.GetValueOrNull<CharacteristicIndex, ValueEntries>(ValuesOfCharacteristics, characteristicIndex);
         }
         public virtual ICollection<ValueEntries> Values {

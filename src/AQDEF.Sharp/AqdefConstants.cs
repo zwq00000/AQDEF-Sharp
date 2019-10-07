@@ -10,11 +10,11 @@ namespace AQDEF.Sharp
         /// <summary>
         /// Separates lines of data file
         /// </summary>
-        public const string LINE_SEPARATOR = "\r\n";
+        public const string LineSeparator = "\r\n";
         /// <summary>
         /// Separates value from k-key on single line
         /// </summary>
-        public const string VALUES_SEPARATOR = " ";
+        public const string ValuesSeparator = " ";
 
         /// <summary>
         /// Separates fields of single characteristic in lines with measured values (notation without the use of K-Keys)<br>
@@ -30,10 +30,11 @@ namespace AQDEF.Sharp
         /// 9 Process parameter<br>
         /// 10 Gage number<br>
         /// </summary>
-        public static readonly char MEASURED_VALUES_DATA_SEPARATOR = (char)20;
+        public const char MeasuredValuesDataSeparator = (char) 20;
+
         /// <summary>
         /// Separates characteristic portions in lines with measured values (notation without the use of K-Keys)
         /// </summary>
-        public static readonly char MEASURED_VALUES_CHARACTERISTIC_SEPARATOR = ((char)15);
+        public const char MeasuredValuesCharacteristicSeparator = ((char) 15);
     }
 }

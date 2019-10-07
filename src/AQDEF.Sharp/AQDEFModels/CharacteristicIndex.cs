@@ -15,16 +15,16 @@ namespace AQDEF.Sharp.Models {
             get { return _characteristicIndex; }
         }
 
-        public bool platiProVsechnyZnakyDilu() {
+        public bool PlatiProVsechnyZnakyDilu() {
             return Convert.ToInt32(0).Equals((object) _characteristicIndex);
         }
 
-        public static CharacteristicIndex of(PartIndex partIndex, int? characteristicIndex) {
+        public static CharacteristicIndex Of(PartIndex partIndex, int? characteristicIndex) {
             return new CharacteristicIndex(partIndex, characteristicIndex);
         }
 
-        public static CharacteristicIndex of(int? partIndex, int? characteristicIndex) {
-            return of(PartIndex.Of(partIndex), characteristicIndex);
+        public static CharacteristicIndex Of(int? partIndex, int? characteristicIndex) {
+            return Of(PartIndex.Of(partIndex), characteristicIndex);
         }
 
         public override int GetHashCode() {

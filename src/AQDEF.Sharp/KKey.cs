@@ -45,10 +45,10 @@ namespace AQDEF.Sharp {
         private KKeyLevel? _level;
         private KKeyMetadata _metadata;
 
-        //*******************************************
-        // Constructors
-        //*******************************************
-
+        /// <summary>
+        ///  Constructors
+        /// </summary>
+        /// <param name="key"></param>
         private KKey(string key) {
             Key = key;
         }
@@ -147,7 +147,7 @@ namespace AQDEF.Sharp {
         /// <summary>
         ///  return whether this key represents information for part (dil / teil)
         /// </summary>
-        public bool IsPartLevel => Level == KKeyLevel.PART;
+        public bool IsPartLevel => Level == KKeyLevel.Part;
 
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace AQDEF.Sharp {
         /// return whether this key represents information for characterstic (znak / merkmal)
         /// </summary>
         /// <returns></returns>
-        public bool IsCharacteristicLevel => Level == KKeyLevel.CHARACTERISTIC;
+        public bool IsCharacteristicLevel => Level == KKeyLevel.Characteristic;
 
         /// <summary>
         /// return whether this key represents information for value (hodnota / wertevar)
@@ -240,9 +240,9 @@ namespace AQDEF.Sharp {
 
             if (string.Equals(keyString, "K2030", StringComparison.CurrentCultureIgnoreCase) ||
                 keyString.Equals("K2031", StringComparison.CurrentCultureIgnoreCase)) return KKeyLevel.SIMPLE_HIERARCHY;
-            if (keyString.StartsWith("K1")) return KKeyLevel.PART;
+            if (keyString.StartsWith("K1")) return KKeyLevel.Part;
             if (keyString.StartsWith("K2") // characteristic properties
-                || keyString.StartsWith("K8")) return KKeyLevel.CHARACTERISTIC;
+                || keyString.StartsWith("K8")) return KKeyLevel.Characteristic;
             if (keyString.StartsWith("K0")) return KKeyLevel.VALUE;
             if (keyString.StartsWith("K4")) return KKeyLevel.CATALOG;
             if (keyString.StartsWith("K50")) return KKeyLevel.GROUP;

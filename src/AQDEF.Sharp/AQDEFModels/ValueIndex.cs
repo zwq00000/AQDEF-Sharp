@@ -23,7 +23,7 @@ namespace AQDEF.Sharp.Models {
             return new ValueIndex(partIndex, characteristicIndex, valueIndex);
         }
         public static ValueIndex Of(int? partIndex, int? characteristicIndex, int? valueIndex) {
-            return new ValueIndex(PartIndex.Of(partIndex), CharacteristicIndex.of(partIndex, characteristicIndex), valueIndex);
+            return new ValueIndex(PartIndex.Of(partIndex), CharacteristicIndex.Of(partIndex, characteristicIndex), valueIndex);
         }
         public override int GetHashCode() {
             const int prime = 31;

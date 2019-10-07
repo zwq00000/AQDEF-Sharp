@@ -10,7 +10,7 @@ namespace AQDEF.Sharp.Models {
             return value;
         }
 
-        public static TValue putIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue PutIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key,
             TValue value) {
             if (dictionary.ContainsKey(key)) {
                 return dictionary[key];
@@ -20,7 +20,7 @@ namespace AQDEF.Sharp.Models {
             }
         }
 
-        public static void forEach<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
+        public static void ForEach<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             Action<TKey, TValue> eachAction) {
             foreach (var entry in dictionary) {
                 eachAction(entry.Key, entry.Value);
@@ -28,14 +28,14 @@ namespace AQDEF.Sharp.Models {
             }
         }
 
-        public static void forEach<TValue>(this IEnumerable<TValue> dictionary,
+        public static void ForEach<TValue>(this IEnumerable<TValue> dictionary,
             Action<TValue> eachAction) {
             foreach (var entry in dictionary) {
                 eachAction(entry);
             }
         }
 
-        public static TValue computeIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,TKey key,
+        public static TValue ComputeIfAbsent<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,TKey key,
             Func<TKey,TValue> action) {
             TValue value;
             if (dictionary.TryGetValue(key, out value)) {

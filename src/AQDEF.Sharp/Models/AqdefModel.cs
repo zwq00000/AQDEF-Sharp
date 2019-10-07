@@ -18,8 +18,8 @@ namespace AQDEF.Models {
         private readonly ValueEnties _valueEntieses = new ValueEnties(1);
 
         public AqdefModel() : base(0) {
-            this.SharedEnties = new SharedEntities(KKeyLevel.CHARACTERISTIC | KKeyLevel.PART | KKeyLevel.VALUE);
-            _partEntries = new EntiesCollection<PartEnties>(KKeyLevel.PART, i => new PartEnties(i)) {
+            this.SharedEnties = new SharedEntities(KKeyLevel.Characteristic | KKeyLevel.Part | KKeyLevel.VALUE);
+            _partEntries = new EntiesCollection<PartEnties>(KKeyLevel.Part, i => new PartEnties(i)) {
                 SharedEnties = this.SharedEnties
             };
         }
@@ -202,7 +202,7 @@ namespace AQDEF.Models {
         /// <summary>
         /// entry Level
         /// </summary>
-        public override KKeyLevel Level => KKeyLevel.PART;
+        public override KKeyLevel Level => KKeyLevel.Part;
 
         #endregion
 
@@ -210,7 +210,7 @@ namespace AQDEF.Models {
         public EntiesCollection<CharacteristicEnties> Characteristics {
             get {
                 return _characteristics ?? (_characteristics = new EntiesCollection<CharacteristicEnties>(
-                           KKeyLevel.CHARACTERISTIC,
+                           KKeyLevel.Characteristic,
                            i => new CharacteristicEnties(i)) {
                     SharedEnties = this.SharedEnties
                 });
@@ -236,7 +236,7 @@ namespace AQDEF.Models {
         /// <summary>
         /// entry Level
         /// </summary>
-        public override KKeyLevel Level => KKeyLevel.CHARACTERISTIC | KKeyLevel.VALUE;
+        public override KKeyLevel Level => KKeyLevel.Characteristic | KKeyLevel.VALUE;
 
         #endregion
 

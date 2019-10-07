@@ -7,7 +7,7 @@ namespace AQDEF.Sharp.Models {
     /// </summary>
     public interface IHasKKeyValues {
 
-        T getValue<T>(KKey kKey);
+        T GetValue<T>(KKey kKey);
 
     }
 }
